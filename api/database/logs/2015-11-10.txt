@@ -1,0 +1,23 @@
+Time : 06:36:00
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dumberland.message' doesn't exist
+Raw SQL : UPDATE message SET hash = :hash WHERE id = :id
+
+Time : 06:10:27
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message) VALUES(:to_name,:to_email,:from_name,:from_email,:message)
+
+Time : 06:09:59
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message) VALUES(:to_name,:to_email,:from_name,:from_email,message)
+
+Time : 06:08:27
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message) VALUES(:to_name,:to_email,:from_name,:from_email,message)
+
+Time : 06:06:08
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to-name,to-email,from-name,from-email,message) VALUES(?\-name,?\-email,?\-name,?' at line 1
+Raw SQL : INSERT INTO messages(to-name,to-email,from-name,from-email,message) VALUES(:to\-name,:to\-email,:from\-name,:from\-email,message)
+
+Time : 06:05:14
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to-name,to-email,from-name,from-email,message) VALUES(?-name,?-email,?-name,?-em' at line 1
+Raw SQL : INSERT INTO messages(to-name,to-email,from-name,from-email,message) VALUES(:to-name,:to-email,:from-name,:from-email,message)

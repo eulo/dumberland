@@ -1,0 +1,6 @@
+hours.txt
+TODO.txt
+
+/node_modules/*
+/.sass-cache/*
+/api/database/settings.ini.php

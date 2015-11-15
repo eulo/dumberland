@@ -1,0 +1,439 @@
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+
+@import 'lib/bootstrap';
+@import 'font-awesome/font-awesome';
+@import 'fonts';
+@import 'media-query';
+
+$sky-color: #A6D2BD;
+$snow-color: #FAF9F2;
+$sun-color: #EAE0BA;
+
+$text-color-default: #3E3E3E;
+$text-color-secondary: #575756;
+$placeholder-text-color: #999;
+$input-background-default: #E1DDD2;
+$btn-background-default: #C4162E;
+$btn-shadow-default: #E30137;
+$btn-dropshadow: rgba(0,0,0,0.1);
+$btn-background-secondary: #53A88C;
+$btn-shadow-secondary: #86C8B0;
+$facebook-blue: #315B99;
+$facebook-shadow: #6D83B4;
+$twitter-blue: #4CAADE;
+$twitter-shadow: #68C7F1;
+$footer-links: #9A9189;
+
+$sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// TYPE
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: $snow-color;
+}
+
+h1,h2,h3,h4,h5,h6,p,label,select,input,span,textarea,button,a {
+  color: $text-color-default;
+  font-family: CooperBT, serif;
+}
+
+
+.btn, .btn.btn-default {
+  background-color: $btn-background-default;
+  box-shadow: 0 -5px 0 $btn-shadow-default, 0 5px 0 $btn-dropshadow;
+  border: none;
+  color: white;
+  outline: none !important;
+  margin: 0 auto 5px;
+  border-radius: 40px;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 20px 60px;
+  text-transform: uppercase;
+
+
+
+  &:focus {
+    color: white;
+  }
+
+  &:hover {
+    color: white;
+    background-color: $btn-background-default;
+  }
+
+  &:active {
+    margin: -5px auto 10px;
+    color: white;
+    box-shadow: none;
+  }
+
+  &.btn-secondary {
+    background-color: $btn-background-secondary;
+    box-shadow: 0 -5px 0 $btn-shadow-secondary, 0 5px 0 $btn-dropshadow;
+
+    &:hover {
+      background-color: $btn-background-secondary;
+    }
+  
+    &:active {
+    }
+  }
+
+  &.btn-facebook {
+    background-color: $facebook-blue;
+    box-shadow: 0 -5px 0 $facebook-shadow, 0 5px 0 $btn-dropshadow;
+    font-family: $sans-serif;
+    font-weight: normal;
+    text-transform: none;
+    padding: 20px 0;
+    width: 160px;
+    font-size: 18px;
+
+    i {
+      font-size: 1.3em;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  &.btn-twitter {
+    background-color: $twitter-blue;
+    box-shadow: 0 -5px 0 $twitter-shadow, 0 5px 0 $btn-dropshadow;
+    font-family: $sans-serif;
+    font-weight: normal;
+    text-transform: none;
+    padding: 20px 0;
+    width: 160px;
+    font-size: 18px;
+
+    i {
+      font-size: 1.3em;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.btn-duo-center {
+  .btn {
+    width: 45%;
+    margin-right: 2%;
+    margin-left: 2%;
+  } 
+}
+
+h1.page-title {
+  text-indent: -9999px;
+  background: url(/assets/img/site_title_desktop.png) top center no-repeat;
+  /* min-width: 424px; */
+  height: 144px;
+  margin-top: 85px;
+  max-width: 100%;
+  background-size: contain; 
+}
+
+p.intro-text {
+  color: $snow-color;
+  font-family: $sans-serif;
+  font-size: 19px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+
+// LAYOUT
+
+#header {
+ a[data-event] {
+  float: right;
+  color: $snow-color;
+  font-family: $sans-serif;
+  font-size: 17px;
+  margin-top: 10px;
+ }
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  width: 100%;
+
+  .container {
+    margin: auto;
+  }
+
+  .footer-logo {
+    width: 104px;
+    height: 43px;
+    display: block;
+    margin: 0 auto -30px;
+
+    @include mq(xs) {
+      margin: 0 auto 20px;
+    }
+  }
+
+  .share-links {
+    @include mq(xs) {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    a {
+      border-radius: 9px;
+      background-color: $footer-links;
+      width: 28px;
+      height: 28px;
+      display: inline-block;
+      text-align: center;
+
+      i {
+        line-height: 28px;
+        color: $snow-color; 
+      }
+    }
+  }
+  .footer-links {
+    a {
+      font-family: $sans-serif;
+      line-height: 28px;
+      float: right;
+      margin-left: 20px;
+      color: $footer-links;
+    }
+    @include mq(xs) {
+      text-align: center;
+      a {
+        float: none
+      }
+    }
+  }
+}
+
+#main {
+  padding-bottom: 80px;
+  min-height: 1080px;
+  min-height: 100vh;
+  position: relative;
+
+  @include mq(xs) {
+    padding-bottom: 170px;
+  }
+}
+
+#homepage {
+  
+  .presents-container {
+    width: 680px;
+    height: 320px;
+    position: relative;
+    margin: 300px auto 0;
+    
+    .present {
+      width: 107px;
+      height: 107px;
+      position: absolute;
+      cursor: pointer;
+
+      // todo: layout
+
+      img {
+
+      }
+    }
+  }
+}
+
+#message {
+
+  form {
+    margin: 450px 0 100px;
+
+    h3, label, input, textarea, a {
+      font-family: $sans-serif;
+    }
+    h3 {
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .btn-center {
+      margin-top: 40px;
+    }
+  }
+
+  .message-complete-cont {
+    margin-top: 400px;
+
+    h2 {
+      text-align: center;
+      color: $text-color-secondary;
+      font-weight: bold;
+      font-size: 25px; 
+    }
+  }
+
+}
+
+#present {
+  h3 {
+    color: $snow-color;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  h2 {
+    text-align: center;
+    color: $text-color-secondary;
+    font-weight: bold;
+    font-size: 25px; 
+  }
+  .buttons-cont {
+    margin-top: 300px;
+  }
+}
+
+#thank {
+  h2 {
+    color: $snow-color;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  form {
+    margin: 300px 0 100px;
+    h3, label, input, textarea, a {
+      font-family: $sans-serif;
+    }
+    h3 {
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .btn-center {
+      margin-top: 40px;
+    }
+  }
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 880px;
+  z-index: -1;
+
+  // TODO: Make mound more like design
+  .sky {
+    background-color: $sky-color;
+    width: 100%;
+    position: absolute;
+    height: 880px;
+    overflow: hidden;
+    
+    .sun {
+      background-color: $sun-color;
+      width: 79px;
+      height: 79px;
+      border-radius: 50%;
+      position: absolute;
+      top: 122px;
+      left: 30%;
+    }
+
+    .snow-mound-with-trees {
+      background: url(/assets/img/mound_with_trees_desktop.svg) top center no-repeat;
+      width:100%;
+      position: absolute;
+      top: 505px;
+      height: 400px;
+      left: 50%;
+      @include transform(translateX(-50%));
+      @include transition(top .3s);
+    }
+
+  }
+}
+
+// FORMS
+
+input, textarea {
+  &.form-control {
+    border: none;
+    background: $input-background-default;
+    &::-webkit-input-placeholder {
+      color: $placeholder-text-color;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $placeholder-text-color;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+      color: $placeholder-text-color;
+    }
+    &:-ms-input-placeholder {  
+      color: $placeholder-text-color;
+    }
+  }
+}
+
+
+.checkbox {
+  label.form-control {
+    border: none;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
+  input[type="checkbox"] + label span {
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.2em;
+    border-radius: 3px;
+    margin: -1px 10px 0 -20px;
+    vertical-align:middle;
+    cursor:pointer;
+    text-align:center;
+    background: $input-background-default;
+    font-family: 'FontAwesome';
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+
+    &:before {
+      content: " ";
+    }
+  }
+  input[type="checkbox"]:checked + label span {
+    &:before {
+      content: "\f00c";
+    }
+  }
+}
+
+// MODAL
+.modal {
+  .modal-header, .modal-footer {
+     border: none;
+  }
+  .modal-body {
+    p {
+      color: $text-color-default;
+    }
+  }
+}
