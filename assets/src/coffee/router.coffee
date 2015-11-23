@@ -22,6 +22,4 @@ Router.on 'route:thank', ->
 Backbone.history.start
   pushState: true
 
-window.router = Router
-
 module.exports = Router

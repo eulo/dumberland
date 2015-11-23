@@ -1,4 +1,5 @@
 Handlebars = require 'hbsfy/runtime'
+Animator = require '../lib/animator'
 require 'backbone.validation'
 require '../lib/backbone.validation.callbacks.bootstrap'
 
@@ -19,6 +20,12 @@ Message = Backbone.View.extend
     @.model = new @.msgModel()
     @.render()
 
+    $mainAni = $('.santa-present-dance')
+    SantaAni = new Animator $mainAni, null, null, ->
+      @animate()
+
+
+
   events:
     'click [data-event=terms-button]': 'termsModal'
     'submit form': 'submit'
@@ -37,6 +44,11 @@ Message = Backbone.View.extend
       @.$el.find('.message-content').replaceWith @.successTmpl data
     ###
     @.$el.find('.message-content').replaceWith @.successTmpl data
+
+    $mainAni = $('.santa-present-dance')
+    SantaAni = new Animator $mainAni, null, null, ->
+      @animate()
+
 
   termsModal: (event) ->
     event.preventDefault()

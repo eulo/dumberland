@@ -1,0 +1,59 @@
+.homepage-animation {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+
+  > div {
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-image: url(../img/homepage_animation.png);
+  }
+}
+
+.presents-container {
+  width: 680px;
+  height: 320px;
+  position: relative;
+  margin: -170px auto 0;
+  
+  .present {
+    position: absolute;
+    cursor: pointer;
+    transform: scale(0.4);
+    transition: transform 0.8s linear, top 0.5s ease-out;
+
+    &.active {
+      top: -2000px;
+    }
+
+    
+    @for $i from 1 through 6 {
+      &-#{$i} {
+        left: 100px * $i - 130px;
+        top: 0;
+      }
+    }
+
+    @for $i from 7 through 12 {
+      &-#{$i} {
+        left: 100px * ($i - 6) - 130px;
+        top: 100px;
+      }
+    }
+
+    > div {
+      display: inline-block;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-image: url(../img/present_shake_animation.png);
+    }
+
+    // todo: layout
+
+    img {
+
+    }
+  }
+}

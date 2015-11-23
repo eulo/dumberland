@@ -1,0 +1,27 @@
+.santa-present-dance {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+
+  > div {
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-image: url(../img/santa_present_dance.png);
+  }
+}
+
+.santa-nopres-dance {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+
+  > div {
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-image: url(../img/santa_nopres_dance.png);
+  }
+}

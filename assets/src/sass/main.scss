@@ -6,6 +6,9 @@
 @import 'fonts';
 @import 'media-query';
 
+@import 'animations/homepage';
+@import 'animations/message';
+
 $sky-color: #A6D2BD;
 $snow-color: #FAF9F2;
 $sun-color: #EAE0BA;
@@ -236,31 +239,13 @@ p.intro-text {
 
 #homepage {
   
-  .presents-container {
-    width: 680px;
-    height: 320px;
-    position: relative;
-    margin: 300px auto 0;
-    
-    .present {
-      width: 107px;
-      height: 107px;
-      position: absolute;
-      cursor: pointer;
-
-      // todo: layout
-
-      img {
-
-      }
-    }
-  }
+  
 }
 
 #message {
 
   form {
-    margin: 450px 0 100px;
+    margin: 0px 0 100px;
 
     h3, label, input, textarea, a {
       font-family: $sans-serif;
@@ -276,7 +261,7 @@ p.intro-text {
   }
 
   .message-complete-cont {
-    margin-top: 400px;
+    padding-bottom: 40px;
 
     h2 {
       text-align: center;

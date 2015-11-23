@@ -10809,6 +10809,115 @@ button.close {
   src: url(/assets/fonts/CooperBT-Medium_gdi.eot);
   src: url(/assets/fonts/CooperBT-Medium_gdi.eot?#iefix) format("embedded-opentype"), url(/assets/fonts/CooperBT-Medium_gdi.woff) format("woff"), url(/assets/fonts/CooperBT-Medium_gdi.ttf) format("truetype");
 }
+.homepage-animation {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+}
+.homepage-animation > div {
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(../img/homepage_animation.png);
+}
+
+.presents-container {
+  width: 680px;
+  height: 320px;
+  position: relative;
+  margin: -170px auto 0;
+}
+.presents-container .present {
+  position: absolute;
+  cursor: pointer;
+  transform: scale(0.4);
+  transition: transform 0.8s linear, top 0.5s ease-out;
+}
+.presents-container .present.active {
+  top: -2000px;
+}
+.presents-container .present-1 {
+  left: -30px;
+  top: 0;
+}
+.presents-container .present-2 {
+  left: 70px;
+  top: 0;
+}
+.presents-container .present-3 {
+  left: 170px;
+  top: 0;
+}
+.presents-container .present-4 {
+  left: 270px;
+  top: 0;
+}
+.presents-container .present-5 {
+  left: 370px;
+  top: 0;
+}
+.presents-container .present-6 {
+  left: 470px;
+  top: 0;
+}
+.presents-container .present-7 {
+  left: -30px;
+  top: 100px;
+}
+.presents-container .present-8 {
+  left: 70px;
+  top: 100px;
+}
+.presents-container .present-9 {
+  left: 170px;
+  top: 100px;
+}
+.presents-container .present-10 {
+  left: 270px;
+  top: 100px;
+}
+.presents-container .present-11 {
+  left: 370px;
+  top: 100px;
+}
+.presents-container .present-12 {
+  left: 470px;
+  top: 100px;
+}
+.presents-container .present > div {
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(../img/present_shake_animation.png);
+}
+
+.santa-present-dance {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+}
+.santa-present-dance > div {
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(../img/santa_present_dance.png);
+}
+
+.santa-nopres-dance {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 40px auto 0;
+}
+.santa-nopres-dance > div {
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(../img/santa_nopres_dance.png);
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: #FAF9F2;
@@ -10986,21 +11095,8 @@ p.intro-text {
   }
 }
 
-#homepage .presents-container {
-  width: 680px;
-  height: 320px;
-  position: relative;
-  margin: 300px auto 0;
-}
-#homepage .presents-container .present {
-  width: 107px;
-  height: 107px;
-  position: absolute;
-  cursor: pointer;
-}
-
 #message form {
-  margin: 450px 0 100px;
+  margin: 0px 0 100px;
 }
 #message form h3, #message form label, #message form input, #message form textarea, #message form a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -11013,7 +11109,7 @@ p.intro-text {
   margin-top: 40px;
 }
 #message .message-complete-cont {
-  margin-top: 400px;
+  padding-bottom: 40px;
 }
 #message .message-complete-cont h2 {
   text-align: center;

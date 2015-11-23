@@ -1,6 +1,8 @@
 hours.txt
 TODO.txt
 
+.DS_Store
+
 /node_modules/*
 /.sass-cache/*
 /api/database/settings.ini.php
