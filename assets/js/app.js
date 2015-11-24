@@ -461,10 +461,10 @@ Index = Backbone.View.extend({
     $('.present').each(function() {
       var PresentAni;
       PresentAni = new Animator($(this));
-      $(this).bind('mouseenter', function() {
+      $(this).find('div').bind('mouseenter', function() {
         return PresentAni.animate();
       });
-      return $(this).bind('mouseleave', function() {
+      return $(this).find('div').bind('mouseleave', function() {
         return PresentAni.stop();
       });
     });
@@ -474,13 +474,21 @@ Index = Backbone.View.extend({
         return false;
       }
       flag = true;
-      $(this).addClass('active');
-      $('.present:not(.active)').addClass('animated bounceOutDown');
+      $(this).addClass('active animated bounceOutUpPresent');
+      $('.present:not(.active)').each(function() {
+        var $this;
+        $this = $(this);
+        return setTimeout(function() {
+          return $this.addClass('animated bounceOutDownPresent');
+        }, 1000 * Math.random());
+      });
       return setTimeout(function() {
         var CatchAni;
         SantaAni.stop();
         return CatchAni = new Animator($mainAni, catchJson, catchImg, function() {
-          return this.animate(0, this.frameRef.length - 1, function() {});
+          return this.animate(0, this.frameRef.length - 1, function() {
+            return Backbone.history.navigate('message', true);
+          });
         });
       }, 1000);
     });

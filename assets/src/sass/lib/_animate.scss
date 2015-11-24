@@ -1039,6 +1039,49 @@ Copyright (c) 2015 Daniel Eden
   animation-name: bounceOutDown;
 }
 
+@-webkit-keyframes bounceOutDownPresent {
+  20% {
+    -webkit-transform: translate3d(0, 10px, 0) scale(0.4);
+    transform: translate3d(0, 10px, 0) scale(0.4);
+  }
+
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0) scale(0.4);
+    transform: translate3d(0, -20px, 0) scale(0.4);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0) scale(0.4);
+    transform: translate3d(0, 2000px, 0) scale(0.4);
+  }
+}
+
+@keyframes bounceOutDownPresent {
+  20% {
+    -webkit-transform: translate3d(0, 10px, 0) scale(0.4);
+    transform: translate3d(0, 10px, 0) scale(0.4);
+  }
+
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0) scale(0.4);
+    transform: translate3d(0, -20px, 0) scale(0.4);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 2000px, 0) scale(0.4);
+    transform: translate3d(0, 2000px, 0) scale(0.4);
+  }
+}
+
+.bounceOutDownPresent {
+  -webkit-animation-name: bounceOutDownPresent;
+  animation-name: bounceOutDownPresent;
+}
+
 @-webkit-keyframes bounceOutLeft {
   20% {
     opacity: 1;
@@ -1103,6 +1146,49 @@ Copyright (c) 2015 Daniel Eden
 .bounceOutRight {
   -webkit-animation-name: bounceOutRight;
   animation-name: bounceOutRight;
+}
+
+@-webkit-keyframes bounceOutUpPresent {
+  20% {
+    -webkit-transform: translate3d(0, -10px, 0) scale(0.4);
+    transform: translate3d(0, -10px, 0) scale(0.4);
+  }
+
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 20px, 0) scale(0.4);
+    transform: translate3d(0, 20px, 0) scale(0.4);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0) scale(0.4);
+    transform: translate3d(0, -2000px, 0) scale(0.4);
+  }
+}
+
+@keyframes bounceOutUpPresent {
+  20% {
+    -webkit-transform: translate3d(0, -10px, 0) scale(0.4);
+    transform: translate3d(0, -10px, 0) scale(0.4);
+  }
+
+  40%, 45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 20px, 0) scale(0.4);
+    transform: translate3d(0, 20px, 0) scale(0.4);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0) scale(0.4);
+    transform: translate3d(0, -2000px, 0) scale(0.4);
+  }
+}
+
+.bounceOutUpPresent {
+  -webkit-animation-name: bounceOutUpPresent;
+  animation-name: bounceOutUpPresent;
 }
 
 @-webkit-keyframes bounceOutUp {

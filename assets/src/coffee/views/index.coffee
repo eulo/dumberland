@@ -25,9 +25,9 @@ Index = Backbone.View.extend
 
     $('.present').each ->
       PresentAni = new Animator $(this)
-      $(this).bind 'mouseenter', ->
+      $(this).find('div').bind 'mouseenter', ->
         PresentAni.animate()
-      $(this).bind 'mouseleave', ->
+      $(this).find('div').bind 'mouseleave', ->
         PresentAni.stop()
 
     flag = false
@@ -36,15 +36,19 @@ Index = Backbone.View.extend
         return false
       flag = true
 
-      $(this).addClass 'active'
+      $(this).addClass 'active animated bounceOutUpPresent'
 
-      $('.present:not(.active)').addClass 'animated bounceOutDown'
+      $('.present:not(.active)').each ->
+        $this = $(this)
+        setTimeout ->
+          $this.addClass 'animated bounceOutDownPresent'
+        , 1000 * Math.random()
 
       setTimeout ->
         SantaAni.stop()
         CatchAni = new Animator $mainAni, catchJson, catchImg, ->
           @animate 0, @frameRef.length - 1, ->
-            #Backbone.history.navigate 'message', true
+            Backbone.history.navigate 'message', true
       , 1000
     
   events:

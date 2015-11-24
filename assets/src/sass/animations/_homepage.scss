@@ -21,11 +21,10 @@
   .present {
     position: absolute;
     cursor: pointer;
-    opacity: 1;
-    transition: top 0.5s ease-out;
+    transform: scale(0.4);
 
     &.active {
-      top: -2000px;
+
     }
 
     
@@ -49,7 +48,6 @@
       background-repeat: no-repeat;
       background-image: url(../img/present_shake_animation.png);
 
-      transform: scale(0.4);
     }
 
     // todo: layout
