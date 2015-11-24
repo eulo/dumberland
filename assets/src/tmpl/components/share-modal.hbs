@@ -7,13 +7,13 @@
       <div class="modal-body">
         <div class='row'>
           <div class='col-xs-6'>
-            <button type='button' class='btn btn-facebook btn-block' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>
+            <button class='btn btn-facebook btn-block fb_share_button'>
               <i class='fa fa-facebook'></i>
               Facebook
             </button>
           </div>
           <div class='col-xs-6'>
-            <button type='button' class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Something'>
+            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>
               <i class='fa fa-twitter'></i>
               Twitter
             </button>
@@ -26,3 +26,12 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script>
+  $('.fb_share_button').click(function() {
+    ga('send','event','Button Clicks','facebook.com');
+  });
+  $('.btn-twitter').click(function() {
+    ga('send','tweet','Button Clicks','twitter.com');
+  });
+</script>

@@ -16,15 +16,23 @@
 
   <div class='col-md-4'>&nbsp;</div>
   <div class='col-md-4 btn-duo-center'>
-    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>
+    <button class='btn btn-facebook fb_share_button'>
       <i class='fa fa-facebook'></i>
       Facebook
     </button>
-    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>
+    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.'>
       <i class='fa fa-twitter'></i>
       Twitter
     </button>
   </div>
-  <div class='col-md-4'>&nbsp;</div>
-  
+  <div class='col-md-4'>&nbsp;</div>  
 </div>
+
+<script>
+  $('.fb_share_button').click(function() {
+    ga('send','event','Button Clicks','facebook.com');
+  });
+  $('.btn-twitter').click(function() {
+    ga('send','tweet','Button Clicks','twitter.com');
+  });
+</script>
