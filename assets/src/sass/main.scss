@@ -301,8 +301,19 @@ p.intro-text {
     font-weight: bold;
     font-size: 25px;
   }
+
+  .santa-nopres-dance {
+    margin: -40px auto;  
+  }
+
+  .message-complete-cont {
+    .santa-nopres-dance {
+      margin: 30px auto 0;
+    }
+  }
+
   form {
-    margin: 300px 0 100px;
+    margin: 0px 0 100px;
     h3, label, input, textarea, a {
       font-family: $sans-serif;
     }

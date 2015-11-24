@@ -1,4 +1,5 @@
 Handlebars = require 'hbsfy/runtime'
+Animator = require '../lib/animator'
 getUrlVars = require '../lib/getUrlVars'
 
 Thank = Backbone.View.extend
@@ -30,7 +31,12 @@ Thank = Backbone.View.extend
     event.preventDefault()
     data = $(event.currentTarget).serializeObject()
     @.$el.find('.message-content').replaceWith @.successTmpl @.modal
-   
+
+    $mainAni = $('.santa-nopres-dance')
+    @SantaAni.stop()
+    @SantaAni = new Animator $mainAni, ->
+      @animate()
+
   render: (res)->
     if !res.models.length
       Backbone.history.navigate '', true
@@ -39,5 +45,9 @@ Thank = Backbone.View.extend
     @.$el.html @.template res.model.attributes
     Header = new @.headerView()
     Footer = new @.footerView()
+
+    $mainAni = $('.santa-nopres-dance')
+    @SantaAni = new Animator $mainAni, ->
+      @animate()
 
 module.exports = new Thank

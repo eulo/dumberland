@@ -526,11 +526,11 @@ Message = Backbone.View.extend({
   footerView: require('./includes/footer'),
   termsModalView: require('./includes/terms-modal'),
   initialize: function() {
-    var $mainAni, SantaAni;
+    var $mainAni;
     this.model = new this.msgModel();
     this.render();
     $mainAni = $('.santa-present-dance');
-    return SantaAni = new Animator($mainAni, function() {
+    return this.SantaAni = new Animator($mainAni, function() {
       return this.animate();
     });
   },
@@ -541,7 +541,7 @@ Message = Backbone.View.extend({
     'click [data-event=reset]': 'initialize'
   },
   submit: function(event) {
-    var $mainAni, SantaAni, data;
+    var $mainAni, data;
     event.preventDefault();
     data = $(event.currentTarget).serializeObject();
     this.model.set(data);
@@ -553,8 +553,9 @@ Message = Backbone.View.extend({
       @.$el.find('.message-content').replaceWith @.successTmpl data
      */
     this.$el.find('.message-content').replaceWith(this.successTmpl(data));
-    $mainAni = $('.santa-present-dance');
-    return SantaAni = new Animator($mainAni, function() {
+    $mainAni = $('.santa-nopres-dance');
+    this.SantaAni.stop();
+    return this.SantaAni = new Animator($mainAni, function() {
       return this.animate();
     });
   },
@@ -630,9 +631,11 @@ module.exports = new Present;
 
 
 },{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],17:[function(require,module,exports){
-var Handlebars, Thank, getUrlVars;
+var Animator, Handlebars, Thank, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
+
+Animator = require('../lib/animator');
 
 getUrlVars = require('../lib/getUrlVars');
 
@@ -658,13 +661,18 @@ Thank = Backbone.View.extend({
     return Backbone.history.navigate('', true);
   },
   submit: function(event) {
-    var data;
+    var $mainAni, data;
     event.preventDefault();
     data = $(event.currentTarget).serializeObject();
-    return this.$el.find('.message-content').replaceWith(this.successTmpl(this.modal));
+    this.$el.find('.message-content').replaceWith(this.successTmpl(this.modal));
+    $mainAni = $('.santa-nopres-dance');
+    this.SantaAni.stop();
+    return this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
   },
   render: function(res) {
-    var Footer, Header;
+    var $mainAni, Footer, Header;
     if (!res.models.length) {
       Backbone.history.navigate('', true);
       return;
@@ -672,7 +680,11 @@ Thank = Backbone.View.extend({
     this.modal = res.models[0];
     this.$el.html(this.template(res.model.attributes));
     Header = new this.headerView();
-    return Footer = new this.footerView();
+    Footer = new this.footerView();
+    $mainAni = $('.santa-nopres-dance');
+    return this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
   }
 });
 
@@ -680,7 +692,7 @@ module.exports = new Thank;
 
 
 
-},{"../../tmpl/components/thank-success.hbs":24,"../../tmpl/thank.hbs":28,"../collections/present":1,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],18:[function(require,module,exports){
+},{"../../tmpl/components/thank-success.hbs":24,"../../tmpl/thank.hbs":28,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],18:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -709,7 +721,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 
   return "<p class='intro-text'>"
     + container.escapeExpression(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"to_name","hash":{},"data":data}) : helper)))
-    + "'s Dumb Present has been sent.</p>\n\n<div class='santa-present-dance' data-json='santa_present_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send another</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
+    + "'s Dumb Present has been sent.</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send another</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":54}],22:[function(require,module,exports){
@@ -734,7 +746,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 
   return "<p class='intro-text'>Thanks for thanking "
     + container.escapeExpression(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"from_name","hash":{},"data":data}) : helper)))
-    + "</p>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send one yourself</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
+    + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n    <div></div>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send one yourself</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":54}],25:[function(require,module,exports){
@@ -776,7 +788,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
     + " for sending <br>\n      you a "
     + alias4(((helper = (helper = helpers.present || (depth0 != null ? depth0.present : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"present","hash":{},"data":data}) : helper)))
-    + ".</p>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
+    + ".</p>\n\n      <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":54}],29:[function(require,module,exports){

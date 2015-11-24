@@ -14046,8 +14046,14 @@ p.intro-text {
   font-weight: bold;
   font-size: 25px;
 }
+#thank .santa-nopres-dance {
+  margin: -40px auto;
+}
+#thank .message-complete-cont .santa-nopres-dance {
+  margin: 30px auto 0;
+}
 #thank form {
-  margin: 300px 0 100px;
+  margin: 0px 0 100px;
 }
 #thank form h3, #thank form label, #thank form input, #thank form textarea, #thank form a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

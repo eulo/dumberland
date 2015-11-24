@@ -21,7 +21,7 @@ Message = Backbone.View.extend
     @.render()
 
     $mainAni = $('.santa-present-dance')
-    SantaAni = new Animator $mainAni, ->
+    @SantaAni = new Animator $mainAni, ->
       @animate()
 
 
@@ -45,8 +45,9 @@ Message = Backbone.View.extend
     ###
     @.$el.find('.message-content').replaceWith @.successTmpl data
 
-    $mainAni = $('.santa-present-dance')
-    SantaAni = new Animator $mainAni, ->
+    $mainAni = $('.santa-nopres-dance')
+    @SantaAni.stop()
+    @SantaAni = new Animator $mainAni, ->
       @animate()
 
 
