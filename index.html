@@ -8,23 +8,61 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <meta property="og:title" content="">
+  <meta property="og:title" content="Dumb Ways to Die Christmas Dumberland">
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="">
-  <meta property="og:description" content="">
+  <meta property="og:url" content="www.dumberland.com">
+  <meta property="og:description" content="Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.">
   <meta property="og:type" content="">
-  <meta property="og:image" content="">
+  <meta property="og:image" content="/assets/image/fb_share_img.png">
 
   <title></title>
 
   <link rel="stylesheet" href="/assets/css/main.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-70610627-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
 </head>
 <body>
 
   <div id='main'></div>
-
   <script src="/assets/js/app.js"></script>
-
+  
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '894257343963270',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+    (function() {
+      var e = document.createElement('script'); e.async = true;
+      e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+      document.getElementById('fb-root').appendChild(e);
+    }());
+  </script>
+  <script type="text/javascript">
+      $('.fb_share_button').click(function(e){
+        e.preventDefault();
+        FB.ui({
+          method: 'share',
+          title: 'Dumberland',
+          link: 'http://www.dumberland.com/',
+          picture: '/assets/image/fb_share_img.png',
+          description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+        });
+      });
+  </script>
+  
+ 
 </body>
 </html>
