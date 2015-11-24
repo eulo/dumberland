@@ -582,9 +582,11 @@ module.exports = new Message;
 
 
 },{"../../tmpl/components/message-success.hbs":21,"../../tmpl/message.hbs":26,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../models/message":7,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":29,"./includes/footer":10,"./includes/header":11,"./includes/terms-modal":13,"hbsfy/runtime":55}],16:[function(require,module,exports){
-var Handlebars, Present, getUrlVars;
+var Animator, Handlebars, Present, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
+
+Animator = require('../lib/animator');
 
 getUrlVars = require('../lib/getUrlVars');
 
@@ -618,13 +620,17 @@ Present = Backbone.View.extend({
     return Backbone.history.navigate('message', true);
   },
   render: function(res) {
-    var Footer, Header;
+    var $mainAni, Footer, Header;
     if (!res.models.length) {
       Backbone.history.navigate('', true);
       return;
     }
     this.$el.html(this.template(res.models[0].attributes));
     gfyCollection.init();
+    $mainAni = $('.santa-present-dance');
+    this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
     Header = new this.headerView();
     return Footer = new this.footerView();
   }
@@ -634,7 +640,7 @@ module.exports = new Present;
 
 
 
-},{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/getUrlVars":5,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":32,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],17:[function(require,module,exports){
+},{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":32,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],17:[function(require,module,exports){
 var Animator, Handlebars, Thank, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -777,7 +783,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"to_name","hash":{},"data":data}) : helper)))
     + ",</h3>\n\n    <p class='intro-text'>Here's a Dumb Present from "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
-    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n\n<!-- modal -->\n<div id='present-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-12'>\n            <div class=\"gfyitem\" data-title=true data-autoplay=false data-controls=true data-expand=false data-id=\""
+    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='santa-present-dance' data-json='santa_present_dance.json'>\n      <div></div>\n    </div>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n\n<!-- modal -->\n<div id='present-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-12'>\n            <div class=\"gfyitem\" data-title=true data-autoplay=false data-controls=true data-expand=false data-id=\""
     + alias4(((helper = (helper = helpers.present || (depth0 != null ? depth0.present : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"present","hash":{},"data":data}) : helper)))
     + "\" ></div> \n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
