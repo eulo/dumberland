@@ -37,7 +37,7 @@ Router = require('./router');
 
 
 
-},{"./../../../bower_components/backbone/backbone.js":30,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":31,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":32,"./../../../bower_components/jquery/dist/jquery.js":33,"./../../../bower_components/underscore/underscore.js":34,"./lib/jquery.serializeObject":6,"./router":8,"./views/includes/background":9}],3:[function(require,module,exports){
+},{"./../../../bower_components/backbone/backbone.js":30,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":31,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":33,"./../../../bower_components/jquery/dist/jquery.js":34,"./../../../bower_components/underscore/underscore.js":35,"./lib/jquery.serializeObject":6,"./router":8,"./views/includes/background":9}],3:[function(require,module,exports){
 var Animator;
 
 module.exports = Animator = (function() {
@@ -211,7 +211,7 @@ $.fn.serializeObject = function() {
 
 
 
-},{"./../../../../bower_components/jquery/dist/jquery.js":33}],7:[function(require,module,exports){
+},{"./../../../../bower_components/jquery/dist/jquery.js":34}],7:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
   idAttribute: 'id',
   url: '/api/message',
@@ -334,7 +334,7 @@ module.exports = new Background;
 
 
 
-},{"../../../tmpl/background.hbs":18,"hbsfy/runtime":54}],10:[function(require,module,exports){
+},{"../../../tmpl/background.hbs":18,"hbsfy/runtime":55}],10:[function(require,module,exports){
 var Footer, Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -364,7 +364,7 @@ module.exports = Footer;
 
 
 
-},{"../../../tmpl/components/footer.hbs":19,"./share-modal":12,"./terms-modal":13,"hbsfy/runtime":54}],11:[function(require,module,exports){
+},{"../../../tmpl/components/footer.hbs":19,"./share-modal":12,"./terms-modal":13,"hbsfy/runtime":55}],11:[function(require,module,exports){
 var Handlebars, Header;
 
 Handlebars = require('hbsfy/runtime');
@@ -400,7 +400,7 @@ module.exports = Header;
 
 
 
-},{"../../../tmpl/components/header.hbs":20,"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":54}],12:[function(require,module,exports){
+},{"../../../tmpl/components/header.hbs":20,"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":55}],12:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -418,7 +418,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":54}],13:[function(require,module,exports){
+},{"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":55}],13:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -436,7 +436,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/terms-modal.hbs":23,"hbsfy/runtime":54}],14:[function(require,module,exports){
+},{"../../../tmpl/components/terms-modal.hbs":23,"hbsfy/runtime":55}],14:[function(require,module,exports){
 var Animator, Handlebars, Index;
 
 Handlebars = require('hbsfy/runtime');
@@ -506,7 +506,7 @@ module.exports = new Index;
 
 
 
-},{"../../tmpl/index.hbs":25,"../lib/animator":3,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],15:[function(require,module,exports){
+},{"../../tmpl/index.hbs":25,"../lib/animator":3,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],15:[function(require,module,exports){
 var Animator, Handlebars, Message;
 
 Handlebars = require('hbsfy/runtime');
@@ -581,12 +581,16 @@ module.exports = new Message;
 
 
 
-},{"../../tmpl/components/message-success.hbs":21,"../../tmpl/message.hbs":26,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../models/message":7,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":29,"./includes/footer":10,"./includes/header":11,"./includes/terms-modal":13,"hbsfy/runtime":54}],16:[function(require,module,exports){
-var Handlebars, Present, getUrlVars;
+},{"../../tmpl/components/message-success.hbs":21,"../../tmpl/message.hbs":26,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../models/message":7,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":29,"./includes/footer":10,"./includes/header":11,"./includes/terms-modal":13,"hbsfy/runtime":55}],16:[function(require,module,exports){
+var Animator, Handlebars, Present, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
 
+Animator = require('../lib/animator');
+
 getUrlVars = require('../lib/getUrlVars');
+
+require("./../../../../bower_components/gfycat.js/js/gfyConcat.js");
 
 Present = Backbone.View.extend({
   el: '#main',
@@ -608,6 +612,7 @@ Present = Backbone.View.extend({
   open: function(event) {
     var $this;
     $this = $(event.currentTarget);
+    $('#present-modal').modal('show');
     $this.text('Back');
     return $this.attr('data-event', 'back');
   },
@@ -615,12 +620,17 @@ Present = Backbone.View.extend({
     return Backbone.history.navigate('message', true);
   },
   render: function(res) {
-    var Footer, Header;
+    var $mainAni, Footer, Header;
     if (!res.models.length) {
       Backbone.history.navigate('', true);
       return;
     }
     this.$el.html(this.template(res.models[0].attributes));
+    gfyCollection.init();
+    $mainAni = $('.santa-present-dance');
+    this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
     Header = new this.headerView();
     return Footer = new this.footerView();
   }
@@ -630,7 +640,7 @@ module.exports = new Present;
 
 
 
-},{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],17:[function(require,module,exports){
+},{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":32,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],17:[function(require,module,exports){
 var Animator, Handlebars, Thank, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -692,28 +702,28 @@ module.exports = new Thank;
 
 
 
-},{"../../tmpl/components/thank-success.hbs":24,"../../tmpl/thank.hbs":28,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":54}],18:[function(require,module,exports){
+},{"../../tmpl/components/thank-success.hbs":24,"../../tmpl/thank.hbs":28,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],18:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='background'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],19:[function(require,module,exports){
+},{"hbsfy/runtime":55}],19:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='container'>\n  <div class='row'>\n    <div class='col-xs-12'>\n      <img class='footer-logo' src='/assets/img/footer-logo.png' alt='Dumb ways to die'>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='share-links'>\n        <a href='https://www.facebook.com/dumbwaystodie/' target='_blank'><i class='fa fa-facebook'></i></a>\n        <a href='https://twitter.com/dumbways2die' target='_blank'><i class='fa fa-twitter'></i></a>\n        <a href='http://dumbwaystodie.tumblr.com/' target='_blank'><i class='fa fa-tumblr'></i></a>\n      </div>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='footer-links'>\n        <a href='#' data-event='terms-button-footer'>Terms &amp; conditions</a>\n        <a href='https://shop.dumbwaystodie.com' target='_blank'>Visit the shop</a>\n      </div>\n    </div>\n  </div>\n</div>\n<div id='modal'></div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],20:[function(require,module,exports){
+},{"hbsfy/runtime":55}],20:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<a data-event='share-modal' href='#'>\n  <i class='fa fa-share-alt'></i> Share\n</a>\n\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],21:[function(require,module,exports){
+},{"hbsfy/runtime":55}],21:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -724,21 +734,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "'s Dumb Present has been sent.</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send another</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button class='btn btn-facebook fb_share_button'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>  \n</div>\n\n<script>\n  $('.fb_share_button').click(function() {\n    ga('send','event','Button Clicks','facebook.com');\n  });\n  $('.btn-twitter').click(function() {\n    ga('send','tweet','Button Clicks','twitter.com');\n  });\n</script>";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],22:[function(require,module,exports){
+},{"hbsfy/runtime":55}],22:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-6'>\n            <button class='btn btn-facebook btn-block fb_share_button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-xs-6'>\n            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n\n<script>\n  $('.fb_share_button').click(function() {\n    ga('send','event','Button Clicks','facebook.com');\n  });\n  $('.btn-twitter').click(function() {\n    ga('send','tweet','Button Clicks','twitter.com');\n  });\n</script>";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],23:[function(require,module,exports){
+},{"hbsfy/runtime":55}],23:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='terms-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\">Terms &amp; Conditions</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut arcu et nibh sollicitudin porttitor. Duis at sem sit amet felis lacinia tristique sollicitudin sit amet elit. Cras rutrum velit nec tristique facilisis. Sed non nunc sodales eros mollis finibus. Phasellus arcu dui, pellentesque non pretium ac, imperdiet vitae velit. Praesent ut tincidunt nisi, ut faucibus leo. Mauris eu lobortis nisi. Nunc ultrices porta euismod. Aenean et tristique leo, laoreet efficitur eros. Nulla felis massa, tempus eget urna non, convallis posuere orci. Morbi vitae ligula eu magna mollis sollicitudin sit amet eget ipsum.</p>\n        <p>Curabitur nisi massa, tincidunt eu quam nec, consectetur tempor nisl. Quisque orci nunc, lobortis sit amet justo a, pretium feugiat turpis. Curabitur non mattis nisl. Sed malesuada, lectus et bibendum varius, nibh massa elementum ex, vitae vehicula nunc nisl luctus erat. Donec sit amet est leo. Quisque odio arcu, efficitur in ante nec, dignissim vehicula magna. Fusce sed metus quis lectus imperdiet luctus.</p>\n        <p>Curabitur porta justo et nisl tempor aliquam. Vivamus imperdiet felis ac leo porttitor aliquam. Quisque scelerisque magna in hendrerit mattis. Sed posuere urna sit amet metus commodo, quis dictum lorem efficitur. In libero metus, malesuada fringilla porta id, euismod commodo tortor. Nam sagittis dui id odio tincidunt dictum. Praesent consequat magna vitae condimentum ornare. Aenean porta at nisl at efficitur. Quisque vitae eros tellus. Suspendisse ligula erat, fermentum a facilisis vitae, facilisis et ex. Proin gravida laoreet orci et porttitor. In ultricies, nisl a fringilla lacinia, eros ante congue nisl, id volutpat dolor turpis a felis.</p>\n        <p>Suspendisse luctus lorem purus, sed facilisis arcu sollicitudin quis. Nulla faucibus bibendum porta. Donec non justo id ipsum cursus vestibulum. Nulla a auctor mi. Etiam maximus eget felis et molestie. Nunc vel libero bibendum, venenatis lorem id, laoreet risus. Praesent quis eros molestie, volutpat nunc sed, faucibus justo.</p>\n        <p>Donec egestas augue posuere ligula suscipit, et laoreet sem eleifend. Mauris egestas semper ipsum, non pharetra nulla congue sit amet. Nullam molestie dignissim justo, sed rhoncus ipsum tempus vitae. Aenean mollis cursus lorem at dapibus. Praesent id felis nec sapien cursus ullamcorper. Vivamus nec pharetra tellus, eu pellentesque massa. Vestibulum eget ullamcorper odio, nec maximus sapien. Maecenas lacus enim, ullamcorper sed sem eu, iaculis egestas nisl. Duis quis luctus massa. Integer auctor ullamcorper nunc ut eleifend. Donec a metus ac nunc bibendum pharetra. Nullam pellentesque, massa id accumsan tincidunt, sapien eros luctus urna, nec imperdiet ex augue ac erat. Aliquam placerat posuere est. Nam a venenatis mi. Integer in nisl aliquet mauris tincidunt accumsan sit amet sed eros.</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],24:[function(require,module,exports){
+},{"hbsfy/runtime":55}],24:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -749,21 +759,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n    <div></div>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send one yourself</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],25:[function(require,module,exports){
+},{"hbsfy/runtime":55}],25:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-12' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],26:[function(require,module,exports){
+},{"hbsfy/runtime":55}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='message'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <p class='intro-text'>Send a Dumb present.</p>\n\n      <div class='santa-present-dance' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n\n        <div class='row'>\n\n          <div class='col-md-6'>\n            <h3>Send gift to</h3>\n            <div class=\"form-group\">\n              <label for=\"to_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"to_name\" id=\"to_name\" placeholder=\"Friends name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"to_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"to_email\" id=\"to_email\" placeholder=\"Friends email\">\n            </div>\n\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n          </div>\n\n          <div class='col-md-6'>\n            <h3>Your details</h3>\n            <div class=\"form-group\">\n              <label for=\"from_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"from_name\" id=\"from_name\" placeholder=\"Your name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"from_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"from_email\" id=\"from_email\" placeholder=\"Your email\">\n            </div>\n            \n            <h3>&nbsp;</h3>\n            <div class=\"form-group\">\n              <div class=\"checkbox\">\n                <input type=\"checkbox\" name='terms' id='terms-checkbox'> \n                \n                <label for='terms-checkbox' class='form-control'>\n                  <span></span>I agree to the <a data-event='terms-button' href='#'>terms &amp; conditions</a>\n                </label>\n              </div>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n        </div>\n        \n      </form>\n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],27:[function(require,module,exports){
+},{"hbsfy/runtime":55}],27:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -773,10 +783,12 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"to_name","hash":{},"data":data}) : helper)))
     + ",</h3>\n\n    <p class='intro-text'>Here's a Dumb Present from "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
-    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
+    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='santa-present-dance' data-json='santa_present_dance.json'>\n      <div></div>\n    </div>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n\n<!-- modal -->\n<div id='present-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-12'>\n            <div class=\"gfyitem\" data-title=true data-autoplay=false data-controls=true data-expand=false data-id=\""
+    + alias4(((helper = (helper = helpers.present || (depth0 != null ? depth0.present : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"present","hash":{},"data":data}) : helper)))
+    + "\" ></div> \n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],28:[function(require,module,exports){
+},{"hbsfy/runtime":55}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -791,7 +803,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + ".</p>\n\n      <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":54}],29:[function(require,module,exports){
+},{"hbsfy/runtime":55}],29:[function(require,module,exports){
 // Backbone.Validation v0.11.4
 //
 // Copyright (c) 2011-2015 Thomas Pedersen
@@ -3399,7 +3411,7 @@ Backbone.Validation = (function(_){
 }));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./../jquery/dist/jquery.js":33,"./../underscore/underscore.js":34}],31:[function(require,module,exports){
+},{"./../jquery/dist/jquery.js":34,"./../underscore/underscore.js":35}],31:[function(require,module,exports){
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5765,8 +5777,603 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 },{}],32:[function(require,module,exports){
-Date.now||(Date.now=function(){return(new Date).getTime()}),function(){"use strict";for(var t=["webkit","moz"],e=0;e<t.length&&!window.requestAnimationFrame;++e){var i=t[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var s=0;window.requestAnimationFrame=function(t){var e=Date.now(),i=Math.max(s+16,e);return setTimeout(function(){t(s=i)},i-e)},window.cancelAnimationFrame=clearTimeout}}(),function(t){t.snowfall=function(e,i){function s(s,n,a,o){this.x=s,this.y=n,this.size=a,this.speed=o,this.step=0,this.stepSize=h(1,10)/100,i.collection&&(this.target=m[h(0,m.length-1)]);var r=null;i.image?(r=document.createElement("img"),r.src=i.image):(r=document.createElement("div"),t(r).css({background:i.flakeColor})),t(r).attr({"class":"snowfall-flakes"}).css({width:this.size,height:this.size,position:i.flakePosition,top:this.y,left:this.x,fontSize:0,zIndex:i.flakeIndex}),t(e).get(0).tagName===t(document).get(0).tagName?(t("body").append(t(r)),e=t("body")):t(e).append(t(r)),this.element=r,this.update=function(){if(this.y+=this.speed,this.y>l-(this.size+6)&&this.reset(),this.element.style.top=this.y+"px",this.element.style.left=this.x+"px",this.step+=this.stepSize,this.x+=y===!1?Math.cos(this.step):y+Math.cos(this.step),i.collection&&this.x>this.target.x&&this.x<this.target.width+this.target.x&&this.y>this.target.y&&this.y<this.target.height+this.target.y){var t=this.target.element.getContext("2d"),e=this.x-this.target.x,s=this.y-this.target.y,n=this.target.colData;if(void 0!==n[parseInt(e)][parseInt(s+this.speed+this.size)]||s+this.speed+this.size>this.target.height)if(s+this.speed+this.size>this.target.height){for(;s+this.speed+this.size>this.target.height&&this.speed>0;)this.speed*=.5;t.fillStyle="#fff",void 0==n[parseInt(e)][parseInt(s+this.speed+this.size)]?(n[parseInt(e)][parseInt(s+this.speed+this.size)]=1,t.fillRect(e,s+this.speed+this.size,this.size,this.size)):(n[parseInt(e)][parseInt(s+this.speed)]=1,t.fillRect(e,s+this.speed,this.size,this.size)),this.reset()}else this.speed=1,this.stepSize=0,parseInt(e)+1<this.target.width&&void 0==n[parseInt(e)+1][parseInt(s)+1]?this.x++:parseInt(e)-1>0&&void 0==n[parseInt(e)-1][parseInt(s)+1]?this.x--:(t.fillStyle="#fff",t.fillRect(e,s,this.size,this.size),n[parseInt(e)][parseInt(s)]=1,this.reset())}(this.x+this.size>d-c||this.x<c)&&this.reset()},this.reset=function(){this.y=0,this.x=h(c,d-c),this.stepSize=h(1,10)/100,this.size=h(100*i.minSize,100*i.maxSize)/100,this.element.style.width=this.size+"px",this.element.style.height=this.size+"px",this.speed=h(i.minSpeed,i.maxSpeed)}}function n(){for(r=0;r<a.length;r+=1)a[r].update();f=requestAnimationFrame(function(){n()})}var a=[],o={flakeCount:35,flakeColor:"#ffffff",flakePosition:"absolute",flakeIndex:999999,minSize:1,maxSize:2,minSpeed:1,maxSpeed:5,round:!1,shadow:!1,collection:!1,collectionHeight:40,deviceorientation:!1},i=t.extend(o,i),h=function(t,e){return Math.round(t+Math.random()*(e-t))};t(e).data("snowfall",this);var r=0,l=t(e).height(),d=t(e).width(),c=0,f=0;if(i.collection!==!1){var p=document.createElement("canvas");if(p.getContext&&p.getContext("2d"))for(var m=[],w=t(i.collection),g=i.collectionHeight,r=0;r<w.length;r++){var u=w[r].getBoundingClientRect(),x=t("<canvas/>",{"class":"snowfall-canvas"}),z=[];if(u.top-g>0){t("body").append(x),x.css({position:i.flakePosition,left:u.left+"px",top:u.top-g+"px"}).prop({width:u.width,height:g});for(var v=0;v<u.width;v++)z[v]=[];m.push({element:x.get(0),x:u.left,y:u.top-g,width:u.width,height:g,colData:z})}}else i.collection=!1}for(t(e).get(0).tagName===t(document).get(0).tagName&&(c=25),t(window).bind("resize",function(){l=t(e)[0].clientHeight,d=t(e)[0].offsetWidth}),r=0;r<i.flakeCount;r+=1)a.push(new s(h(c,d-c),h(0,l),h(100*i.minSize,100*i.maxSize)/100,h(i.minSpeed,i.maxSpeed)));i.round&&t(".snowfall-flakes").css({"-moz-border-radius":i.maxSize,"-webkit-border-radius":i.maxSize,"border-radius":i.maxSize}),i.shadow&&t(".snowfall-flakes").css({"-moz-box-shadow":"1px 1px 1px #555","-webkit-box-shadow":"1px 1px 1px #555","box-shadow":"1px 1px 1px #555"});var y=!1;i.deviceorientation&&t(window).bind("deviceorientation",function(t){y=.1*t.originalEvent.gamma}),n(),this.clear=function(){t(".snowfall-canvas").remove(),t(e).children(".snowfall-flakes").remove(),cancelAnimationFrame(f)}},t.fn.snowfall=function(e){return"object"==typeof e||void 0==e?this.each(function(){new t.snowfall(this,e)}):"string"==typeof e?this.each(function(){var e=t(this).data("snowfall");e&&e.clear()}):void 0}}(jQuery);
+/*
+ * A new gfyObject is created for each
+ * gfycat embed on the page.  This object
+ * creates all video/control elements
+ * and is self-contained with all functions
+ * for interacting with its own gfycat video.
+ */
+
+window.gfyObject = function (gfyElem) {
+    var gfyRootElem = gfyElem;
+    var gfyId;
+    // Options are set by data- attributes on tag
+    var optExpand; // Option: will video grow to fill space
+    var optTitle; // Option: display title on hover over
+    var optCtrls; // Option: add controls to bottom right corner
+    var optAutoplay = true; // Option: automatically play video when loaded
+    // references to each html element
+    var ctrlBox;
+    var ctrlPausePlay;
+    var ctrlSlower;
+    var ctrlFaster;
+    var vid;
+    var gif;
+    var overlayCanvas;
+    var titleDiv;
+    var isMobile;
+    var isReverse = false;
+    var isGifOnly = false;
+    var self = this;
+    var gfyItem;
+    var gfyWidth;
+    var gfyHeight;
+
+
+    // Helper function -- only required because some browsers do not have get by class name
+    function byClass(className, obj) {
+        if (obj.getElementsByClassName) {
+            return obj.getElementsByClassName(className);
+        } else {
+            var retnode = [];
+            var elem = obj.getElementsByTagName('*');
+            for (var i = 0; i < elem.length; i++) {
+                if ((' ' + elem[i].className + ' ').indexOf(' ' + className + ' ') > -1) retnode.push(elem[i]);
+            }
+            return retnode;
+        }
+    }
+
+    function createTitle() {
+        titleDiv = document.createElement('div');
+        titleDiv.style.position = "absolute";
+        try {
+            titleDiv.style.backgroundColor = "rgba(0,0,0,0.4)";
+        } catch (e) {
+            // IE does not have rgba
+            titleDiv.style.backgroundColor = "#000";
+            // Allow non-IE browsers without rgba to carry on
+            try {
+                titleDiv.style.filter = 'alpha(opacity=60)';
+            } catch (e) {}
+        }
+        titleDiv.style.color = "#fff";
+        titleDiv.style.fontFamily = "Arial,sans-serif";
+        titleDiv.style.fontSize = "20px";
+        titleDiv.style.padding = "10px";
+        titleDiv.innerHTML = gfyItem.title;
+        titleDiv.style.left = "0";
+        titleDiv.style.top = "0";
+        titleDiv.style.display = "none";
+        gfyRootElem.appendChild(titleDiv);
+    }
+
+    // overlayCanvas used to display a play button overlay if
+    // video is not on "autoplay"
+    function createOverlayCanvas() {
+        overlayCanvas = document.createElement('canvas');
+        overlayCanvas.style.position = "absolute";
+        overlayCanvas.style.left = "0";
+        overlayCanvas.style.top = "0";
+        overlayCanvas.onclick = pauseClick;
+        overlayCanvas.onmouseout = gfyMouseOut;
+        overlayCanvas.onmouseover = gfyMouseOver;
+        gfyRootElem.appendChild(overlayCanvas);
+    }
+
+    function createVidTag() {
+        vid = document.createElement('video');
+        vid.className = 'gfyVid';
+        if (optAutoplay)
+            vid.autoplay = true;
+        vid.loop = true;
+        if(isMobile)
+            vid.controls = true;
+        else
+            vid.controls = false;
+        vid.style.width = '100%';
+        vid.style.height = 'auto';
+        // poster url gfyName is case sensitive
+        vid.setAttribute('poster', 'https://thumbs.gfycat.com/' + gfyItem.gfyName + '-poster.jpg');
+        source2 = document.createElement('source');
+        source2.src = gfyWebmUrl;
+        source2.type = 'video/webm';
+        source2.className = "webmsource";
+        vid.appendChild(source2);
+        source = document.createElement('source');
+        source.src = gfyMp4Url;
+        source.type = 'video/mp4';
+        source.className = "mp4source";
+        vid.appendChild(source);
+        gfyRootElem.appendChild(vid);
+    }
+
+    // from mobiledetect.com
+    function mobilecheck() {
+        var check = false;
+        (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|android|ipad|playbook|silk|blackberry|htc|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+        return check; 
+    }
+    
+    function createGifTag() {
+        gif = document.createElement('img');
+        gif.src = gfyItem.gifUrl;
+        if (optExpand)
+            gif.style.width = '100%';
+        else
+            gif.style.maxWidth = gfyItem.width + 'px';
+        gif.style.height = 'auto';
+        gif.onmouseout = gfyMouseOut;
+        gif.onmouseover = gfyMouseOver;
+        gfyRootElem.appendChild(gif);
+        gfyRootElem.style.position = "relative";
+        gfyRootElem.style.padding = 0;
+    }
+
+    function setWrapper() {
+        gfyRootElem.style.position = "relative";
+        gfyRootElem.style.padding = 0;
+        if (!optExpand) {
+            gfyRootElem.style.display = 'inline-block';
+            gfyRootElem.style.overflow = 'hidden';
+            gfyRootElem.style.boxSizing = 'border-box';
+            gfyRootElem.style.MozBoxSizing = 'border-box';
+            gfyRootElem.style.webkitBoxSizing = 'border-box';
+        }
+    }
+
+    function createCtrlBox() {
+        if (!optCtrls)
+            return;
+        ctrlRow = document.createElement('div');
+        ctrlRow.style.position = 'relative';
+        ctrlBox = document.createElement('div');
+        ctrlBox.className = "CtrlBox";
+        ctrlPausePlay = document.createElement('img');
+        ctrlPausePlay.className = "gfyCtrlPause";
+        ctrlPausePlay.src = "https://assets.gfycat.com/img/placeholder.png";
+        ctrlPausePlay.style.backgroundImage = "url('https://assets.gfycat.com/img/gfycontrols.png')";
+        ctrlPausePlay.style.cssFloat = 'right';
+        ctrlPausePlay.style.marginRight = '5px';
+        ctrlPausePlay.style.width = '12px';
+        ctrlPausePlay.style.height = '12px';
+        ctrlPausePlay.style.borderStyle = 'none';
+        ctrlBox.appendChild(ctrlPausePlay);
+        ctrlReverse = document.createElement('img');
+        ctrlReverse.className = "gfyCtrlReverse";
+        ctrlReverse.src = "https://assets.gfycat.com/img/placeholder.png";
+        ctrlReverse.style.backgroundImage = "url('https://assets.gfycat.com/img/gfycontrols.png')";
+        ctrlReverse.style.cssFloat = 'right';
+        ctrlReverse.style.marginRight = '5px';
+        ctrlReverse.style.width = '14px';
+        ctrlReverse.style.height = '12px';
+        ctrlReverse.style.backgroundPosition = '-46px 0';
+        ctrlReverse.style.borderStyle = 'none';
+        ctrlSlower = document.createElement('img');
+        ctrlSlower.className = "gfyCtrlSlower";
+        ctrlSlower.src = "https://assets.gfycat.com/img/placeholder.png";
+        ctrlSlower.style.backgroundImage = "url('https://assets.gfycat.com/img/gfycontrols.png')";
+        ctrlSlower.style.marginRight = '5px';
+        ctrlSlower.style.width = '14px';
+        ctrlSlower.style.height = '12px';
+        ctrlSlower.style.cssFloat = 'right';
+        ctrlSlower.style.borderStyle = 'none';
+        ctrlFaster = document.createElement('img');
+        ctrlFaster.className = "gfyCtrlFaster";
+        ctrlFaster.src = "https://assets.gfycat.com/img/placeholder.png";
+        ctrlFaster.style.backgroundImage = "url('https://assets.gfycat.com/img/gfycontrols.png')";
+        ctrlFaster.style.width = '14px';
+        ctrlFaster.style.height = '12px';
+        ctrlFaster.style.cssFloat = 'right';
+        ctrlFaster.style.marginRight = '5px';
+        ctrlFaster.style.borderStyle = 'none';
+        if (vid.paused)
+            setCtrlsPaused();
+        else
+            setCtrlsPlaying();
+        ctrlBox.style.position = 'relative';
+        ctrlBox.style.cssFloat = 'right';
+        ctrlBox.style.width = '100px';
+        ctrlBox.style.padding = '5px';
+        ctrlBox.style.margin = '0';
+        ctrlBox.setAttribute("id", "ctr" + gfyId);
+        ctrlPausePlay.onclick = pauseClick;
+        ctrlReverse.onclick = reverse;
+        ctrlBox.appendChild(ctrlFaster);
+        ctrlBox.appendChild(ctrlSlower);
+        ctrlBox.appendChild(ctrlReverse);
+        ctrlBox.appendChild(ctrlPausePlay);
+        ctrlRow.appendChild(ctrlBox);
+        gfyRootElem.appendChild(ctrlRow);
+    }
+
+    function deleteVidTag() {
+        gfyRootElem.removeChild(vid);
+    }
+
+    function init() {
+        isMobile = mobilecheck();
+        gfyId = gfyRootElem.getAttribute('data-id');
+        if (gfyRootElem.getAttribute('data-title') == "true")
+            optTitle = true;
+        if (gfyRootElem.getAttribute('data-expand') == "true")
+            optExpand = true;
+        if (gfyRootElem.getAttribute('data-controls') == "true")
+            optCtrls = true;
+        if (gfyRootElem.getAttribute('data-autoplay') == "false")
+            optAutoplay = false;
+        var newElem = document.createElement('div');
+        attrib_src = gfyRootElem.attributes;
+        attrib_dest = newElem.attributes;
+        for (var i = 0; i < attrib_src.length; i++) {
+            var tst = attrib_src.item(i);
+            var tst2 = tst.cloneNode();
+            if (tst2.name == "style" && tst.value != 'null') {
+                attrib_dest.setNamedItem(tst2);
+            } else {}
+            //attrib_dest.setNamedItem(attrib_src.item(i).cloneNode());
+        }
+        gfyRootElem.parentNode.replaceChild(newElem, gfyRootElem);
+        gfyRootElem = newElem;
+        // call gfycat API to get info for this gfycat
+        loadJSONP("https://gfycat.com/cajax/get/" + gfyId, function (data) {
+            if (data) {
+                gfyItem = data.gfyItem;
+                gfyMp4Url = gfyItem.mp4Url;
+                gfyWebmUrl = gfyItem.webmUrl;
+                gfyFrameRate = gfyItem.frameRate;
+                if (document.createElement('video').canPlayType) {
+                    createVidTag();
+                    setWrapper();
+                    createTitle();
+                    createOverlayCanvas();
+                    // Can't grab the width/height until video loaded
+                    if (vid.addEventListener)
+                        vid.addEventListener("loadedmetadata", vidLoaded, false);
+                    else
+                        vid.attachEvent("onloadedmetadata", vidLoaded);
+                    if (optAutoplay)
+                        vid.play();
+                } else {
+                    isGifOnly = true;
+                    createGifTag();
+                    createTitle();
+                    gif.onload = function () {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if (ua.indexOf("msie") > -1)
+                            titleDiv.style.width = gif.clientWidth + 'px';
+                        else
+                            titleDiv.style.width = gif.clientWidth - 20 + 'px';
+                    }
+                }
+            } else {}
+        });
+
+    }
+
+    // used to load ajax info for each gfycat on the page
+    // callback functions must be setup and uniquely named for each
+    function loadJSONP(url, callback, context) {
+        var unique = Math.floor((Math.random()*10000000) + 1);
+        // INIT
+        var name = "_" + gfyId + "_" + unique++;
+        if (url.match(/\?/)) url += "&callback=" + name;
+        else url += "?callback=" + name;
+
+        // Create script
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+
+        // Setup handler
+        window[name] = function (data) {
+            callback.call((context || window), data);
+            document.getElementsByTagName('head')[0].removeChild(script);
+            script = null;
+            try {
+                delete window[name];
+            } catch (e) {}
+        };
+
+        // Load JSON
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    function setSize() {
+        gfyWidth = vid.offsetWidth;
+        gfyHeight = vid.offsetHeight;
+        // vid.videoWidth is the native size of the video. This stays the same even if the element is resized.
+        // if optExpand is not set, then the video will never expand larger than videoWidth, so we need to choose this.
+        if (!optExpand && gfyWidth > vid.videoWidth) {
+            gfyWidth = vid.videoWidth;
+            gfyHeight = vid.videoHeight;
+        }
+        overlayCanvas.width = gfyWidth;
+        overlayCanvas.height = gfyHeight;
+        // subtract padding of titleDiv
+        titleDiv.style.width = gfyWidth - 20 + 'px';
+    }
+
+    function vidLoaded() {
+        setSize();
+        if (!ctrlBox) {
+            createCtrlBox();
+        }
+        if (!optAutoplay && !isMobile)
+            drawPlayOverlay();
+    }
+
+    function clearPlayOverlay() {
+        var ctx = overlayCanvas.getContext("2d");
+        if (gfyWidth)
+            ctx.clearRect(0, 0, gfyWidth, gfyHeight);
+    }
+    // When video is set to load paused, or when no playback controls are present, show a large Play button overlay.
+    function drawPlayOverlay() {
+        var ctx = overlayCanvas.getContext("2d");
+        ctx.clearRect(0, 0, gfyWidth, gfyHeight);
+        ctx.strokeStyle = "#ffffff";
+        ctx.fillStyle = "#ffffff";
+        ctx.lineWidth = 5;
+        var pWidth = 70;
+        var pHeight = 80;
+        var pRad = 5;
+        if (gfyHeight < 160 || gfyWidth < 200) {
+            pHeight = pHeight * gfyHeight / 240;
+            pWidth = pWidth * gfyHeight / 240;
+            pRad = 3;
+        }
+        drawPolygon(ctx, [
+            [gfyWidth / 2 - pWidth / 2, gfyHeight / 2 - pHeight / 2],
+            [gfyWidth / 2 + pWidth / 2, gfyHeight / 2],
+            [gfyWidth / 2 - pWidth / 2, gfyHeight / 2 + pHeight / 2]
+        ], pRad);
+        ctx.stroke();
+        ctx.fill();
+    }
+
+    function drawPolygon(ctx, pts, radius) {
+        if (radius > 0) {
+            pts = getRoundedPoints(pts, radius);
+        }
+        var i, pt, len = pts.length;
+        ctx.beginPath();
+        for (i = 0; i < len; i++) {
+            pt = pts[i];
+            if (i == 0) {
+                ctx.moveTo(pt[0], pt[1]);
+            } else {
+                ctx.lineTo(pt[0], pt[1]);
+            }
+            if (radius > 0) {
+                ctx.quadraticCurveTo(pt[2], pt[3], pt[4], pt[5]);
+            }
+        }
+        ctx.closePath();
+    }
+
+    function getRoundedPoints(pts, radius) {
+        var i1, i2, i3, p1, p2, p3, prevPt, nextPt,
+            len = pts.length,
+            res = new Array(len);
+        for (i2 = 0; i2 < len; i2++) {
+            i1 = i2 - 1;
+            i3 = i2 + 1;
+            if (i1 < 0) {
+                i1 = len - 1;
+            }
+            if (i3 == len) {
+                i3 = 0;
+            }
+            p1 = pts[i1];
+            p2 = pts[i2];
+            p3 = pts[i3];
+            prevPt = getRoundedPoint(p1[0], p1[1], p2[0], p2[1], radius, false);
+            nextPt = getRoundedPoint(p2[0], p2[1], p3[0], p3[1], radius, true);
+            res[i2] = [prevPt[0], prevPt[1], p2[0], p2[1], nextPt[0], nextPt[1]];
+        }
+        return res;
+    };
+
+    function getRoundedPoint(x1, y1, x2, y2, radius, first) {
+        var total = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)),
+            idx = first ? radius / total : (total - radius) / total;
+        return [x1 + (idx * (x2 - x1)), y1 + (idx * (y2 - y1))];
+    };
+
+    function setCtrlsPaused() {
+        if (!optCtrls) {
+            drawPlayOverlay();
+            return;
+        }
+        ctrlPausePlay.style.backgroundPosition = '-71px 0';
+        ctrlSlower.style.backgroundPosition = '0 0';
+        ctrlSlower.style.marginLeft = "6px";
+        ctrlFaster.style.backgroundPosition = '-192px 0';
+        ctrlFaster.style.width = "8px";
+        ctrlFaster.onclick = stepForward;
+        ctrlSlower.onclick = stepBackward;
+    }
+
+    function setCtrlsPlaying() {
+        clearPlayOverlay();
+        if (!optCtrls)
+            return;
+        ctrlPausePlay.style.backgroundPosition = '-95px 0';
+        ctrlFaster.style.backgroundPosition = '-20px 0';
+        ctrlSlower.style.backgroundPosition = '-165px 0';
+        ctrlFaster.style.width = "14px";
+        ctrlSlower.style.marginLeft = "0px";
+        ctrlFaster.onclick = faster;
+        ctrlSlower.onclick = slower;
+    }
+
+    function pauseClick() {
+        if (vid.paused) {
+            vid.play();
+            setCtrlsPlaying();
+        } else {
+            vid.pause();
+            setCtrlsPaused();
+        }
+    }
+
+    function gfyMouseOver() {
+        if (!optTitle || !gfyItem.title)
+            return;
+        titleDiv.style.display = 'block';
+    }
+
+    function gfyMouseOut() {
+        if (!optTitle)
+            return;
+        titleDiv.style.display = 'none';
+    }
+
+    function reverse() {
+        // Change controls over: reverse button to forward, and slower/faster to step forward/step back.
+        ctrlPausePlay.style.backgroundPosition = '-95px 0';
+        ctrlSlower.style.backgroundPosition = '0 0';
+        ctrlSlower.style.marginLeft = "6px";
+        ctrlFaster.style.backgroundPosition = '-192px 0';
+        ctrlFaster.style.width = "8px";
+        ctrlFaster.onclick = stepForward;
+        ctrlSlower.onclick = stepBackward;
+        vid.pause();
+        // Swap video source tags for reverse encoded files
+        var mp4src = byClass("mp4source", vid)[0];
+        var webmsrc = byClass("webmsource", vid)[0];
+        if (isReverse) {
+            mp4src.src = mp4src.src.replace(/-reverse\.mp4/g, ".mp4");
+            mp4src.src = mp4src.src.replace(/-reverse\.webm/g, ".webm");
+            webmsrc.src = webmsrc.src.replace(/-reverse\.webm/g, ".webm");
+            ctrlReverse.style.backgroundPosition = '-46px 0';
+            isReverse = false;
+        } else {
+            mp4src.src = mp4src.src.replace(/\.mp4/g, "-reverse.mp4");
+            mp4src.src = mp4src.src.replace(/\.webm/g, "-reverse.webm");
+            webmsrc.src = webmsrc.src.replace(/\.webm/g, "-reverse.webm");
+            ctrlReverse.style.backgroundPosition = '-141px 0';
+            isReverse = true;
+        }
+        vid.playbackRate = 1;
+        vid.load();
+        vid.play();
+    }
+
+    function slower() {
+        if (vid.playbackRate <= 1)
+            vid.playbackRate = vid.playbackRate / 2;
+        else
+            vid.playbackRate--;
+    }
+
+    function faster() {
+        if (vid.playbackRate <= 1) {
+            vid.playbackRate = vid.playbackRate * 2;
+        } else {
+            vid.playbackRate++;
+        }
+    }
+
+    function stepForward() {
+        if (window.opera) {
+            var storeFunc = vid.onplay;
+            vid.onplay = function () {
+                vid.pause();
+                vid.onplay = storeFunc;
+            };
+            vid.play();
+        } else {
+            vid.currentTime += (1 / gfyFrameRate);
+        }
+    }
+
+    function stepBackward() {
+        vid.currentTime -= (1 / gfyFrameRate);
+    }
+
+    function refresh() {
+        vid.load();
+        vid.play();
+    }
+
+    return {
+        init: init,
+        refresh: refresh
+    }
+}
+
+/*
+ * gfyCollection:
+ * Global object to be called on page load.
+ * This runs through the page DOM for elements
+ * with class "gfyitem" and attempts to convert
+ * them to gfycat embeds by creating a new
+ * gfyObject with the element.
+ * Can also be used _after_ page load
+ * by calling gfyCollection.get() to get
+ * the collection of gfycat objects on the page
+ * and re-initialize them or interact with them
+ * as desired.
+ */
+window.gfyCollection = function () {
+
+    var collection = [];
+
+    // Helper function -- only required because some browsers do not have get by class name
+    function byClass(className, obj) {
+
+        if (obj.getElementsByClassName) {
+            return obj.getElementsByClassName(className);
+        } else {
+            var retnode = [];
+            var elem = obj.getElementsByTagName('*');
+            for (var i = 0; i < elem.length; i++) {
+                if ((' ' + elem[i].className + ' ').indexOf(' ' + className + ' ') > -1) retnode.push(elem[i]);
+            }
+            return retnode;
+        }
+    }
+
+    function init() {
+        scan();
+    }
+
+    function scan() {
+        // this can be run multiple times, so we'll add to any existing gfycats
+        var last = collection.length;
+        // find each gfycat on page and run its init
+        elem_coll = byClass("gfyitem", document);
+        for (var i = 0; i < elem_coll.length; i++) {
+            // don't need to worry about finding existing gfyitems - they are
+            // replaced by gfyObject
+            var gfyObj = new gfyObject(elem_coll[i]);
+            collection.push(gfyObj);
+        }
+        // run init _after_ all are collected, because the init function deletes and recreates
+        for (var i = last; i < collection.length; i++) {
+            collection[i].init();
+        }
+    }
+
+    function get() {
+        // optional interface for an external script to interact with all objects on a page
+        return collection;
+    }
+
+    return {
+        init: init,
+        get: get,
+        scan: scan
+    }
+
+}();
+
 },{}],33:[function(require,module,exports){
+Date.now||(Date.now=function(){return(new Date).getTime()}),function(){"use strict";for(var t=["webkit","moz"],e=0;e<t.length&&!window.requestAnimationFrame;++e){var i=t[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var s=0;window.requestAnimationFrame=function(t){var e=Date.now(),i=Math.max(s+16,e);return setTimeout(function(){t(s=i)},i-e)},window.cancelAnimationFrame=clearTimeout}}(),function(t){t.snowfall=function(e,i){function s(s,n,a,o){this.x=s,this.y=n,this.size=a,this.speed=o,this.step=0,this.stepSize=h(1,10)/100,i.collection&&(this.target=m[h(0,m.length-1)]);var r=null;i.image?(r=document.createElement("img"),r.src=i.image):(r=document.createElement("div"),t(r).css({background:i.flakeColor})),t(r).attr({"class":"snowfall-flakes"}).css({width:this.size,height:this.size,position:i.flakePosition,top:this.y,left:this.x,fontSize:0,zIndex:i.flakeIndex}),t(e).get(0).tagName===t(document).get(0).tagName?(t("body").append(t(r)),e=t("body")):t(e).append(t(r)),this.element=r,this.update=function(){if(this.y+=this.speed,this.y>l-(this.size+6)&&this.reset(),this.element.style.top=this.y+"px",this.element.style.left=this.x+"px",this.step+=this.stepSize,this.x+=y===!1?Math.cos(this.step):y+Math.cos(this.step),i.collection&&this.x>this.target.x&&this.x<this.target.width+this.target.x&&this.y>this.target.y&&this.y<this.target.height+this.target.y){var t=this.target.element.getContext("2d"),e=this.x-this.target.x,s=this.y-this.target.y,n=this.target.colData;if(void 0!==n[parseInt(e)][parseInt(s+this.speed+this.size)]||s+this.speed+this.size>this.target.height)if(s+this.speed+this.size>this.target.height){for(;s+this.speed+this.size>this.target.height&&this.speed>0;)this.speed*=.5;t.fillStyle="#fff",void 0==n[parseInt(e)][parseInt(s+this.speed+this.size)]?(n[parseInt(e)][parseInt(s+this.speed+this.size)]=1,t.fillRect(e,s+this.speed+this.size,this.size,this.size)):(n[parseInt(e)][parseInt(s+this.speed)]=1,t.fillRect(e,s+this.speed,this.size,this.size)),this.reset()}else this.speed=1,this.stepSize=0,parseInt(e)+1<this.target.width&&void 0==n[parseInt(e)+1][parseInt(s)+1]?this.x++:parseInt(e)-1>0&&void 0==n[parseInt(e)-1][parseInt(s)+1]?this.x--:(t.fillStyle="#fff",t.fillRect(e,s,this.size,this.size),n[parseInt(e)][parseInt(s)]=1,this.reset())}(this.x+this.size>d-c||this.x<c)&&this.reset()},this.reset=function(){this.y=0,this.x=h(c,d-c),this.stepSize=h(1,10)/100,this.size=h(100*i.minSize,100*i.maxSize)/100,this.element.style.width=this.size+"px",this.element.style.height=this.size+"px",this.speed=h(i.minSpeed,i.maxSpeed)}}function n(){for(r=0;r<a.length;r+=1)a[r].update();f=requestAnimationFrame(function(){n()})}var a=[],o={flakeCount:35,flakeColor:"#ffffff",flakePosition:"absolute",flakeIndex:999999,minSize:1,maxSize:2,minSpeed:1,maxSpeed:5,round:!1,shadow:!1,collection:!1,collectionHeight:40,deviceorientation:!1},i=t.extend(o,i),h=function(t,e){return Math.round(t+Math.random()*(e-t))};t(e).data("snowfall",this);var r=0,l=t(e).height(),d=t(e).width(),c=0,f=0;if(i.collection!==!1){var p=document.createElement("canvas");if(p.getContext&&p.getContext("2d"))for(var m=[],w=t(i.collection),g=i.collectionHeight,r=0;r<w.length;r++){var u=w[r].getBoundingClientRect(),x=t("<canvas/>",{"class":"snowfall-canvas"}),z=[];if(u.top-g>0){t("body").append(x),x.css({position:i.flakePosition,left:u.left+"px",top:u.top-g+"px"}).prop({width:u.width,height:g});for(var v=0;v<u.width;v++)z[v]=[];m.push({element:x.get(0),x:u.left,y:u.top-g,width:u.width,height:g,colData:z})}}else i.collection=!1}for(t(e).get(0).tagName===t(document).get(0).tagName&&(c=25),t(window).bind("resize",function(){l=t(e)[0].clientHeight,d=t(e)[0].offsetWidth}),r=0;r<i.flakeCount;r+=1)a.push(new s(h(c,d-c),h(0,l),h(100*i.minSize,100*i.maxSize)/100,h(i.minSpeed,i.maxSpeed)));i.round&&t(".snowfall-flakes").css({"-moz-border-radius":i.maxSize,"-webkit-border-radius":i.maxSize,"border-radius":i.maxSize}),i.shadow&&t(".snowfall-flakes").css({"-moz-box-shadow":"1px 1px 1px #555","-webkit-box-shadow":"1px 1px 1px #555","box-shadow":"1px 1px 1px #555"});var y=!1;i.deviceorientation&&t(window).bind("deviceorientation",function(t){y=.1*t.originalEvent.gamma}),n(),this.clear=function(){t(".snowfall-canvas").remove(),t(e).children(".snowfall-flakes").remove(),cancelAnimationFrame(f)}},t.fn.snowfall=function(e){return"object"==typeof e||void 0==e?this.each(function(){new t.snowfall(this,e)}):"string"==typeof e?this.each(function(){var e=t(this).data("snowfall");e&&e.clear()}):void 0}}(jQuery);
+},{}],34:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -14978,7 +15585,7 @@ return jQuery;
 
 }));
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -16528,7 +17135,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16542,10 +17149,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _handlebarsBase = require('./handlebars/base');
 
-var base = _interopRequireWildcard(_handlebarsBase);
-
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
+
+var base = _interopRequireWildcard(_handlebarsBase);
 
 var _handlebarsSafeString = require('./handlebars/safe-string');
 
@@ -16565,9 +17172,10 @@ var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
 var _handlebarsNoConflict = require('./handlebars/no-conflict');
 
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
+
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
-// For compatibility and usage outside of module systems, make the Handlebars object a namespace
 function create() {
   var hb = new base.HandlebarsEnvironment();
 
@@ -16596,7 +17204,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":36,"./handlebars/exception":39,"./handlebars/no-conflict":49,"./handlebars/runtime":50,"./handlebars/safe-string":51,"./handlebars/utils":52}],36:[function(require,module,exports){
+},{"./handlebars/base":37,"./handlebars/exception":40,"./handlebars/no-conflict":50,"./handlebars/runtime":51,"./handlebars/safe-string":52,"./handlebars/utils":53}],37:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16619,7 +17227,7 @@ var _logger = require('./logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.5';
+var VERSION = '4.0.4';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -16702,7 +17310,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":37,"./exception":39,"./helpers":40,"./logger":48,"./utils":52}],37:[function(require,module,exports){
+},{"./decorators":38,"./exception":40,"./helpers":41,"./logger":49,"./utils":53}],38:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16720,7 +17328,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":38}],38:[function(require,module,exports){
+},{"./decorators/inline":39}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16751,7 +17359,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":52}],39:[function(require,module,exports){
+},{"../utils":53}],40:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16793,7 +17401,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16841,7 +17449,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":41,"./helpers/each":42,"./helpers/helper-missing":43,"./helpers/if":44,"./helpers/log":45,"./helpers/lookup":46,"./helpers/with":47}],41:[function(require,module,exports){
+},{"./helpers/block-helper-missing":42,"./helpers/each":43,"./helpers/helper-missing":44,"./helpers/if":45,"./helpers/log":46,"./helpers/lookup":47,"./helpers/with":48}],42:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16882,7 +17490,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":52}],42:[function(require,module,exports){
+},{"../utils":53}],43:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16978,7 +17586,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":39,"../utils":52}],43:[function(require,module,exports){
+},{"../exception":40,"../utils":53}],44:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17005,7 +17613,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":39}],44:[function(require,module,exports){
+},{"../exception":40}],45:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17036,7 +17644,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":52}],45:[function(require,module,exports){
+},{"../utils":53}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17064,7 +17672,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17078,7 +17686,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17113,7 +17721,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":52}],48:[function(require,module,exports){
+},{"../utils":53}],49:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17162,7 +17770,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":52}],49:[function(require,module,exports){
+},{"./utils":53}],50:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -17178,7 +17786,6 @@ exports['default'] = function (Handlebars) {
     if (root.Handlebars === Handlebars) {
       root.Handlebars = $Handlebars;
     }
-    return Handlebars;
   };
 };
 
@@ -17186,7 +17793,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17480,7 +18087,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":36,"./exception":39,"./utils":52}],51:[function(require,module,exports){
+},{"./base":37,"./exception":40,"./utils":53}],52:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -17497,7 +18104,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17539,10 +18146,10 @@ function extend(obj /* , ...source */) {
 
 var toString = Object.prototype.toString;
 
-exports.toString = toString;
 // Sourced from lodash
 // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
 /* eslint-disable func-style */
+exports.toString = toString;
 var isFunction = function isFunction(value) {
   return typeof value === 'function';
 };
@@ -17562,8 +18169,8 @@ var isArray = Array.isArray || function (value) {
   return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
 };
 
-exports.isArray = isArray;
 // Older IE versions do not directly support indexOf so we must implement our own, sadly.
+exports.isArray = isArray;
 
 function indexOf(array, value) {
   for (var i = 0, len = array.length; i < len; i++) {
@@ -17623,12 +18230,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":35}],54:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":36}],55:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":53}]},{},[2])
+},{"handlebars/runtime":54}]},{},[2])

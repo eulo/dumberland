@@ -1,5 +1,10 @@
 <?php
-require("database/Db.class.php");
+/*!
+ *
+ */
+require 'database/Db.class.php';
+require __DIR__ . '/vendor/autoload.php';
+
 header('Content-Type: application/json');
 // Get data
 $request_body = file_get_contents('php://input');
@@ -32,6 +37,27 @@ $update = $db->query("UPDATE messages SET hash = :hash WHERE id = :id", array(
   'id' => $last_id,
   'hash' => $hash 
 ));
+
+if ($update > 0) {
+  // Send email
+  $mandrill = new Mandrill('uL1CKuc5NO25Tdpzv4uxeg');
+  $message = array(
+    'html' => '<p>Example HTML content</p>',
+    'text' => 'Example text content',
+    'subject' => 'example subject',
+    'from_email' => 'message.from_email@example.com',
+    'from_name' => 'Example Name',
+    'to' => array(
+      array(
+        'email' => 'recipient.email@example.com',
+        'name' => 'Recipient Name',
+        'type' => 'to'
+      )
+    ),
+    'headers' => array('Reply-To' => 'message.reply@example.com'),
+  );
+}
+
 echo json_encode(array(
   'success' => ($update > 0),
   'hash' => $hash 

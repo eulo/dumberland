@@ -24,8 +24,6 @@ Message = Backbone.View.extend
     @SantaAni = new Animator $mainAni, ->
       @animate()
 
-
-
   events:
     'click [data-event=terms-button]': 'termsModal'
     'submit form': 'submit'

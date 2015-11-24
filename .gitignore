@@ -3,6 +3,8 @@ TODO.txt
 
 .DS_Store
 
+pull.php
+
 /node_modules/*
 /.sass-cache/*
 /api/database/settings.ini.php
