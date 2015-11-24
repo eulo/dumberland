@@ -6,6 +6,7 @@ window.Backbone = require 'backbone'
 Backbone.$ = jQuery
 require 'jquery-snowfall'
 
+
 window.log = ->
   console.log.apply console, arguments
 

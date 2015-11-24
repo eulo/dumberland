@@ -1,5 +1,6 @@
 Handlebars = require 'hbsfy/runtime'
 getUrlVars = require '../lib/getUrlVars'
+require 'gfycat.js'
 
 Present = Backbone.View.extend
   
@@ -22,8 +23,10 @@ Present = Backbone.View.extend
     'click [data-event=back]': 'back'
 
   open: (event)->
-    #TODO : Open present
     $this = $(event.currentTarget)
+
+    $('#present-modal').modal('show')
+
     $this.text 'Back'
     $this.attr 'data-event', 'back'
 
@@ -35,6 +38,7 @@ Present = Backbone.View.extend
       Backbone.history.navigate '', true
       return
     @.$el.html @.template res.models[0].attributes
+    gfyCollection.init()
     Header = new @.headerView()
     Footer = new @.footerView()
 

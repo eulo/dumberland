@@ -15,8 +15,8 @@ $db->bind('hash', $hash);
 $result = $db->query("SELECT * FROM messages WHERE hash = :hash");
 
 $presents = array(
-  'http://gfycat.com/ifr/ThinObviousAmberpenshell',
-  'http://gfycat.com/ifr/WeakRigidFoxterrier',
+  'ThinObviousAmberpenshell', // Locusts
+  'WeakRigidFoxterrier',      // Bomb
 );
 
 if (count($result)) {

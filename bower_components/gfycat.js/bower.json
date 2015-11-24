@@ -1,0 +1,21 @@
+{
+  "name": "gfycat.js",
+  "version": "2.1.4",
+  "main": "js/gfyConcat.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "build",
+    "dist/cdn",
+    "speed",
+    "test",
+    "*.md",
+    "AUTHORS.txt",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "devDependencies": {
+  },
+  "keywords": [
+  ]
+}
