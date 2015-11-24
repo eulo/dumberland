@@ -4,17 +4,17 @@ module.exports = class Animator
   frameRef: []
   fps: 1000 / 12
   interval: null
-  onload: null
+  onLoad: null
 
-  constructor: ($cont, path, bg, onload) ->
+  constructor: ($cont, onLoad) ->
     self = @
     @$cont = $cont
     @$ani = $cont.find 'div'
-    @bg = bg || @$ani.css 'background-position'
-    @onload = onload
+    @bg = @$ani.css 'background-position'
+    @onLoad = onLoad
 
     $.ajax
-      url: path || '/assets/paths/' + $cont.data('json')
+      url: '/assets/paths/' + $cont.data('json')
       success: @setup
       context: @
 
@@ -27,8 +27,8 @@ module.exports = class Animator
 
     @render()
 
-    if @onload?
-      @onload()
+    if @onLoad?
+      @onLoad()
 
   animate: (from, to, onEnd)->
     self = @
@@ -39,9 +39,11 @@ module.exports = class Animator
       self.render.call(self)
 
       if to? && self.step == to
-        self.stop()
         if typeof onEnd == 'function'
+          self.stop()
           onEnd()
+        else
+          self.step = from - 1
 
       if ++self.step >= self.frameRef.length
         self.step = 0

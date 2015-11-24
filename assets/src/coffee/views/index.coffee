@@ -9,19 +9,16 @@ Index = Backbone.View.extend
 
   headerView: require './includes/header'
   footerView: require './includes/footer'
+
+  flag: false
   
   initialize: ->
     @.render()
 
     $mainAni = $('.homepage-animation')
-    catchImg = '/assets/img/santa_catch_animation.png'
-    catchJson = '/assets/paths/santa_catch.json'
-    $.get catchJson
-    img = new Image
-    img.src = catchImg
 
-    SantaAni = new Animator $mainAni, null, null, ->
-      @animate()
+    @SantaAni = new Animator $mainAni, ->
+      @animate 0, 94
 
     $('.present').each ->
       PresentAni = new Animator $(this)
@@ -29,34 +26,33 @@ Index = Backbone.View.extend
         PresentAni.animate()
       $(this).find('div').bind 'mouseleave', ->
         PresentAni.stop()
-
-    flag = false
-    $('.present').click ->
-      if flag
-        return false
-      flag = true
-
-      $(this).addClass 'active animated bounceOutUpPresent'
-
-      $('.present:not(.active)').each ->
-        $this = $(this)
-        setTimeout ->
-          $this.addClass 'animated bounceOutDownPresent'
-        , 1000 * Math.random()
-
-      setTimeout ->
-        SantaAni.stop()
-        CatchAni = new Animator $mainAni, catchJson, catchImg, ->
-          @animate 0, @frameRef.length - 1, ->
-            Backbone.history.navigate 'message', true
-      , 1000
     
   events:
     'click .present': 'start'
 
+
   start: (event)->
     event.preventDefault()
-    # TODO: start animation
+    $this = $(event.currentTarget)
+    # Never fire this event twice
+    if @flag
+      return false
+    @flag = true
+
+    $this.addClass 'active animated bounceOutUpPresent'
+
+    $('.present:not(.active)').each ->
+      $pres = $(this)
+      setTimeout ->
+        $pres.addClass 'animated bounceOutDownPresent'
+      , 1000 * Math.random()
+
+    SantaAni = @SantaAni
+    setTimeout ->
+      SantaAni.stop()
+      SantaAni.animate 94, SantaAni.frameRef.length - 1, ->
+        Backbone.history.navigate 'message', true
+    , 400
 
   render: ->
     @.$el.html @.template

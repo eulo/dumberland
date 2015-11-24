@@ -49,17 +49,17 @@ module.exports = Animator = (function() {
 
   Animator.prototype.interval = null;
 
-  Animator.prototype.onload = null;
+  Animator.prototype.onLoad = null;
 
-  function Animator($cont, path, bg, onload) {
+  function Animator($cont, onLoad) {
     var self;
     self = this;
     this.$cont = $cont;
     this.$ani = $cont.find('div');
-    this.bg = bg || this.$ani.css('background-position');
-    this.onload = onload;
+    this.bg = this.$ani.css('background-position');
+    this.onLoad = onLoad;
     $.ajax({
-      url: path || '/assets/paths/' + $cont.data('json'),
+      url: '/assets/paths/' + $cont.data('json'),
       success: this.setup,
       context: this
     });
@@ -72,8 +72,8 @@ module.exports = Animator = (function() {
     }));
     this.frameRef.pop();
     this.render();
-    if (this.onload != null) {
-      return this.onload();
+    if (this.onLoad != null) {
+      return this.onLoad();
     }
   };
 
@@ -86,9 +86,11 @@ module.exports = Animator = (function() {
     return this.interval = setInterval(function() {
       self.render.call(self);
       if ((to != null) && self.step === to) {
-        self.stop();
         if (typeof onEnd === 'function') {
+          self.stop();
           onEnd();
+        } else {
+          self.step = from - 1;
         }
       }
       if (++self.step >= self.frameRef.length) {
@@ -446,19 +448,15 @@ Index = Backbone.View.extend({
   template: require('../../tmpl/index.hbs'),
   headerView: require('./includes/header'),
   footerView: require('./includes/footer'),
+  flag: false,
   initialize: function() {
-    var $mainAni, SantaAni, catchImg, catchJson, flag, img;
+    var $mainAni;
     this.render();
     $mainAni = $('.homepage-animation');
-    catchImg = '/assets/img/santa_catch_animation.png';
-    catchJson = '/assets/paths/santa_catch.json';
-    $.get(catchJson);
-    img = new Image;
-    img.src = catchImg;
-    SantaAni = new Animator($mainAni, null, null, function() {
-      return this.animate();
+    this.SantaAni = new Animator($mainAni, function() {
+      return this.animate(0, 94);
     });
-    $('.present').each(function() {
+    return $('.present').each(function() {
       var PresentAni;
       PresentAni = new Animator($(this));
       $(this).find('div').bind('mouseenter', function() {
@@ -468,36 +466,33 @@ Index = Backbone.View.extend({
         return PresentAni.stop();
       });
     });
-    flag = false;
-    return $('.present').click(function() {
-      if (flag) {
-        return false;
-      }
-      flag = true;
-      $(this).addClass('active animated bounceOutUpPresent');
-      $('.present:not(.active)').each(function() {
-        var $this;
-        $this = $(this);
-        return setTimeout(function() {
-          return $this.addClass('animated bounceOutDownPresent');
-        }, 1000 * Math.random());
-      });
-      return setTimeout(function() {
-        var CatchAni;
-        SantaAni.stop();
-        return CatchAni = new Animator($mainAni, catchJson, catchImg, function() {
-          return this.animate(0, this.frameRef.length - 1, function() {
-            return Backbone.history.navigate('message', true);
-          });
-        });
-      }, 1000);
-    });
   },
   events: {
     'click .present': 'start'
   },
   start: function(event) {
-    return event.preventDefault();
+    var $this, SantaAni;
+    event.preventDefault();
+    $this = $(event.currentTarget);
+    if (this.flag) {
+      return false;
+    }
+    this.flag = true;
+    $this.addClass('active animated bounceOutUpPresent');
+    $('.present:not(.active)').each(function() {
+      var $pres;
+      $pres = $(this);
+      return setTimeout(function() {
+        return $pres.addClass('animated bounceOutDownPresent');
+      }, 1000 * Math.random());
+    });
+    SantaAni = this.SantaAni;
+    return setTimeout(function() {
+      SantaAni.stop();
+      return SantaAni.animate(94, SantaAni.frameRef.length - 1, function() {
+        return Backbone.history.navigate('message', true);
+      });
+    }, 400);
   },
   render: function() {
     var Footer, Header;
@@ -535,7 +530,7 @@ Message = Backbone.View.extend({
     this.model = new this.msgModel();
     this.render();
     $mainAni = $('.santa-present-dance');
-    return SantaAni = new Animator($mainAni, null, null, function() {
+    return SantaAni = new Animator($mainAni, function() {
       return this.animate();
     });
   },
@@ -559,7 +554,7 @@ Message = Backbone.View.extend({
      */
     this.$el.find('.message-content').replaceWith(this.successTmpl(data));
     $mainAni = $('.santa-present-dance');
-    return SantaAni = new Animator($mainAni, null, null, function() {
+    return SantaAni = new Animator($mainAni, function() {
       return this.animate();
     });
   },
@@ -746,7 +741,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage-animation.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-12' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
+    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-12' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":54}],26:[function(require,module,exports){
