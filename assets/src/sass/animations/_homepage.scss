@@ -21,8 +21,8 @@
   .present {
     position: absolute;
     cursor: pointer;
-    transform: scale(0.4);
-    transition: transform 0.8s linear, top 0.5s ease-out;
+    opacity: 1;
+    transition: top 0.5s ease-out;
 
     &.active {
       top: -2000px;
@@ -48,6 +48,8 @@
       overflow: hidden;
       background-repeat: no-repeat;
       background-image: url(../img/present_shake_animation.png);
+
+      transform: scale(0.4);
     }
 
     // todo: layout

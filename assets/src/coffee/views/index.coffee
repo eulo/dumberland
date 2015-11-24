@@ -37,14 +37,14 @@ Index = Backbone.View.extend
       flag = true
 
       $(this).addClass 'active'
-      $('.present:not(.active)').css
-        transform: 'scale(0)'
+
+      $('.present:not(.active)').addClass 'animated bounceOutDown'
 
       setTimeout ->
         SantaAni.stop()
         CatchAni = new Animator $mainAni, catchJson, catchImg, ->
           @animate 0, @frameRef.length - 1, ->
-            Backbone.history.navigate 'message', true
+            #Backbone.history.navigate 'message', true
       , 1000
     
   events:

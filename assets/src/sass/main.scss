@@ -5,6 +5,7 @@
 @import 'font-awesome/font-awesome';
 @import 'fonts';
 @import 'media-query';
+@import 'lib/animate';
 
 @import 'animations/homepage';
 @import 'animations/message';
@@ -231,6 +232,8 @@ p.intro-text {
   min-height: 1080px;
   min-height: 100vh;
   position: relative;
+
+  overflow: hidden;
 
   @include mq(xs) {
     padding-bottom: 170px;

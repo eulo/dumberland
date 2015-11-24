@@ -475,16 +475,12 @@ Index = Backbone.View.extend({
       }
       flag = true;
       $(this).addClass('active');
-      $('.present:not(.active)').css({
-        transform: 'scale(0)'
-      });
+      $('.present:not(.active)').addClass('animated bounceOutDown');
       return setTimeout(function() {
         var CatchAni;
         SantaAni.stop();
         return CatchAni = new Animator($mainAni, catchJson, catchImg, function() {
-          return this.animate(0, this.frameRef.length - 1, function() {
-            return Backbone.history.navigate('message', true);
-          });
+          return this.animate(0, this.frameRef.length - 1, function() {});
         });
       }, 1000);
     });
