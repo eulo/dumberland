@@ -34,34 +34,7 @@
   <div id='main'></div>
   <script src="/assets/js/app.js"></script>
   
-  <div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '894257343963270',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-    (function() {
-      var e = document.createElement('script'); e.async = true;
-      e.src = document.location.protocol +
-      '//connect.facebook.net/en_US/all.js';
-      document.getElementById('fb-root').appendChild(e);
-    }());
-  </script>
-  <script type="text/javascript">
-      $('.fb_share_button').click(function(e){
-        e.preventDefault();
-        FB.ui({
-          method: 'share',
-          title: 'Dumberland',
-          link: 'http://www.dumberland.com/',
-          picture: '/assets/image/fb_share_img.png',
-          description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-        });
-      });
-  </script>
+  
   
  
 </body>
