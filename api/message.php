@@ -8,8 +8,12 @@ require __DIR__ . '/vendor/autoload.php';
 header('Content-Type: application/json');
 // Get data
 $request_body = file_get_contents('php://input');
+
 echo 'something entered.';
+
 $data = json_decode($request_body, true);
+
+echo $data;
 // Init DB class
 $db = new Db();
 // Check user hasn't recieve 2 emails already
@@ -24,8 +28,10 @@ if (count($result) > 1 && false) {
   die;
 }
 // Insert
+echo 'something entered2.';
 $insert = $db->query("INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms) VALUES(:to_name,:to_email,:from_name,:from_email,:message,:terms)", $data);
 // Create hash and save it
+echo 'something entered3 .';
 if ($insert < 1) {
   echo json_encode(array(
     'success' => false,
