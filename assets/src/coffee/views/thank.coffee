@@ -9,12 +9,16 @@ Thank = Backbone.View.extend
   template: require '../../tmpl/thank.hbs'
   collection: require '../collections/present'
 
+  thankModel: require '../models/thank'
+
   successTmpl: require '../../tmpl/components/thank-success.hbs'
 
   headerView: require './includes/header'
   footerView: require './includes/footer'
   
   initialize: ->
+    @.model = new @.thankModel()
+
     @.listenTo @.collection, 'reset', @.render
     @.collection.fetch
       data: getUrlVars()
@@ -30,6 +34,15 @@ Thank = Backbone.View.extend
   submit: (event)->
     event.preventDefault()
     data = $(event.currentTarget).serializeObject()
+
+    data = _.extend data, getUrlVars()
+
+    if data.message == ''
+      return
+
+    @.model.set data
+    @.model.save()
+
     @.$el.find('.message-content').replaceWith @.successTmpl @.modal
 
     $mainAni = $('.santa-nopres-dance')
