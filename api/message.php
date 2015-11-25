@@ -39,23 +39,52 @@ $update = $db->query("UPDATE messages SET hash = :hash WHERE id = :id", array(
 ));
 
 if ($update > 0) {
-  // Send email
-  $mandrill = new Mandrill('uL1CKuc5NO25Tdpzv4uxeg');
-  $message = array(
-    'html' => '<p>Example HTML content</p>',
-    'text' => 'Example text content',
-    'subject' => 'example subject',
-    'from_email' => 'message.from_email@example.com',
-    'from_name' => 'Example Name',
-    'to' => array(
-      array(
-        'email' => 'recipient.email@example.com',
-        'name' => 'Recipient Name',
-        'type' => 'to'
-      )
-    ),
-    'headers' => array('Reply-To' => 'message.reply@example.com'),
-  );
+  
+    try {
+      $mandrill = new Mandrill('uL1CKuc5NO25Tdpzv4uxeg');
+      $template_name = 'without_prize';
+      $template_content = array(
+          array(
+              'name' => 'example name',
+              'content' => 'example content'
+          )
+      );
+      $message = array(
+          'html' => '<p>Example HTML content</p>',
+          'text' => 'Example text content',
+          'subject' => 'example subject',
+          'from_email' => 'message.from_email@example.com',
+          'from_name' => 'Example Name',
+          'to' => array(
+              array(
+                  'email' => 'recipient.email@example.com',
+                  'name' => 'Recipient Name',
+                  'type' => 'to'
+              )
+          ),
+          'headers' => array('Reply-To' => 'message.reply@example.com'),
+          'important' => false,
+          'merge' => true,
+          'merge_language' => 'mailchimp',
+          'global_merge_vars' => array(
+              array(
+                  'name' => 'merge1',
+                  'content' => 'merge1 content'
+              )
+          ),
+      );
+      $async = false;
+      $ip_pool = 'Main Pool';
+      $send_at = 'example send_at';
+      $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message, $async, $ip_pool, $send_at);
+      print_r($result);
+
+  } catch(Mandrill_Error $e) {
+      // Mandrill errors are thrown as exceptions
+      echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+      // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+      throw $e;
+  }
 }
 
 echo json_encode(array(
