@@ -325,9 +325,15 @@ p.intro-text {
     margin: -40px auto;  
   }
 
+  img.santa-on-pole {
+    width: 95px;
+    margin: 130px auto 0;
+    display: block;
+  }
+
   .message-complete-cont {
-    .santa-nopres-dance {
-      margin: 30px auto 0;
+    img.santa-on-pole {
+      margin: 150px auto 30px;
     }
   }
 

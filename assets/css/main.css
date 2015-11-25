@@ -14063,8 +14063,13 @@ p.intro-text {
 #thank .santa-nopres-dance {
   margin: -40px auto;
 }
-#thank .message-complete-cont .santa-nopres-dance {
-  margin: 30px auto 0;
+#thank img.santa-on-pole {
+  width: 95px;
+  margin: 130px auto 0;
+  display: block;
+}
+#thank .message-complete-cont img.santa-on-pole {
+  margin: 150px auto 30px;
 }
 #thank form {
   margin: 0px 0 100px;
