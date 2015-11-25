@@ -617,6 +617,7 @@ Present = Backbone.View.extend({
   open: function(event) {
     var $this;
     $this = $(event.currentTarget);
+    gfyCollection.init();
     $('#present-modal').modal('show');
     $this.text('Back');
     return $this.attr('data-event', 'back');
@@ -631,7 +632,6 @@ Present = Backbone.View.extend({
       return;
     }
     this.$el.html(this.template(res.models[0].attributes));
-    gfyCollection.init();
     $mainAni = $('.santa-present-dance');
     this.SantaAni = new Animator($mainAni, function() {
       return this.animate();
@@ -700,8 +700,8 @@ Thank = Backbone.View.extend({
       Backbone.history.navigate('', true);
       return;
     }
-    this.modal = res.models[0];
-    this.$el.html(this.template(res.model.attributes));
+    this.model = res.models[0];
+    this.$el.html(this.template(this.model.attributes));
     Header = new this.headerView();
     Footer = new this.footerView();
     $mainAni = $('.santa-nopres-dance');
@@ -796,7 +796,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"to_name","hash":{},"data":data}) : helper)))
     + ",</h3>\n\n    <p class='intro-text'>Here's a Dumb Present from "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
-    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='santa-present-dance' data-json='santa_present_dance.json'>\n      <div></div>\n    </div>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n\n<!-- modal -->\n<div id='present-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-12'>\n            <div class=\"gfyitem\" data-title=true data-autoplay=false data-controls=true data-expand=false data-id=\""
+    + ".<br> What's inside? Go on open it!</p>\n\n    <div class='santa-present-dance' data-json='santa_present_dance.json'>\n      <div></div>\n    </div>\n\n    <div class='row buttons-cont'>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-md-4'>\n        <button type='button' data-event='open' class='btn btn-block'>Open it</button>\n        <br>\n        <a href='/message' class='btn btn-secondary btn-block'>Send your own</a>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-12'>\n        <h2>Share</h2>\n      </div>\n\n      <div class='col-md-4'>&nbsp;</div>\n      <div class='col-xs-6 col-md-4 btn-duo-center'>\n        <button type='button' class='btn btn-facebook'>\n          <i class='fa fa-facebook'></i>\n          Facebook\n        </button>\n        <button type='button' class='btn btn-twitter'>\n          <i class='fa fa-twitter'></i>\n          Twitter\n        </button>\n      </div>\n      <div class='col-md-4'>&nbsp;</div>\n    \n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n\n<!-- modal -->\n\n<div id='present-modal' class=\"modal full-screen fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-12'>\n            <div class=\"gfyitem\" data-title=true data-autoplay=true data-controls=true data-expand=false data-id=\""
     + alias4(((helper = (helper = helpers.present || (depth0 != null ? depth0.present : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"present","hash":{},"data":data}) : helper)))
     + "\" ></div> \n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
@@ -811,9 +811,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
     + "</h2>\n      <p class='intro-text'>Send a thank you message to "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
-    + " for sending <br>\n      you a "
-    + alias4(((helper = (helper = helpers.present || (depth0 != null ? depth0.present : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"present","hash":{},"data":data}) : helper)))
-    + ".</p>\n\n      <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
+    + " for sending <br>\n      you a Dumb present.</p>\n\n      <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":56}],30:[function(require,module,exports){
@@ -17162,10 +17160,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _handlebarsBase = require('./handlebars/base');
 
-var base = _interopRequireWildcard(_handlebarsBase);
-
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
+
+var base = _interopRequireWildcard(_handlebarsBase);
 
 var _handlebarsSafeString = require('./handlebars/safe-string');
 
@@ -17185,9 +17183,10 @@ var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
 var _handlebarsNoConflict = require('./handlebars/no-conflict');
 
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
+
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
-// For compatibility and usage outside of module systems, make the Handlebars object a namespace
 function create() {
   var hb = new base.HandlebarsEnvironment();
 
@@ -17239,7 +17238,7 @@ var _logger = require('./logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.5';
+var VERSION = '4.0.4';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -17798,7 +17797,6 @@ exports['default'] = function (Handlebars) {
     if (root.Handlebars === Handlebars) {
       root.Handlebars = $Handlebars;
     }
-    return Handlebars;
   };
 };
 
@@ -18159,10 +18157,10 @@ function extend(obj /* , ...source */) {
 
 var toString = Object.prototype.toString;
 
-exports.toString = toString;
 // Sourced from lodash
 // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
 /* eslint-disable func-style */
+exports.toString = toString;
 var isFunction = function isFunction(value) {
   return typeof value === 'function';
 };
@@ -18182,8 +18180,8 @@ var isArray = Array.isArray || function (value) {
   return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
 };
 
-exports.isArray = isArray;
 // Older IE versions do not directly support indexOf so we must implement our own, sadly.
+exports.isArray = isArray;
 
 function indexOf(array, value) {
   for (var i = 0, len = array.length; i < len; i++) {

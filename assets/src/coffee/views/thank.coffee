@@ -54,8 +54,8 @@ Thank = Backbone.View.extend
     if !res.models.length
       Backbone.history.navigate '', true
       return
-    @.modal = res.models[0]
-    @.$el.html @.template res.model.attributes
+    @.model = res.models[0]
+    @.$el.html @.template @.model.attributes
     Header = new @.headerView()
     Footer = new @.footerView()
 

@@ -26,6 +26,8 @@ Present = Backbone.View.extend
   open: (event)->
     $this = $(event.currentTarget)
 
+    gfyCollection.init()
+
     $('#present-modal').modal('show')
 
     $this.text 'Back'
@@ -39,8 +41,6 @@ Present = Backbone.View.extend
       Backbone.history.navigate '', true
       return
     @.$el.html @.template res.models[0].attributes
-
-    gfyCollection.init()
 
     $mainAni = $('.santa-present-dance')
     @SantaAni = new Animator $mainAni, ->

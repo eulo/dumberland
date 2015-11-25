@@ -14040,6 +14040,20 @@ p.intro-text {
   margin: -40px auto;
 }
 
+#present-modal .modal-dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+#present-modal .modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+#present-modal .modal-body {
+  padding: 15px 0;
+}
+
 #thank h2 {
   color: #FAF9F2;
   text-align: center;
