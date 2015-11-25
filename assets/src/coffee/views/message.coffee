@@ -35,18 +35,15 @@ Message = Backbone.View.extend
     data = $(event.currentTarget).serializeObject()
     @.model.set data
 
-    ###
     @.model.validate()
     if @.model.isValid()
       @.model.save()
       @.$el.find('.message-content').replaceWith @.successTmpl data
-    ###
-    @.$el.find('.message-content').replaceWith @.successTmpl data
 
-    $mainAni = $('.santa-nopres-dance')
-    @SantaAni.stop()
-    @SantaAni = new Animator $mainAni, ->
-      @animate()
+      $mainAni = $('.santa-nopres-dance')
+      @SantaAni.stop()
+      @SantaAni = new Animator $mainAni, ->
+        @animate()
 
 
   termsModal: (event) ->

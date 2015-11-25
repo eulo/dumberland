@@ -37,7 +37,7 @@ Router = require('./router');
 
 
 
-},{"./../../../bower_components/backbone/backbone.js":30,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":31,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":33,"./../../../bower_components/jquery/dist/jquery.js":34,"./../../../bower_components/underscore/underscore.js":35,"./lib/jquery.serializeObject":6,"./router":8,"./views/includes/background":9}],3:[function(require,module,exports){
+},{"./../../../bower_components/backbone/backbone.js":31,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":32,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":34,"./../../../bower_components/jquery/dist/jquery.js":35,"./../../../bower_components/underscore/underscore.js":36,"./lib/jquery.serializeObject":6,"./router":9,"./views/includes/background":10}],3:[function(require,module,exports){
 var Animator;
 
 module.exports = Animator = (function() {
@@ -211,7 +211,7 @@ $.fn.serializeObject = function() {
 
 
 
-},{"./../../../../bower_components/jquery/dist/jquery.js":34}],7:[function(require,module,exports){
+},{"./../../../../bower_components/jquery/dist/jquery.js":35}],7:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
   idAttribute: 'id',
   url: '/api/message',
@@ -256,6 +256,14 @@ module.exports = Backbone.Model.extend({
 
 
 },{}],8:[function(require,module,exports){
+module.exports = Backbone.Model.extend({
+  idAttribute: 'id',
+  url: '/api/thank'
+});
+
+
+
+},{}],9:[function(require,module,exports){
 var AppRouter, Router;
 
 AppRouter = Backbone.Router.extend({
@@ -297,7 +305,7 @@ module.exports = Router;
 
 
 
-},{"./views/index":14,"./views/message":15,"./views/present":16,"./views/thank":17}],9:[function(require,module,exports){
+},{"./views/index":15,"./views/message":16,"./views/present":17,"./views/thank":18}],10:[function(require,module,exports){
 var Background, Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -334,7 +342,7 @@ module.exports = new Background;
 
 
 
-},{"../../../tmpl/background.hbs":18,"hbsfy/runtime":55}],10:[function(require,module,exports){
+},{"../../../tmpl/background.hbs":19,"hbsfy/runtime":56}],11:[function(require,module,exports){
 var Footer, Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -364,7 +372,7 @@ module.exports = Footer;
 
 
 
-},{"../../../tmpl/components/footer.hbs":19,"./share-modal":12,"./terms-modal":13,"hbsfy/runtime":55}],11:[function(require,module,exports){
+},{"../../../tmpl/components/footer.hbs":20,"./share-modal":13,"./terms-modal":14,"hbsfy/runtime":56}],12:[function(require,module,exports){
 var Handlebars, Header;
 
 Handlebars = require('hbsfy/runtime');
@@ -400,7 +408,7 @@ module.exports = Header;
 
 
 
-},{"../../../tmpl/components/header.hbs":20,"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":55}],12:[function(require,module,exports){
+},{"../../../tmpl/components/header.hbs":21,"../../../tmpl/components/share-modal.hbs":23,"hbsfy/runtime":56}],13:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -418,7 +426,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/share-modal.hbs":22,"hbsfy/runtime":55}],13:[function(require,module,exports){
+},{"../../../tmpl/components/share-modal.hbs":23,"hbsfy/runtime":56}],14:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -436,7 +444,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/terms-modal.hbs":23,"hbsfy/runtime":55}],14:[function(require,module,exports){
+},{"../../../tmpl/components/terms-modal.hbs":24,"hbsfy/runtime":56}],15:[function(require,module,exports){
 var Animator, Handlebars, Index;
 
 Handlebars = require('hbsfy/runtime');
@@ -506,7 +514,7 @@ module.exports = new Index;
 
 
 
-},{"../../tmpl/index.hbs":25,"../lib/animator":3,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],15:[function(require,module,exports){
+},{"../../tmpl/index.hbs":26,"../lib/animator":3,"./includes/footer":11,"./includes/header":12,"hbsfy/runtime":56}],16:[function(require,module,exports){
 var Animator, Handlebars, Message;
 
 Handlebars = require('hbsfy/runtime');
@@ -545,19 +553,16 @@ Message = Backbone.View.extend({
     event.preventDefault();
     data = $(event.currentTarget).serializeObject();
     this.model.set(data);
-
-    /*
-    @.model.validate()
-    if @.model.isValid()
-      @.model.save()
-      @.$el.find('.message-content').replaceWith @.successTmpl data
-     */
-    this.$el.find('.message-content').replaceWith(this.successTmpl(data));
-    $mainAni = $('.santa-nopres-dance');
-    this.SantaAni.stop();
-    return this.SantaAni = new Animator($mainAni, function() {
-      return this.animate();
-    });
+    this.model.validate();
+    if (this.model.isValid()) {
+      this.model.save();
+      this.$el.find('.message-content').replaceWith(this.successTmpl(data));
+      $mainAni = $('.santa-nopres-dance');
+      this.SantaAni.stop();
+      return this.SantaAni = new Animator($mainAni, function() {
+        return this.animate();
+      });
+    }
   },
   termsModal: function(event) {
     event.preventDefault();
@@ -581,7 +586,7 @@ module.exports = new Message;
 
 
 
-},{"../../tmpl/components/message-success.hbs":21,"../../tmpl/message.hbs":26,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../models/message":7,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":29,"./includes/footer":10,"./includes/header":11,"./includes/terms-modal":13,"hbsfy/runtime":55}],16:[function(require,module,exports){
+},{"../../tmpl/components/message-success.hbs":22,"../../tmpl/message.hbs":27,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../models/message":7,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":30,"./includes/footer":11,"./includes/header":12,"./includes/terms-modal":14,"hbsfy/runtime":56}],17:[function(require,module,exports){
 var Animator, Handlebars, Present, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -640,7 +645,7 @@ module.exports = new Present;
 
 
 
-},{"../../tmpl/present.hbs":27,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":32,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],17:[function(require,module,exports){
+},{"../../tmpl/present.hbs":28,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":33,"./includes/footer":11,"./includes/header":12,"hbsfy/runtime":56}],18:[function(require,module,exports){
 var Animator, Handlebars, Thank, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -653,10 +658,12 @@ Thank = Backbone.View.extend({
   el: '#main',
   template: require('../../tmpl/thank.hbs'),
   collection: require('../collections/present'),
+  thankModel: require('../models/thank'),
   successTmpl: require('../../tmpl/components/thank-success.hbs'),
   headerView: require('./includes/header'),
   footerView: require('./includes/footer'),
   initialize: function() {
+    this.model = new this.thankModel();
     this.listenTo(this.collection, 'reset', this.render);
     return this.collection.fetch({
       data: getUrlVars(),
@@ -674,6 +681,12 @@ Thank = Backbone.View.extend({
     var $mainAni, data;
     event.preventDefault();
     data = $(event.currentTarget).serializeObject();
+    data = _.extend(data, getUrlVars());
+    if (data.message === '') {
+      return;
+    }
+    this.model.set(data);
+    this.model.save();
     this.$el.find('.message-content').replaceWith(this.successTmpl(this.modal));
     $mainAni = $('.santa-nopres-dance');
     this.SantaAni.stop();
@@ -702,28 +715,28 @@ module.exports = new Thank;
 
 
 
-},{"../../tmpl/components/thank-success.hbs":24,"../../tmpl/thank.hbs":28,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"./includes/footer":10,"./includes/header":11,"hbsfy/runtime":55}],18:[function(require,module,exports){
+},{"../../tmpl/components/thank-success.hbs":25,"../../tmpl/thank.hbs":29,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"../models/thank":8,"./includes/footer":11,"./includes/header":12,"hbsfy/runtime":56}],19:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='background'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],19:[function(require,module,exports){
+},{"hbsfy/runtime":56}],20:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='container'>\n  <div class='row'>\n    <div class='col-xs-12'>\n      <img class='footer-logo' src='/assets/img/footer-logo.png' alt='Dumb ways to die'>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='share-links'>\n        <a href='https://www.facebook.com/dumbwaystodie/' target='_blank'><i class='fa fa-facebook'></i></a>\n        <a href='https://twitter.com/dumbways2die' target='_blank'><i class='fa fa-twitter'></i></a>\n        <a href='http://dumbwaystodie.tumblr.com/' target='_blank'><i class='fa fa-tumblr'></i></a>\n      </div>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='footer-links'>\n        <a href='#' data-event='terms-button-footer'>Terms &amp; conditions</a>\n        <a href='https://shop.dumbwaystodie.com' target='_blank'>Visit the shop</a>\n      </div>\n    </div>\n  </div>\n</div>\n<div id='modal'></div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],20:[function(require,module,exports){
+},{"hbsfy/runtime":56}],21:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<a data-event='share-modal' href='#'>\n  <i class='fa fa-share-alt'></i> Share\n</a>\n\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],21:[function(require,module,exports){
+},{"hbsfy/runtime":56}],22:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -734,21 +747,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "'s Dumb Present has been sent.</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send another</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button class='btn btn-facebook fb-share-button'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>  \n</div>\n\n<script>\n  $('.fb-share-button').click(function() {\n    ga('send','event','Button Clicks','facebook.com');\n  });\n  $('.btn-twitter').click(function() {\n    ga('send','tweet','Button Clicks','twitter.com');\n  });\n</script>";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],22:[function(require,module,exports){
+},{"hbsfy/runtime":56}],23:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"fb-root\"></div>\n  <script>\n    window.fbAsyncInit = function() {\n      FB.init({\n        appId      : '894257343963270',\n        xfbml      : true,\n        version    : 'v2.5'\n      });\n      $('.fb-share-button').click(function(e){\n        console.log('something');\n        FB.ui({\n          method: 'share',\n          href: 'http://www.dumberland.com/',\n          title: 'Dumberland',\n          link: 'http://www.dumberland.com/',\n          picture: 'assets/img/fb_share_img.png',\n          description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'\n        });\n      });\n    };\n    (function() {\n      var e = document.createElement('script'); e.async = true;\n      e.src = document.location.protocol +\n      '//connect.facebook.net/en_US/all.js';\n      document.getElementById('fb-root').appendChild(e);\n    }());\n</script>\n<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-6'>\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-xs-6'>\n            <button class='btn btn-twitter btn-block' data-url='Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n\n<script>\n  $('.fb-share-button').click(function() {\n    ga('send','event','Button Clicks','facebook.com');\n  });\n  $('.btn-twitter').click(function() {\n    ga('send','tweet','Button Clicks','twitter.com');\n  });\n</script>";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],23:[function(require,module,exports){
+},{"hbsfy/runtime":56}],24:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='terms-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\">Terms &amp; Conditions</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut arcu et nibh sollicitudin porttitor. Duis at sem sit amet felis lacinia tristique sollicitudin sit amet elit. Cras rutrum velit nec tristique facilisis. Sed non nunc sodales eros mollis finibus. Phasellus arcu dui, pellentesque non pretium ac, imperdiet vitae velit. Praesent ut tincidunt nisi, ut faucibus leo. Mauris eu lobortis nisi. Nunc ultrices porta euismod. Aenean et tristique leo, laoreet efficitur eros. Nulla felis massa, tempus eget urna non, convallis posuere orci. Morbi vitae ligula eu magna mollis sollicitudin sit amet eget ipsum.</p>\n        <p>Curabitur nisi massa, tincidunt eu quam nec, consectetur tempor nisl. Quisque orci nunc, lobortis sit amet justo a, pretium feugiat turpis. Curabitur non mattis nisl. Sed malesuada, lectus et bibendum varius, nibh massa elementum ex, vitae vehicula nunc nisl luctus erat. Donec sit amet est leo. Quisque odio arcu, efficitur in ante nec, dignissim vehicula magna. Fusce sed metus quis lectus imperdiet luctus.</p>\n        <p>Curabitur porta justo et nisl tempor aliquam. Vivamus imperdiet felis ac leo porttitor aliquam. Quisque scelerisque magna in hendrerit mattis. Sed posuere urna sit amet metus commodo, quis dictum lorem efficitur. In libero metus, malesuada fringilla porta id, euismod commodo tortor. Nam sagittis dui id odio tincidunt dictum. Praesent consequat magna vitae condimentum ornare. Aenean porta at nisl at efficitur. Quisque vitae eros tellus. Suspendisse ligula erat, fermentum a facilisis vitae, facilisis et ex. Proin gravida laoreet orci et porttitor. In ultricies, nisl a fringilla lacinia, eros ante congue nisl, id volutpat dolor turpis a felis.</p>\n        <p>Suspendisse luctus lorem purus, sed facilisis arcu sollicitudin quis. Nulla faucibus bibendum porta. Donec non justo id ipsum cursus vestibulum. Nulla a auctor mi. Etiam maximus eget felis et molestie. Nunc vel libero bibendum, venenatis lorem id, laoreet risus. Praesent quis eros molestie, volutpat nunc sed, faucibus justo.</p>\n        <p>Donec egestas augue posuere ligula suscipit, et laoreet sem eleifend. Mauris egestas semper ipsum, non pharetra nulla congue sit amet. Nullam molestie dignissim justo, sed rhoncus ipsum tempus vitae. Aenean mollis cursus lorem at dapibus. Praesent id felis nec sapien cursus ullamcorper. Vivamus nec pharetra tellus, eu pellentesque massa. Vestibulum eget ullamcorper odio, nec maximus sapien. Maecenas lacus enim, ullamcorper sed sem eu, iaculis egestas nisl. Duis quis luctus massa. Integer auctor ullamcorper nunc ut eleifend. Donec a metus ac nunc bibendum pharetra. Nullam pellentesque, massa id accumsan tincidunt, sapien eros luctus urna, nec imperdiet ex augue ac erat. Aliquam placerat posuere est. Nam a venenatis mi. Integer in nisl aliquet mauris tincidunt accumsan sit amet sed eros.</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],24:[function(require,module,exports){
+},{"hbsfy/runtime":56}],25:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -759,21 +772,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n    <div></div>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send one yourself</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],25:[function(require,module,exports){
+},{"hbsfy/runtime":56}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-12' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],26:[function(require,module,exports){
+},{"hbsfy/runtime":56}],27:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='message'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <p class='intro-text'>Send a Dumb present.</p>\n\n      <div class='santa-present-dance' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n\n        <div class='row'>\n\n          <div class='col-md-6'>\n            <h3>Send gift to</h3>\n            <div class=\"form-group\">\n              <label for=\"to_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"to_name\" id=\"to_name\" placeholder=\"Friends name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"to_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"to_email\" id=\"to_email\" placeholder=\"Friends email\">\n            </div>\n\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n          </div>\n\n          <div class='col-md-6'>\n            <h3>Your details</h3>\n            <div class=\"form-group\">\n              <label for=\"from_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"from_name\" id=\"from_name\" placeholder=\"Your name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"from_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"from_email\" id=\"from_email\" placeholder=\"Your email\">\n            </div>\n            \n            <h3>&nbsp;</h3>\n            <div class=\"form-group\">\n              <div class=\"checkbox\">\n                <input type=\"checkbox\" name='terms' id='terms-checkbox'> \n                \n                <label for='terms-checkbox' class='form-control'>\n                  <span></span>I agree to the <a data-event='terms-button' href='#'>terms &amp; conditions</a>\n                </label>\n              </div>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n        </div>\n        \n      </form>\n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],27:[function(require,module,exports){
+},{"hbsfy/runtime":56}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -788,7 +801,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "\" ></div> \n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],28:[function(require,module,exports){
+},{"hbsfy/runtime":56}],29:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -803,7 +816,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + ".</p>\n\n      <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":55}],29:[function(require,module,exports){
+},{"hbsfy/runtime":56}],30:[function(require,module,exports){
 // Backbone.Validation v0.11.4
 //
 // Copyright (c) 2011-2015 Thomas Pedersen
@@ -1513,7 +1526,7 @@ Backbone.Validation = (function(_){
 
   return Validation;
 }(_));
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -3411,7 +3424,7 @@ Backbone.Validation = (function(_){
 }));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./../jquery/dist/jquery.js":34,"./../underscore/underscore.js":35}],31:[function(require,module,exports){
+},{"./../jquery/dist/jquery.js":35,"./../underscore/underscore.js":36}],32:[function(require,module,exports){
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5776,7 +5789,7 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 /*
  * A new gfyObject is created for each
  * gfycat embed on the page.  This object
@@ -6371,9 +6384,9 @@ window.gfyCollection = function () {
 
 }();
 
-},{}],33:[function(require,module,exports){
-Date.now||(Date.now=function(){return(new Date).getTime()}),function(){"use strict";for(var t=["webkit","moz"],e=0;e<t.length&&!window.requestAnimationFrame;++e){var i=t[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var s=0;window.requestAnimationFrame=function(t){var e=Date.now(),i=Math.max(s+16,e);return setTimeout(function(){t(s=i)},i-e)},window.cancelAnimationFrame=clearTimeout}}(),function(t){t.snowfall=function(e,i){function s(s,n,a,o){this.x=s,this.y=n,this.size=a,this.speed=o,this.step=0,this.stepSize=h(1,10)/100,i.collection&&(this.target=m[h(0,m.length-1)]);var r=null;i.image?(r=document.createElement("img"),r.src=i.image):(r=document.createElement("div"),t(r).css({background:i.flakeColor})),t(r).attr({"class":"snowfall-flakes"}).css({width:this.size,height:this.size,position:i.flakePosition,top:this.y,left:this.x,fontSize:0,zIndex:i.flakeIndex}),t(e).get(0).tagName===t(document).get(0).tagName?(t("body").append(t(r)),e=t("body")):t(e).append(t(r)),this.element=r,this.update=function(){if(this.y+=this.speed,this.y>l-(this.size+6)&&this.reset(),this.element.style.top=this.y+"px",this.element.style.left=this.x+"px",this.step+=this.stepSize,this.x+=y===!1?Math.cos(this.step):y+Math.cos(this.step),i.collection&&this.x>this.target.x&&this.x<this.target.width+this.target.x&&this.y>this.target.y&&this.y<this.target.height+this.target.y){var t=this.target.element.getContext("2d"),e=this.x-this.target.x,s=this.y-this.target.y,n=this.target.colData;if(void 0!==n[parseInt(e)][parseInt(s+this.speed+this.size)]||s+this.speed+this.size>this.target.height)if(s+this.speed+this.size>this.target.height){for(;s+this.speed+this.size>this.target.height&&this.speed>0;)this.speed*=.5;t.fillStyle="#fff",void 0==n[parseInt(e)][parseInt(s+this.speed+this.size)]?(n[parseInt(e)][parseInt(s+this.speed+this.size)]=1,t.fillRect(e,s+this.speed+this.size,this.size,this.size)):(n[parseInt(e)][parseInt(s+this.speed)]=1,t.fillRect(e,s+this.speed,this.size,this.size)),this.reset()}else this.speed=1,this.stepSize=0,parseInt(e)+1<this.target.width&&void 0==n[parseInt(e)+1][parseInt(s)+1]?this.x++:parseInt(e)-1>0&&void 0==n[parseInt(e)-1][parseInt(s)+1]?this.x--:(t.fillStyle="#fff",t.fillRect(e,s,this.size,this.size),n[parseInt(e)][parseInt(s)]=1,this.reset())}(this.x+this.size>d-c||this.x<c)&&this.reset()},this.reset=function(){this.y=0,this.x=h(c,d-c),this.stepSize=h(1,10)/100,this.size=h(100*i.minSize,100*i.maxSize)/100,this.element.style.width=this.size+"px",this.element.style.height=this.size+"px",this.speed=h(i.minSpeed,i.maxSpeed)}}function n(){for(r=0;r<a.length;r+=1)a[r].update();f=requestAnimationFrame(function(){n()})}var a=[],o={flakeCount:35,flakeColor:"#ffffff",flakePosition:"absolute",flakeIndex:999999,minSize:1,maxSize:2,minSpeed:1,maxSpeed:5,round:!1,shadow:!1,collection:!1,collectionHeight:40,deviceorientation:!1},i=t.extend(o,i),h=function(t,e){return Math.round(t+Math.random()*(e-t))};t(e).data("snowfall",this);var r=0,l=t(e).height(),d=t(e).width(),c=0,f=0;if(i.collection!==!1){var p=document.createElement("canvas");if(p.getContext&&p.getContext("2d"))for(var m=[],w=t(i.collection),g=i.collectionHeight,r=0;r<w.length;r++){var u=w[r].getBoundingClientRect(),x=t("<canvas/>",{"class":"snowfall-canvas"}),z=[];if(u.top-g>0){t("body").append(x),x.css({position:i.flakePosition,left:u.left+"px",top:u.top-g+"px"}).prop({width:u.width,height:g});for(var v=0;v<u.width;v++)z[v]=[];m.push({element:x.get(0),x:u.left,y:u.top-g,width:u.width,height:g,colData:z})}}else i.collection=!1}for(t(e).get(0).tagName===t(document).get(0).tagName&&(c=25),t(window).bind("resize",function(){l=t(e)[0].clientHeight,d=t(e)[0].offsetWidth}),r=0;r<i.flakeCount;r+=1)a.push(new s(h(c,d-c),h(0,l),h(100*i.minSize,100*i.maxSize)/100,h(i.minSpeed,i.maxSpeed)));i.round&&t(".snowfall-flakes").css({"-moz-border-radius":i.maxSize,"-webkit-border-radius":i.maxSize,"border-radius":i.maxSize}),i.shadow&&t(".snowfall-flakes").css({"-moz-box-shadow":"1px 1px 1px #555","-webkit-box-shadow":"1px 1px 1px #555","box-shadow":"1px 1px 1px #555"});var y=!1;i.deviceorientation&&t(window).bind("deviceorientation",function(t){y=.1*t.originalEvent.gamma}),n(),this.clear=function(){t(".snowfall-canvas").remove(),t(e).children(".snowfall-flakes").remove(),cancelAnimationFrame(f)}},t.fn.snowfall=function(e){return"object"==typeof e||void 0==e?this.each(function(){new t.snowfall(this,e)}):"string"==typeof e?this.each(function(){var e=t(this).data("snowfall");e&&e.clear()}):void 0}}(jQuery);
 },{}],34:[function(require,module,exports){
+Date.now||(Date.now=function(){return(new Date).getTime()}),function(){"use strict";for(var t=["webkit","moz"],e=0;e<t.length&&!window.requestAnimationFrame;++e){var i=t[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var s=0;window.requestAnimationFrame=function(t){var e=Date.now(),i=Math.max(s+16,e);return setTimeout(function(){t(s=i)},i-e)},window.cancelAnimationFrame=clearTimeout}}(),function(t){t.snowfall=function(e,i){function s(s,n,a,o){this.x=s,this.y=n,this.size=a,this.speed=o,this.step=0,this.stepSize=h(1,10)/100,i.collection&&(this.target=m[h(0,m.length-1)]);var r=null;i.image?(r=document.createElement("img"),r.src=i.image):(r=document.createElement("div"),t(r).css({background:i.flakeColor})),t(r).attr({"class":"snowfall-flakes"}).css({width:this.size,height:this.size,position:i.flakePosition,top:this.y,left:this.x,fontSize:0,zIndex:i.flakeIndex}),t(e).get(0).tagName===t(document).get(0).tagName?(t("body").append(t(r)),e=t("body")):t(e).append(t(r)),this.element=r,this.update=function(){if(this.y+=this.speed,this.y>l-(this.size+6)&&this.reset(),this.element.style.top=this.y+"px",this.element.style.left=this.x+"px",this.step+=this.stepSize,this.x+=y===!1?Math.cos(this.step):y+Math.cos(this.step),i.collection&&this.x>this.target.x&&this.x<this.target.width+this.target.x&&this.y>this.target.y&&this.y<this.target.height+this.target.y){var t=this.target.element.getContext("2d"),e=this.x-this.target.x,s=this.y-this.target.y,n=this.target.colData;if(void 0!==n[parseInt(e)][parseInt(s+this.speed+this.size)]||s+this.speed+this.size>this.target.height)if(s+this.speed+this.size>this.target.height){for(;s+this.speed+this.size>this.target.height&&this.speed>0;)this.speed*=.5;t.fillStyle="#fff",void 0==n[parseInt(e)][parseInt(s+this.speed+this.size)]?(n[parseInt(e)][parseInt(s+this.speed+this.size)]=1,t.fillRect(e,s+this.speed+this.size,this.size,this.size)):(n[parseInt(e)][parseInt(s+this.speed)]=1,t.fillRect(e,s+this.speed,this.size,this.size)),this.reset()}else this.speed=1,this.stepSize=0,parseInt(e)+1<this.target.width&&void 0==n[parseInt(e)+1][parseInt(s)+1]?this.x++:parseInt(e)-1>0&&void 0==n[parseInt(e)-1][parseInt(s)+1]?this.x--:(t.fillStyle="#fff",t.fillRect(e,s,this.size,this.size),n[parseInt(e)][parseInt(s)]=1,this.reset())}(this.x+this.size>d-c||this.x<c)&&this.reset()},this.reset=function(){this.y=0,this.x=h(c,d-c),this.stepSize=h(1,10)/100,this.size=h(100*i.minSize,100*i.maxSize)/100,this.element.style.width=this.size+"px",this.element.style.height=this.size+"px",this.speed=h(i.minSpeed,i.maxSpeed)}}function n(){for(r=0;r<a.length;r+=1)a[r].update();f=requestAnimationFrame(function(){n()})}var a=[],o={flakeCount:35,flakeColor:"#ffffff",flakePosition:"absolute",flakeIndex:999999,minSize:1,maxSize:2,minSpeed:1,maxSpeed:5,round:!1,shadow:!1,collection:!1,collectionHeight:40,deviceorientation:!1},i=t.extend(o,i),h=function(t,e){return Math.round(t+Math.random()*(e-t))};t(e).data("snowfall",this);var r=0,l=t(e).height(),d=t(e).width(),c=0,f=0;if(i.collection!==!1){var p=document.createElement("canvas");if(p.getContext&&p.getContext("2d"))for(var m=[],w=t(i.collection),g=i.collectionHeight,r=0;r<w.length;r++){var u=w[r].getBoundingClientRect(),x=t("<canvas/>",{"class":"snowfall-canvas"}),z=[];if(u.top-g>0){t("body").append(x),x.css({position:i.flakePosition,left:u.left+"px",top:u.top-g+"px"}).prop({width:u.width,height:g});for(var v=0;v<u.width;v++)z[v]=[];m.push({element:x.get(0),x:u.left,y:u.top-g,width:u.width,height:g,colData:z})}}else i.collection=!1}for(t(e).get(0).tagName===t(document).get(0).tagName&&(c=25),t(window).bind("resize",function(){l=t(e)[0].clientHeight,d=t(e)[0].offsetWidth}),r=0;r<i.flakeCount;r+=1)a.push(new s(h(c,d-c),h(0,l),h(100*i.minSize,100*i.maxSize)/100,h(i.minSpeed,i.maxSpeed)));i.round&&t(".snowfall-flakes").css({"-moz-border-radius":i.maxSize,"-webkit-border-radius":i.maxSize,"border-radius":i.maxSize}),i.shadow&&t(".snowfall-flakes").css({"-moz-box-shadow":"1px 1px 1px #555","-webkit-box-shadow":"1px 1px 1px #555","box-shadow":"1px 1px 1px #555"});var y=!1;i.deviceorientation&&t(window).bind("deviceorientation",function(t){y=.1*t.originalEvent.gamma}),n(),this.clear=function(){t(".snowfall-canvas").remove(),t(e).children(".snowfall-flakes").remove(),cancelAnimationFrame(f)}},t.fn.snowfall=function(e){return"object"==typeof e||void 0==e?this.each(function(){new t.snowfall(this,e)}):"string"==typeof e?this.each(function(){var e=t(this).data("snowfall");e&&e.clear()}):void 0}}(jQuery);
+},{}],35:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -15585,7 +15598,7 @@ return jQuery;
 
 }));
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -17135,7 +17148,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17149,10 +17162,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _handlebarsBase = require('./handlebars/base');
 
-var base = _interopRequireWildcard(_handlebarsBase);
-
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
+
+var base = _interopRequireWildcard(_handlebarsBase);
 
 var _handlebarsSafeString = require('./handlebars/safe-string');
 
@@ -17172,9 +17185,10 @@ var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
 var _handlebarsNoConflict = require('./handlebars/no-conflict');
 
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
+
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
-// For compatibility and usage outside of module systems, make the Handlebars object a namespace
 function create() {
   var hb = new base.HandlebarsEnvironment();
 
@@ -17203,7 +17217,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":37,"./handlebars/exception":40,"./handlebars/no-conflict":50,"./handlebars/runtime":51,"./handlebars/safe-string":52,"./handlebars/utils":53}],37:[function(require,module,exports){
+},{"./handlebars/base":38,"./handlebars/exception":41,"./handlebars/no-conflict":51,"./handlebars/runtime":52,"./handlebars/safe-string":53,"./handlebars/utils":54}],38:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17226,7 +17240,7 @@ var _logger = require('./logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.5';
+var VERSION = '4.0.4';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -17309,7 +17323,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":38,"./exception":40,"./helpers":41,"./logger":49,"./utils":53}],38:[function(require,module,exports){
+},{"./decorators":39,"./exception":41,"./helpers":42,"./logger":50,"./utils":54}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17327,7 +17341,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":39}],39:[function(require,module,exports){
+},{"./decorators/inline":40}],40:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17358,7 +17372,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":53}],40:[function(require,module,exports){
+},{"../utils":54}],41:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17400,7 +17414,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17448,7 +17462,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":42,"./helpers/each":43,"./helpers/helper-missing":44,"./helpers/if":45,"./helpers/log":46,"./helpers/lookup":47,"./helpers/with":48}],42:[function(require,module,exports){
+},{"./helpers/block-helper-missing":43,"./helpers/each":44,"./helpers/helper-missing":45,"./helpers/if":46,"./helpers/log":47,"./helpers/lookup":48,"./helpers/with":49}],43:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17489,7 +17503,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":53}],43:[function(require,module,exports){
+},{"../utils":54}],44:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17585,7 +17599,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":40,"../utils":53}],44:[function(require,module,exports){
+},{"../exception":41,"../utils":54}],45:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17612,7 +17626,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":40}],45:[function(require,module,exports){
+},{"../exception":41}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17643,7 +17657,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":53}],46:[function(require,module,exports){
+},{"../utils":54}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17671,7 +17685,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17685,7 +17699,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17720,7 +17734,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":53}],49:[function(require,module,exports){
+},{"../utils":54}],50:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17769,7 +17783,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":53}],50:[function(require,module,exports){
+},{"./utils":54}],51:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -17785,7 +17799,6 @@ exports['default'] = function (Handlebars) {
     if (root.Handlebars === Handlebars) {
       root.Handlebars = $Handlebars;
     }
-    return Handlebars;
   };
 };
 
@@ -17793,7 +17806,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18087,7 +18100,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":37,"./exception":40,"./utils":53}],52:[function(require,module,exports){
+},{"./base":38,"./exception":41,"./utils":54}],53:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -18104,7 +18117,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18146,10 +18159,10 @@ function extend(obj /* , ...source */) {
 
 var toString = Object.prototype.toString;
 
-exports.toString = toString;
 // Sourced from lodash
 // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
 /* eslint-disable func-style */
+exports.toString = toString;
 var isFunction = function isFunction(value) {
   return typeof value === 'function';
 };
@@ -18169,8 +18182,8 @@ var isArray = Array.isArray || function (value) {
   return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
 };
 
-exports.isArray = isArray;
 // Older IE versions do not directly support indexOf so we must implement our own, sadly.
+exports.isArray = isArray;
 
 function indexOf(array, value) {
   for (var i = 0, len = array.length; i < len; i++) {
@@ -18230,12 +18243,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":36}],55:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":37}],56:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":54}]},{},[2])
+},{"handlebars/runtime":55}]},{},[2])
