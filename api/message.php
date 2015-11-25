@@ -100,7 +100,7 @@ if ($update > 0) {
 
 echo json_encode(array(
   'success' => ($update > 0),
-  'hash' => $hash 
+  'hash' => $data['hash']
 ));
 
 die;
