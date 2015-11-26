@@ -13732,10 +13732,15 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .presents-container {
-  width: 680px;
   height: 320px;
   position: relative;
   margin: -170px auto 0;
+  max-width: 880px;
+}
+@media screen and (min-width: 1200px) {
+  .presents-container {
+    margin-left: 15%;
+  }
 }
 .presents-container .present {
   position: absolute;
@@ -13743,52 +13748,104 @@ Copyright (c) 2015 Daniel Eden
   transform: scale(0.4);
 }
 .presents-container .present-1 {
-  left: -30px;
-  top: 0;
+  top: 0px;
+  left: 0%;
+}
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .presents-container .present-1 {
+    left: 10%;
+  }
 }
 .presents-container .present-2 {
-  left: 70px;
-  top: 0;
+  top: -24px;
+  left: 16%;
 }
 .presents-container .present-3 {
-  left: 170px;
-  top: 0;
+  top: 32px;
+  left: 12%;
 }
 .presents-container .present-4 {
-  left: 270px;
-  top: 0;
+  top: 7px;
+  left: 23.5%;
+}
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .presents-container .present-4 {
+    left: -16.5%;
+  }
 }
 .presents-container .present-5 {
-  left: 370px;
-  top: 0;
+  top: 60px;
+  left: 30%;
 }
 .presents-container .present-6 {
-  left: 470px;
-  top: 0;
+  top: 0px;
+  left: 40%;
 }
 .presents-container .present-7 {
-  left: -30px;
-  top: 100px;
+  top: -20px;
+  left: 50%;
 }
 .presents-container .present-8 {
-  left: 70px;
-  top: 100px;
+  top: -30px;
+  left: 60%;
 }
 .presents-container .present-9 {
-  left: 170px;
-  top: 100px;
+  top: 25px;
+  left: 56%;
 }
 .presents-container .present-10 {
-  left: 270px;
-  top: 100px;
+  top: 40px;
+  left: 66%;
 }
 .presents-container .present-11 {
-  left: 370px;
-  top: 100px;
+  top: 60px;
+  left: 5%;
+}
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .presents-container .present-11 {
+    left: -11%;
+  }
 }
 .presents-container .present-12 {
-  left: 470px;
-  top: 100px;
+  top: 21px;
+  left: 9%;
+}
+.presents-container .present-13 {
+  top: 92px;
+  left: 15%;
+}
+.presents-container .present-14 {
+  top: 113px;
+  left: 23.5%;
+}
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .presents-container .present-14 {
+    left: 6.5%;
+  }
+}
+.presents-container .present-15 {
+  top: 150px;
+  left: 35%;
+}
+.presents-container .present-16 {
+  top: 105px;
+  left: 42%;
+}
+.presents-container .present-17 {
+  top: 40px;
+  left: 47%;
+}
+.presents-container .present-18 {
+  top: 52px;
+  left: 37%;
+}
+.presents-container .present-19 {
+  top: 115px;
+  left: 61%;
+}
+.presents-container .present-20 {
+  top: 122px;
+  left: 50%;
 }
 .presents-container .present > div {
   display: inline-block;
