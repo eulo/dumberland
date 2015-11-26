@@ -148,6 +148,10 @@ h1.page-title {
   margin-top: 85px;
   max-width: 100%;
   background-size: contain; 
+
+  @media screen and (min-width: 280px) and (max-width: 640px) {
+     margin-top: 40px;
+  } 
 }
 
 p.intro-text {
@@ -156,6 +160,11 @@ p.intro-text {
   font-size: 19px;
   text-align: center;
   margin-top: 40px;
+
+  @media screen and (min-width: 280px) and (max-width: 640px) {
+     font-size: 16px;
+     margin-top: -20px;
+  } 
 }
 
 
@@ -377,6 +386,9 @@ p.intro-text {
     position: absolute;
     height: 880px;
     overflow: hidden;
+    @media screen and (min-width: 280px) and (max-width: 640px) {
+     height:705px;
+    } 
     
     .sun {
       background-color: $sun-color;
@@ -386,13 +398,19 @@ p.intro-text {
       position: absolute;
       top: 122px;
       left: 30%;
+      @media screen and (min-width: 280px) and (max-width: 480px) {
+        display: none;
+      } 
+      @media screen and (min-width: 480px) and (max-width: 920px) {
+        left: 46.5%;
+      } 
     }
 
     .snow-mound-with-trees {
       background: url(/assets/img/mound_with_trees_desktop.svg) top center no-repeat;
       width:100%;
       position: absolute;
-      top: 505px;
+      top: 305px;
       height: 400px;
       left: 50%;
       @include transform(translateX(-50%));
