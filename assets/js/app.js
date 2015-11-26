@@ -560,9 +560,13 @@ Message = Backbone.View.extend({
   footerView: require('./includes/footer'),
   termsModalView: require('./includes/terms-modal'),
   initialize: function() {
-    var $mainAni;
+    var $mainAni, self;
+    self = this;
     this.model = new this.msgModel();
     this.render();
+    $.getJSON('http://api.wipmania.com/jsonp?callback=?', function(data) {
+      return self.country_code = data.address.country_code;
+    });
     $mainAni = $('.santa-present-dance');
     return this.SantaAni = new Animator($mainAni, function() {
       return this.animate();
@@ -594,6 +598,7 @@ Message = Backbone.View.extend({
     var $mainAni, data;
     event.preventDefault();
     data = $(event.currentTarget).serializeObject();
+    data.country_code = this.country_code;
     this.model.set(data);
     this.model.validate();
     if (this.model.isValid()) {

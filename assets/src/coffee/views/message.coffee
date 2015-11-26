@@ -17,8 +17,12 @@ Message = Backbone.View.extend
   termsModalView: require './includes/terms-modal'
 
   initialize: ->
+    self = @
     @.model = new @.msgModel()
     @.render()
+
+    $.getJSON 'http://api.wipmania.com/jsonp?callback=?', (data)->
+      self.country_code = data.address.country_code
 
     $mainAni = $('.santa-present-dance')
     @SantaAni = new Animator $mainAni, ->
@@ -48,6 +52,7 @@ Message = Backbone.View.extend
   submit: (event) ->
     event.preventDefault()
     data = $(event.currentTarget).serializeObject()
+    data.country_code = @.country_code
     @.model.set data
 
     @.model.validate()

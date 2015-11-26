@@ -1,3 +1,13 @@
+Time : 02:42:45
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms) 
+  VALUES(:to_name,:to_email,:from_name,:from_email,:message,:terms)
+
+Time : 02:40:24
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms,country_code) 
+  VALUES(:to_name,:to_email,:from_name,:from_email,:message,:terms,:country_code)
+
 Time : 00:12:17
 SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
 Raw SQL : INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms) 
