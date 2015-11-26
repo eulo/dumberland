@@ -24,13 +24,17 @@
   .present {
     position: absolute;
     cursor: pointer;
-    transform: scale(0.4);
 
     &.active {
 
     }
     
     @for $i from 1 through 20 {
+
+      &-#{$i} {
+        transform: scale((random(100)/1000)+0.3);
+      }
+
       @if $i == 1 {
           &-#{$i} {
           top: 0px;
@@ -131,14 +135,14 @@
       }
       @else if $i == 15 {
         &-#{$i} {
-          top: 150px;
-          left: 35%;
+          top: 105px;
+          left: 42%;
         }
       }
       @else if $i == 16 {
         &-#{$i} {
-          top: 105px;
-          left: 42%;
+          top: 150px;
+          left: 35%;
         }
       }
       @else if $i == 17 {
