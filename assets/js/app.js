@@ -432,13 +432,14 @@ module.exports = Backbone.View.extend({
     'click .btn-twitter': 'twShare'
   },
   fbShare: function() {
+    console.log(hi(im(here)));
     ga('send', 'event', 'Button Clicks', 'facebook.com');
     return FB.ui({
       method: 'share',
       href: 'http://www.dumberland.com/',
       title: 'Dumberland',
       link: 'http://www.dumberland.com/',
-      picture: 'assets/img/fb_share_img.png',
+      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
   },
@@ -588,7 +589,7 @@ Message = Backbone.View.extend({
       href: 'http://www.dumberland.com/',
       title: 'Dumberland',
       link: 'http://www.dumberland.com/',
-      picture: 'assets/img/fb_share_img.png',
+      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
   },

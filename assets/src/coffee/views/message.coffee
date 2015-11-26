@@ -45,7 +45,7 @@ Message = Backbone.View.extend
       href: 'http://www.dumberland.com/',
       title: 'Dumberland',
       link: 'http://www.dumberland.com/',
-      picture: 'assets/img/fb_share_img.png',
+      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     )
   twShare: ->
