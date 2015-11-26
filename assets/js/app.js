@@ -428,11 +428,19 @@ module.exports = Backbone.View.extend({
     return this.render();
   },
   events: {
-    'click .fb_share_button': 'fbShare',
+    'click .fb-share-button': 'fbShare',
     'click .btn-twitter': 'twShare'
   },
   fbShare: function() {
-    return ga('send', 'event', 'Button Clicks', 'facebook.com');
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    return FB.ui({
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
   },
   twShare: function() {
     return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
@@ -565,11 +573,19 @@ Message = Backbone.View.extend({
     'submit form': 'submit',
     'click .message-complete-cont button[data-url]': 'shareLink',
     'click [data-event=reset]': 'initialize',
-    'click .fb_share_button': 'fbShare',
+    'click .fb-share-button': 'fbShare',
     'click .btn-twitter': 'twShare'
   },
   fbShare: function() {
-    return ga('send', 'event', 'Button Clicks', 'facebook.com');
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    return FB.ui({
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
   },
   twShare: function() {
     return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
@@ -768,7 +784,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-6'>\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-xs-6'>\n            <button class='btn btn-twitter btn-block' data-url='Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
+    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-6'>\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-xs-6'>\n            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
 },{"hbsfy/runtime":56}],24:[function(require,module,exports){
