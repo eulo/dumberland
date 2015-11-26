@@ -29,6 +29,13 @@ Message = Backbone.View.extend
     'submit form': 'submit'
     'click .message-complete-cont button[data-url]': 'shareLink'
     'click [data-event=reset]': 'initialize'
+    'click .fb_share_button': 'fbShare'
+    'click .btn-twitter': 'twShare'
+
+  fbShare: ->
+    ga('send','event','Button Clicks','facebook.com')
+  twShare: ->
+    ga('send','tweet','Button Clicks','twitter.com')
 
   submit: (event) ->
     event.preventDefault()

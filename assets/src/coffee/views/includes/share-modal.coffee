@@ -9,5 +9,16 @@ module.exports = Backbone.View.extend
   initialize: (params)->
     @.render()
 
+  events:
+    'click .fb_share_button': 'fbShare'
+    'click .btn-twitter': 'twShare'
+
+  fbShare: ->
+    ga('send','event','Button Clicks','facebook.com')
+  twShare: ->
+    ga('send','tweet','Button Clicks','twitter.com')
+
+
+
   render: ->
     @.$el.html @.template
