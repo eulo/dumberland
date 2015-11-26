@@ -849,7 +849,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-14' data-json='present_shake.json'><div></div></div>\n      <div class='present present-15 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-16' data-json='present_shake.json'><div></div></div>\n      <div class='present present-17 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-18 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-19 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-20 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
+    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>Send a Dumb Christmas surprise.<br>Select a present to start.</p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-14' data-json='present_shake.json'><div></div></div>\n      <div class='present present-15 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-16' data-json='present_shake.json'><div></div></div>\n      <div class='present present-17 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-18 hidden' data-json='present_shake.json'><div></div></div>\n      <div class='present present-19 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-20 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":56}],27:[function(require,module,exports){
@@ -17233,10 +17233,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _handlebarsBase = require('./handlebars/base');
 
+var base = _interopRequireWildcard(_handlebarsBase);
+
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
-
-var base = _interopRequireWildcard(_handlebarsBase);
 
 var _handlebarsSafeString = require('./handlebars/safe-string');
 
@@ -17256,10 +17256,9 @@ var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
 var _handlebarsNoConflict = require('./handlebars/no-conflict');
 
-// For compatibility and usage outside of module systems, make the Handlebars object a namespace
-
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
 function create() {
   var hb = new base.HandlebarsEnvironment();
 
@@ -17311,7 +17310,7 @@ var _logger = require('./logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.4';
+var VERSION = '4.0.5';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -17870,6 +17869,7 @@ exports['default'] = function (Handlebars) {
     if (root.Handlebars === Handlebars) {
       root.Handlebars = $Handlebars;
     }
+    return Handlebars;
   };
 };
 
@@ -18230,10 +18230,10 @@ function extend(obj /* , ...source */) {
 
 var toString = Object.prototype.toString;
 
+exports.toString = toString;
 // Sourced from lodash
 // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
 /* eslint-disable func-style */
-exports.toString = toString;
 var isFunction = function isFunction(value) {
   return typeof value === 'function';
 };
@@ -18253,8 +18253,8 @@ var isArray = Array.isArray || function (value) {
   return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
 };
 
-// Older IE versions do not directly support indexOf so we must implement our own, sadly.
 exports.isArray = isArray;
+// Older IE versions do not directly support indexOf so we must implement our own, sadly.
 
 function indexOf(array, value) {
   for (var i = 0, len = array.length; i < len; i++) {
