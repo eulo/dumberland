@@ -4,8 +4,11 @@
   position: relative;
   margin: 40px auto 0;
 
-  @media screen and (min-width: 280px) and (max-width: 640px) {
+  @media screen and (min-width: 280px) and (max-width: 1200px) {
      top: -150px;
+  } 
+
+  @media screen and (min-width: 280px) and (max-width: 640px) {
      left: -40px;
   } 
 
@@ -26,10 +29,13 @@
     margin-left: 15%;  
   }
   
-  @media screen and (min-width: 280px) and (max-width: 640px) {
+  @media screen and (min-width: 280px) and (max-width: 1200px) {
      top: -150px;
+  }
+
+  @media screen and (min-width: 280px) and (max-width: 480px) {
      left: -20px;
-  } 
+  }  
 
 
   .present {
