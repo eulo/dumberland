@@ -16,6 +16,8 @@ Message = Backbone.View.extend
   footerView: require './includes/footer'
   termsModalView: require './includes/terms-modal'
 
+  country_code: 'none'
+
   initialize: ->
     self = @
     @.model = new @.msgModel()
