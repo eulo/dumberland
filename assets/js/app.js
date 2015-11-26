@@ -52,16 +52,24 @@ module.exports = Animator = (function() {
   Animator.prototype.onLoad = null;
 
   function Animator($cont, onLoad) {
-    var self;
+    var img, self;
     self = this;
     this.$cont = $cont;
     this.$ani = $cont.find('div');
     this.bg = this.$ani.css('background-position');
     this.onLoad = onLoad;
+    img = this.$ani.css('background-image');
+    img = img.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
     $.ajax({
-      url: '/assets/paths/' + $cont.data('json'),
-      success: this.setup,
-      context: this
+      url: img,
+      context: this,
+      success: function() {
+        return $.ajax({
+          url: '/assets/paths/' + $cont.data('json'),
+          success: this.setup,
+          context: this
+        });
+      }
     });
   }
 

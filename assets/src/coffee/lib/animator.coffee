@@ -13,10 +13,19 @@ module.exports = class Animator
     @bg = @$ani.css 'background-position'
     @onLoad = onLoad
 
+    img = @$ani.css('background-image')
+    img = img.match(/\((.*?)\)/)[1].replace(/('|")/g,'')
+
     $.ajax
-      url: '/assets/paths/' + $cont.data('json')
-      success: @setup
+      url: img
       context: @
+      success: ->
+        $.ajax
+          url: '/assets/paths/' + $cont.data('json')
+          success: @setup
+          context: @
+
+
 
   setup: (res) ->
     @json = res
