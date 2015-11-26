@@ -1,31 +1,3 @@
-<div id="fb-root"></div>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '894257343963270',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-      $('.fb-share-button').click(function(e){
-        console.log('something');
-        FB.ui({
-          method: 'share',
-          href: 'http://www.dumberland.com/',
-          title: 'Dumberland',
-          link: 'http://www.dumberland.com/',
-          picture: 'assets/img/fb_share_img.png',
-          description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-        });
-      });
-    };
-    (function() {
-      var e = document.createElement('script'); e.async = true;
-      e.src = document.location.protocol +
-      '//connect.facebook.net/en_US/all.js';
-      document.getElementById('fb-root').appendChild(e);
-    }());
-</script>
-
 <p class='intro-text'>{{to_name}}'s Dumb Present has been sent.</p>
 
 <div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>
@@ -55,12 +27,3 @@
   </div>
   <div class='col-md-4'>&nbsp;</div>  
 </div>
-
-<script>
-  $('.fb-share-button').click(function() {
-    ga('send','event','Button Clicks','facebook.com');
-  });
-  $('.btn-twitter').click(function() {
-    ga('send','tweet','Button Clicks','twitter.com');
-  });
-</script>

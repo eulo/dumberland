@@ -16,9 +16,15 @@ Message = Backbone.View.extend
   footerView: require './includes/footer'
   termsModalView: require './includes/terms-modal'
 
+  country_code: 'none'
+
   initialize: ->
+    self = @
     @.model = new @.msgModel()
     @.render()
+
+    $.getJSON 'http://api.wipmania.com/jsonp?callback=?', (data)->
+      self.country_code = data.address.country_code
 
     $mainAni = $('.santa-present-dance')
     @SantaAni = new Animator $mainAni, ->
@@ -29,10 +35,26 @@ Message = Backbone.View.extend
     'submit form': 'submit'
     'click .message-complete-cont button[data-url]': 'shareLink'
     'click [data-event=reset]': 'initialize'
+    'click .fb-share-button': 'fbShare'
+    'click .btn-twitter': 'twShare'
+
+  fbShare: ->
+    ga('send','event','Button Clicks','facebook.com')
+    FB.ui(
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    )
+  twShare: ->
+    ga('send','tweet','Button Clicks','twitter.com')
 
   submit: (event) ->
     event.preventDefault()
     data = $(event.currentTarget).serializeObject()
+    data.country_code = @.country_code
     @.model.set data
 
     @.model.validate()

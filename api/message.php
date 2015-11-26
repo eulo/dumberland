@@ -26,8 +26,8 @@ if (count($result) > 1 && false) {
 }
 // Insert
 $insert = $db->query("
-  INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms) 
-  VALUES(:to_name,:to_email,:from_name,:from_email,:message,:terms)", 
+  INSERT INTO messages(to_name,to_email,from_name,from_email,message,terms,country_code) 
+  VALUES(:to_name,:to_email,:from_name,:from_email,:message,:terms,:country_code)", 
 $data);
 
 // Create hash and save it
@@ -53,7 +53,8 @@ if ($update > 0) {
 
     $merge_vars = array();
 
-    if ($prize_won = false ) {
+    // $data['country_code'] == 'AU'
+    if ($prize_won = false) {
       $template_name = 'with_prize';
       $merge_vars[] = array(
         'name' => 'prize_coupon',
@@ -100,7 +101,7 @@ if ($update > 0) {
 
 echo json_encode(array(
   'success' => ($update > 0),
-  'hash' => $hash 
+  'hash' => $data['hash']
 ));
 
 die;

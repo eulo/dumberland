@@ -43,24 +43,15 @@ Thank = Backbone.View.extend
     @.model.set data
     @.model.save()
 
-    @.$el.find('.message-content').replaceWith @.successTmpl @.modal
-
-    $mainAni = $('.santa-nopres-dance')
-    @SantaAni.stop()
-    @SantaAni = new Animator $mainAni, ->
-      @animate()
+    @.$el.find('.message-content').replaceWith @.successTmpl @.model.attributes
 
   render: (res)->
     if !res.models.length
       Backbone.history.navigate '', true
       return
-    @.modal = res.models[0]
-    @.$el.html @.template res.model.attributes
+    @.model = res.models[0]
+    @.$el.html @.template @.model.attributes
     Header = new @.headerView()
     Footer = new @.footerView()
-
-    $mainAni = $('.santa-nopres-dance')
-    @SantaAni = new Animator $mainAni, ->
-      @animate()
 
 module.exports = new Thank

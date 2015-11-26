@@ -14097,6 +14097,20 @@ p.intro-text {
   margin: -40px auto;
 }
 
+#present-modal .modal-dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+#present-modal .modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+#present-modal .modal-body {
+  padding: 15px 0;
+}
+
 #thank h2 {
   color: #FAF9F2;
   text-align: center;
@@ -14106,8 +14120,13 @@ p.intro-text {
 #thank .santa-nopres-dance {
   margin: -40px auto;
 }
-#thank .message-complete-cont .santa-nopres-dance {
-  margin: 30px auto 0;
+#thank img.santa-on-pole {
+  width: 95px;
+  margin: 130px auto 0;
+  display: block;
+}
+#thank .message-complete-cont img.santa-on-pole {
+  margin: 150px auto 30px;
 }
 #thank form {
   margin: 0px 0 100px;
