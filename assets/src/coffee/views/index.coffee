@@ -36,9 +36,9 @@ Index = Backbone.View.extend
     ga 'send','event','Button Clicks','facebook.com'
     FB.ui
       method: 'share',
-      href: 'http://www.dumberland.com/',
+      href: 'http://dumberland.com/',
       title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
+      link: 'http://dumberland.com/',
       picture: 'assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
 

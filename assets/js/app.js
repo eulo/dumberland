@@ -425,26 +425,7 @@ module.exports = Backbone.View.extend({
   el: '#modal',
   template: require('../../../tmpl/components/share-modal.hbs'),
   initialize: function(params) {
-    this.render();
-    return log('???');
-  },
-  events: {
-    'click .fb-share-button': 'fbShare',
-    'click .btn-twitter': 'twShare'
-  },
-  fbShare: function() {
-    ga('send', 'event', 'Button Clicks', 'facebook.com');
-    return FB.ui({
-      method: 'share',
-      href: 'http://www.dumberland.com/',
-      title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
-      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
-      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-    });
-  },
-  twShare: function() {
-    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
+    return this.render();
   },
   render: function() {
     return this.$el.html(this.template);
@@ -511,9 +492,9 @@ Index = Backbone.View.extend({
     ga('send', 'event', 'Button Clicks', 'facebook.com');
     return FB.ui({
       method: 'share',
-      href: 'http://www.dumberland.com/',
+      href: 'http://dumberland.com/',
       title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
+      link: 'http://dumberland.com/',
       picture: 'assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
@@ -602,9 +583,9 @@ Message = Backbone.View.extend({
     ga('send', 'event', 'Button Clicks', 'facebook.com');
     return FB.ui({
       method: 'share',
-      href: 'http://www.dumberland.com/',
+      href: 'http://dumberland.com/',
       title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
+      link: 'http://dumberland.com/',
       picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
@@ -685,9 +666,9 @@ Present = Backbone.View.extend({
     ga('send', 'event', 'Button Clicks', 'facebook.com');
     return FB.ui({
       method: 'share',
-      href: 'http://www.dumberland.com/',
+      href: 'http://dumberland.com/',
       title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
+      link: 'http://dumberland.com/',
       picture: 'assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
@@ -759,9 +740,9 @@ Thank = Backbone.View.extend({
     ga('send', 'event', 'Button Clicks', 'facebook.com');
     return FB.ui({
       method: 'share',
-      href: 'http://www.dumberland.com/',
+      href: 'http://dumberland.com/',
       title: 'Dumberland',
-      link: 'http://www.dumberland.com/',
+      link: 'http://dumberland.com/',
       picture: 'assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
