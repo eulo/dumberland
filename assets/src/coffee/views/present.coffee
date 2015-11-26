@@ -30,8 +30,8 @@ Present = Backbone.View.extend
 
     $('#present-modal').modal('show')
 
-    $this.text 'Back'
-    $this.attr 'data-event', 'back'
+    #$this.text 'Back'
+    #$this.attr 'data-event', 'back'
 
   back: (event)->
     Backbone.history.navigate 'message', true

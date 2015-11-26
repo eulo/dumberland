@@ -8,13 +8,13 @@ module.exports = Backbone.View.extend
 
   initialize: (params)->
     @.render()
+    log '???'
 
   events:
     'click .fb-share-button': 'fbShare'
     'click .btn-twitter': 'twShare'
 
   fbShare: ->
-    console.log(hi im here)
     ga('send','event','Button Clicks','facebook.com')
     FB.ui(
       method: 'share',

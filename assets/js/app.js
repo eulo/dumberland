@@ -425,7 +425,8 @@ module.exports = Backbone.View.extend({
   el: '#modal',
   template: require('../../../tmpl/components/share-modal.hbs'),
   initialize: function(params) {
-    return this.render();
+    this.render();
+    return log('???');
   },
   events: {
     'click .fb-share-button': 'fbShare',
@@ -438,7 +439,7 @@ module.exports = Backbone.View.extend({
       href: 'http://www.dumberland.com/',
       title: 'Dumberland',
       link: 'http://www.dumberland.com/',
-      picture: 'assets/img/fb_share_img.png',
+      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
   },
@@ -502,7 +503,23 @@ Index = Backbone.View.extend({
     });
   },
   events: {
-    'click .present': 'start'
+    'click .present': 'start',
+    'click .fb-share-button': 'fbShare',
+    'click .btn-twitter': 'twShare'
+  },
+  fbShare: function() {
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    return FB.ui({
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
+  },
+  twShare: function() {
+    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
   },
   start: function(event) {
     var $this, SantaAni;
@@ -588,7 +605,7 @@ Message = Backbone.View.extend({
       href: 'http://www.dumberland.com/',
       title: 'Dumberland',
       link: 'http://www.dumberland.com/',
-      picture: 'assets/img/fb_share_img.png',
+      picture: 'http://dumberland.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
   },
@@ -666,9 +683,7 @@ Present = Backbone.View.extend({
     var $this;
     $this = $(event.currentTarget);
     gfyCollection.init();
-    $('#present-modal').modal('show');
-    $this.text('Back');
-    return $this.attr('data-event', 'back');
+    return $('#present-modal').modal('show');
   },
   back: function(event) {
     return Backbone.history.navigate('message', true);
@@ -720,7 +735,23 @@ Thank = Backbone.View.extend({
   },
   events: {
     'submit form': 'submit',
-    'click [data-event=reset]': 'start'
+    'click [data-event=reset]': 'start',
+    'click .fb-share-button': 'fbShare',
+    'click .btn-twitter': 'twShare'
+  },
+  fbShare: function() {
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    return FB.ui({
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
+  },
+  twShare: function() {
+    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
   },
   start: function() {
     return Backbone.history.navigate('', true);
