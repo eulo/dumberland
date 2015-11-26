@@ -734,6 +734,7 @@ Thank = Backbone.View.extend({
       return;
     }
     this.model.set(data);
+    this.model.url = '/api/thank';
     this.model.save();
     return this.$el.find('.message-content').replaceWith(this.successTmpl(this.model.attributes));
   },
