@@ -22,6 +22,21 @@ Present = Backbone.View.extend
   events:
     'click [data-event=open]': 'open'
     'click [data-event=back]': 'back'
+    'click .fb-share-button': 'fbShare'
+    'click .btn-twitter': 'twShare'
+
+  fbShare: ->
+    ga 'send','event','Button Clicks','facebook.com'
+    FB.ui
+      method: 'share',
+      href: 'http://www.dumberland.com/',
+      title: 'Dumberland',
+      link: 'http://www.dumberland.com/',
+      picture: 'assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+
+  twShare: ->
+    ga 'send','tweet','Button Clicks','twitter.com'
 
   open: (event)->
     $this = $(event.currentTarget)

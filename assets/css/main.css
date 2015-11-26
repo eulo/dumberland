@@ -13747,7 +13747,7 @@ Copyright (c) 2015 Daniel Eden
   cursor: pointer;
 }
 .presents-container .present-1 {
-  transform: scale(0.313);
+  transform: scale(0.349);
 }
 .presents-container .present-1 {
   top: 0px;
@@ -13759,21 +13759,21 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-2 {
-  transform: scale(0.346);
+  transform: scale(0.382);
 }
 .presents-container .present-2 {
   top: -24px;
   left: 16%;
 }
 .presents-container .present-3 {
-  transform: scale(0.366);
+  transform: scale(0.31);
 }
 .presents-container .present-3 {
   top: 32px;
   left: 12%;
 }
 .presents-container .present-4 {
-  transform: scale(0.336);
+  transform: scale(0.339);
 }
 .presents-container .present-4 {
   top: 7px;
@@ -13785,49 +13785,49 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-5 {
-  transform: scale(0.377);
+  transform: scale(0.316);
 }
 .presents-container .present-5 {
   top: 60px;
   left: 30%;
 }
 .presents-container .present-6 {
-  transform: scale(0.369);
+  transform: scale(0.351);
 }
 .presents-container .present-6 {
   top: 0px;
   left: 40%;
 }
 .presents-container .present-7 {
-  transform: scale(0.312);
+  transform: scale(0.364);
 }
 .presents-container .present-7 {
   top: -20px;
   left: 50%;
 }
 .presents-container .present-8 {
-  transform: scale(0.355);
+  transform: scale(0.397);
 }
 .presents-container .present-8 {
   top: -30px;
   left: 60%;
 }
 .presents-container .present-9 {
-  transform: scale(0.328);
+  transform: scale(0.349);
 }
 .presents-container .present-9 {
   top: 25px;
   left: 56%;
 }
 .presents-container .present-10 {
-  transform: scale(0.334);
+  transform: scale(0.354);
 }
 .presents-container .present-10 {
   top: 40px;
   left: 66%;
 }
 .presents-container .present-11 {
-  transform: scale(0.318);
+  transform: scale(0.388);
 }
 .presents-container .present-11 {
   top: 60px;
@@ -13839,21 +13839,21 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-12 {
-  transform: scale(0.38);
+  transform: scale(0.311);
 }
 .presents-container .present-12 {
   top: 21px;
   left: 9%;
 }
 .presents-container .present-13 {
-  transform: scale(0.349);
+  transform: scale(0.32);
 }
 .presents-container .present-13 {
   top: 92px;
   left: 15%;
 }
 .presents-container .present-14 {
-  transform: scale(0.397);
+  transform: scale(0.386);
 }
 .presents-container .present-14 {
   top: 113px;
@@ -13865,42 +13865,42 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-15 {
-  transform: scale(0.329);
+  transform: scale(0.398);
 }
 .presents-container .present-15 {
   top: 105px;
   left: 42%;
 }
 .presents-container .present-16 {
-  transform: scale(0.315);
+  transform: scale(0.377);
 }
 .presents-container .present-16 {
   top: 150px;
   left: 35%;
 }
 .presents-container .present-17 {
-  transform: scale(0.368);
+  transform: scale(0.367);
 }
 .presents-container .present-17 {
   top: 40px;
   left: 47%;
 }
 .presents-container .present-18 {
-  transform: scale(0.324);
+  transform: scale(0.334);
 }
 .presents-container .present-18 {
   top: 52px;
   left: 37%;
 }
 .presents-container .present-19 {
-  transform: scale(0.36);
+  transform: scale(0.351);
 }
 .presents-container .present-19 {
   top: 115px;
   left: 61%;
 }
 .presents-container .present-20 {
-  transform: scale(0.337);
+  transform: scale(0.315);
 }
 .presents-container .present-20 {
   top: 122px;
@@ -13930,7 +13930,7 @@ Copyright (c) 2015 Daniel Eden
   width: 400px;
   height: 400px;
   position: relative;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
 }
 .santa-nopres-dance > div {
   display: inline-block;
