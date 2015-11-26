@@ -14108,7 +14108,14 @@ p.intro-text {
   border-radius: 0;
 }
 #present-modal .modal-body {
-  padding: 15px 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+}
+#present-modal .modal-body button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
 }
 
 #thank h2 {

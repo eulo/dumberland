@@ -54,7 +54,7 @@ if (count($result)) {
       'merge_language' => 'handlebars',
       'global_merge_vars' => $merge_vars,
     );
-    $async = false;
+    $async = true;
     $ip_pool = null;
     $send_at = null;
     $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message, $async, $ip_pool, $send_at);

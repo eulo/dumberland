@@ -41,6 +41,7 @@ Thank = Backbone.View.extend
       return
 
     @.model.set data
+    @.model.url = '/api/thank'
     @.model.save()
 
     @.$el.find('.message-content').replaceWith @.successTmpl @.model.attributes
