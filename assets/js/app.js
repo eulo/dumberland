@@ -666,9 +666,7 @@ Present = Backbone.View.extend({
     var $this;
     $this = $(event.currentTarget);
     gfyCollection.init();
-    $('#present-modal').modal('show');
-    $this.text('Back');
-    return $this.attr('data-event', 'back');
+    return $('#present-modal').modal('show');
   },
   back: function(event) {
     return Backbone.history.navigate('message', true);

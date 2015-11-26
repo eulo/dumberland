@@ -54,11 +54,11 @@ if ($update > 0) {
     $merge_vars = array();
 
     // $data['country_code'] == 'AU'
-    if ($prize_won = false) {
+    if ($prize_won = true) {
       $template_name = 'with_prize';
       $merge_vars[] = array(
         'name' => 'prize_coupon',
-        'content' => ''
+        'content' => 'FAKECODE'
       );
     }
 
