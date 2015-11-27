@@ -135,10 +135,13 @@ module.exports = Animator = (function() {
 },{}],4:[function(require,module,exports){
 _.extend(Backbone.Validation.callbacks, {
   valid: function(view, attr, selector) {
-    var control, group;
+    var control, el, group;
     control = view.$('[' + selector + '=' + attr + ']');
     group = control.parents('.form-group');
-    group.removeClass('has-error');
+    group.removeClass('has-error check-error');
+    el = view.$('[name=' + attr + ']');
+    group.find('.help-block').html('').addClass('hidden');
+    return;
     if (control.data('error-style') === 'tooltip') {
       if (control.data('tooltip')) {
         return control.tooltip('hide');
@@ -153,7 +156,8 @@ _.extend(Backbone.Validation.callbacks, {
     var control, group, position, target;
     control = view.$('[' + selector + '=' + attr + ']');
     group = control.parents('.form-group');
-    group.addClass('has-error');
+    group.addClass('has-error check-error');
+    group.find('.help-block').html(error).removeClass('hidden');
     if (control.data('error-style') === 'tooltip') {
       position = control.data('tooltip-position') || 'right';
       control.tooltip({
@@ -520,7 +524,7 @@ Index = Backbone.View.extend({
       var $pres;
       $pres = $(this);
       return setTimeout(function() {
-        return $pres.addClass('animated bounceOutDownPresent');
+        return $pres.addClass('animated slideOutDown');
       }, 1000 * Math.random());
     });
     SantaAni = this.SantaAni;
@@ -762,7 +766,7 @@ module.exports = new Thank;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class='background'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
+    return "<div class='background animated fadeIn'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],21:[function(require,module,exports){
@@ -787,14 +791,14 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 
   return "<p class='intro-text'>\nTo "
     + container.escapeExpression(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"to_name","hash":{},"data":data}) : helper)))
-    + " with haste,<br>\nYour Dumb Present is on its way.\n</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <a href='/' type='button' class='btn btn-block'>Send another</a>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button class='btn btn-facebook fb-share-button'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>  \n</div>\n";
+    + " with haste,<br>\nYour Dumb Present is on its way.\n</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <a href='/' type='button' class='btn btn-block'>Go again!</a>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button class='btn btn-facebook fb-share-button'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>  \n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],24:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-xs-6'>\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-xs-6'>\n            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n        </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
+    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook'></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter'></i>\n              Twitter\n            </button>\n          </div>\n          <div class=\"col-lg-6 btn-center\" style=\"margin: 3em 0 0 1em;\">\n              <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],25:[function(require,module,exports){
@@ -814,21 +818,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + alias4(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"to_name","hash":{},"data":data}) : helper)))
     + "</h2>\n<p class='intro-text'>Your message has been sent to "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
-    + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <img src='/assets/img/deadSanta.png' alt='Santa is ded' class='santa-on-pole'>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Send Another</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
+    + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <img src='/assets/img/deadSanta.png' alt='Santa is ded' class='santa-on-pole'>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Go again!</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],27:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>\n      Send a friend a Dumb Christmas gift.<br>\n      Select from below for a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-14' data-json='present_shake.json'><div></div></div>\n      <div class='present present-15 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-16' data-json='present_shake.json'><div></div></div>\n      <div class='present present-17 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-18 hidden' data-json='present_shake.json'><div></div></div>\n      <div class='present present-19 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-20 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
+    return "<div id='homepage'>\n  <div class='container animated fadeIn'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n    <p class='intro-text'>\n      Send a friend a Dumb Christmas gift.<br>\n      Select one below to send a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-14' data-json='present_shake.json'><div></div></div>\n      <div class='present present-15 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-16' data-json='present_shake.json'><div></div></div>\n      <div class='present present-17 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-18 hidden' data-json='present_shake.json'><div></div></div>\n      <div class='present present-19 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-20 hidden-xs' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='message'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <p class='intro-text'>Send a Dumb present.</p>\n\n      <div class='santa-present-dance' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n\n        <div class='row'>\n\n          <div class='col-md-6'>\n            <h3>Send gift to</h3>\n            <div class=\"form-group\">\n              <label for=\"to_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"to_name\" id=\"to_name\" placeholder=\"Friends name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"to_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"to_email\" id=\"to_email\" placeholder=\"Friends email\">\n            </div>\n\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n          </div>\n\n          <div class='col-md-6'>\n            <h3>Your details</h3>\n            <div class=\"form-group\">\n              <label for=\"from_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"from_name\" id=\"from_name\" placeholder=\"Your name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"from_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"from_email\" id=\"from_email\" placeholder=\"Your email\">\n            </div>\n            \n            <h3>&nbsp;</h3>\n            <div class=\"form-group\">\n              <div class=\"checkbox\">\n                <input type=\"checkbox\" name='terms' id='terms-checkbox'> \n                \n                <label for='terms-checkbox' class='form-control'>\n                  <span></span>I agree to the <a data-event='terms-button' href='#'>terms &amp; conditions</a>\n                </label>\n              </div>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n        </div>\n        \n      </form>\n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
+    return "<div id='message'>\n  <div class='container animated fadeIn'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <p class='intro-text'>Send a Dumb present.</p>\n\n      <div class='santa-present-dance' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n\n        <div class='row'>\n\n          <div class='col-md-6'>\n            <h3>Send gift to</h3>\n            <div class=\"form-group\">\n              <label for=\"to_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"to_name\" id=\"to_name\" placeholder=\"Friends name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"to_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"to_email\" id=\"to_email\" placeholder=\"Friends email\">\n            </div>\n\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n          </div>\n\n          <div class='col-md-6'>\n            <h3>Your details</h3>\n            <div class=\"form-group\">\n              <label for=\"from_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"from_name\" id=\"from_name\" placeholder=\"Your name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"from_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"from_email\" id=\"from_email\" placeholder=\"Your email\">\n            </div>\n            \n            <h3>&nbsp;</h3>\n            <div class=\"form-group\">\n              <div class=\"checkbox\">\n                <input type=\"checkbox\" name='terms' id='terms-checkbox'> \n                \n                <label for='terms-checkbox' class='form-control'>\n                  <span></span>I agree to the <a data-event='terms-button' href='#'>terms &amp; conditions</a>\n                </label>\n              </div>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n        </div>\n        \n      </form>\n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],29:[function(require,module,exports){
@@ -837,7 +841,7 @@ var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div id='present'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <h3>Hey "
+  return "<div id='present'>\n  <div class='container animated fadeIn'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <h3>Hey "
     + alias4(((helper = (helper = helpers.to_name || (depth0 != null ? depth0.to_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"to_name","hash":{},"data":data}) : helper)))
     + "!</h3>\n\n    <p class='intro-text'>\n    Will it scratch? Will it bite?<br>\n    Will it be a bloodcurdling sight?<br>\n    "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
@@ -852,7 +856,7 @@ var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div id='thank'>\n  <div class='container'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <h2>Wanna thank "
+  return "<div id='thank'>\n  <div class='container animated fadeIn'>\n    <div id='header'></div>\n\n    <h1 class='page-title'>Christmas Dumberland</h1>\n\n    <div class='message-content'>\n      <h2>Wanna thank "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
     + "?</h2>\n      <p class='intro-text'>\n      Christmas cheer, explosions and gore,<br>\n      These are just a few things to thank "
     + alias4(((helper = (helper = helpers.from_name || (depth0 != null ? depth0.from_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"from_name","hash":{},"data":data}) : helper)))
@@ -17205,10 +17209,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _handlebarsBase = require('./handlebars/base');
 
+var base = _interopRequireWildcard(_handlebarsBase);
+
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
-
-var base = _interopRequireWildcard(_handlebarsBase);
 
 var _handlebarsSafeString = require('./handlebars/safe-string');
 
@@ -17228,10 +17232,9 @@ var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
 var _handlebarsNoConflict = require('./handlebars/no-conflict');
 
-// For compatibility and usage outside of module systems, make the Handlebars object a namespace
-
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
 function create() {
   var hb = new base.HandlebarsEnvironment();
 
@@ -17283,7 +17286,7 @@ var _logger = require('./logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.0.4';
+var VERSION = '4.0.5';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -17842,6 +17845,7 @@ exports['default'] = function (Handlebars) {
     if (root.Handlebars === Handlebars) {
       root.Handlebars = $Handlebars;
     }
+    return Handlebars;
   };
 };
 
@@ -18202,10 +18206,10 @@ function extend(obj /* , ...source */) {
 
 var toString = Object.prototype.toString;
 
+exports.toString = toString;
 // Sourced from lodash
 // https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
 /* eslint-disable func-style */
-exports.toString = toString;
 var isFunction = function isFunction(value) {
   return typeof value === 'function';
 };
@@ -18225,8 +18229,8 @@ var isArray = Array.isArray || function (value) {
   return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
 };
 
-// Older IE versions do not directly support indexOf so we must implement our own, sadly.
 exports.isArray = isArray;
+// Older IE versions do not directly support indexOf so we must implement our own, sadly.
 
 function indexOf(array, value) {
   for (var i = 0, len = array.length; i < len; i++) {
