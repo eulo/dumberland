@@ -766,7 +766,7 @@ module.exports = new Thank;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class='background animated fadeIn'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
+    return "<div class='background animated fadeIn toll'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],21:[function(require,module,exports){
