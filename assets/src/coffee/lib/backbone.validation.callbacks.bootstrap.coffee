@@ -2,7 +2,10 @@ _.extend Backbone.Validation.callbacks,
   valid: (view, attr, selector) ->
     control = view.$('[' + selector + '=' + attr + ']')
     group = control.parents('.form-group')
-    group.removeClass('has-error')
+    group.removeClass('has-error check-error')
+    el = view.$('[name=' + attr + ']')
+    group.find('.help-block').html('').addClass 'hidden'
+    return
 
     if control.data('error-style') == 'tooltip'
       # CAUTION: calling tooltip('hide') on an uninitialized tooltip
@@ -16,7 +19,8 @@ _.extend Backbone.Validation.callbacks,
   invalid: (view, attr, error, selector) ->
     control = view.$('[' + selector + '=' + attr + ']')
     group = control.parents('.form-group')
-    group.addClass('has-error')
+    group.addClass 'has-error check-error'
+    group.find('.help-block').html(error).removeClass 'hidden'
 
     if control.data('error-style') == 'tooltip'
       position = control.data('tooltip-position') || 'right'
