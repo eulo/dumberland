@@ -145,7 +145,6 @@ h1.page-title {
   background: url(/assets/img/site_title_desktop.png) top center no-repeat;
   /* min-width: 424px; */
   height: 144px;
-  margin-top: 85px;
   max-width: 100%;
   background-size: contain; 
 
@@ -159,7 +158,6 @@ p.intro-text {
   font-family: $sans-serif;
   font-size: 19px;
   text-align: center;
-  margin-top: 40px;
 
   @media screen and (min-width: 280px) and (max-width: 1200px) {
      font-size: 16px;
@@ -413,7 +411,7 @@ p.intro-text {
       width:100%;
       position: absolute;
       top: 305px;
-      height: 400px;
+      height: 100%;
       left: 50%;
       @include transform(translateX(-50%));
       @include transition(top .3s);
