@@ -56,7 +56,6 @@ Index = Backbone.View.extend
     SantaAni = @SantaAni
     setTimeout ->
       SantaAni.stop()
-      SantaAni.fps = 30
       SantaAni.animate 94, SantaAni.frameRef.length - 1, ->
         Backbone.history.navigate 'message', true
     , 400
