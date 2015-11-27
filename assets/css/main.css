@@ -13729,9 +13729,14 @@ Copyright (c) 2015 Daniel Eden
     top: -150px;
   }
 }
-@media screen and (min-width: 280px) and (max-width: 640px) {
+@media screen and (min-width: 280px) and (max-width: 410px) {
   .homepage-animation {
     left: -40px;
+  }
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .homepage-animation {
+    left: -10px;
   }
 }
 .homepage-animation > div {
@@ -13757,9 +13762,29 @@ Copyright (c) 2015 Daniel Eden
     top: -150px;
   }
 }
-@media screen and (min-width: 280px) and (max-width: 480px) {
+@media screen and (min-width: 411px) and (max-width: 640px) and (orientation: landscape) {
   .presents-container {
-    left: -20px;
+    left: 10%;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 920px) and (orientation: landscape) {
+  .presents-container {
+    left: 0%;
+  }
+}
+@media screen and (min-width: 280px) and (max-width: 350px) and (orientation: portrait) {
+  .presents-container {
+    left: -30px;
+  }
+}
+@media screen and (min-width: 351px) and (max-width: 410px) and (orientation: portrait) {
+  .presents-container {
+    left: -10px;
+  }
+}
+@media screen and (min-width: 411px) and (max-width: 640px) and (orientation: portrait) {
+  .presents-container {
+    left: 5px;
   }
 }
 .presents-container .present {
@@ -13767,11 +13792,20 @@ Copyright (c) 2015 Daniel Eden
   cursor: pointer;
 }
 .presents-container .present-1 {
-  transform: scale(0.346);
-  -ms-transform: scale(0.384);
+  transform: scale(0.347);
+  -ms-transform: scale(0.326);
   /* IE 9 */
-  -webkit-transform: scale(0.381);
+  -webkit-transform: scale(0.306);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-1 {
+    transform: scale(0.469);
+    -ms-transform: scale(0.459);
+    /* IE 9 */
+    -webkit-transform: scale(0.406);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-1 {
   top: 0px;
@@ -13783,33 +13817,60 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-2 {
-  transform: scale(0.374);
-  -ms-transform: scale(0.308);
+  transform: scale(0.371);
+  -ms-transform: scale(0.388);
   /* IE 9 */
-  -webkit-transform: scale(0.393);
+  -webkit-transform: scale(0.383);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-2 {
+    transform: scale(0.461);
+    -ms-transform: scale(0.41);
+    /* IE 9 */
+    -webkit-transform: scale(0.486);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-2 {
   top: -24px;
   left: 16%;
 }
 .presents-container .present-3 {
-  transform: scale(0.349);
-  -ms-transform: scale(0.38);
+  transform: scale(0.395);
+  -ms-transform: scale(0.336);
   /* IE 9 */
-  -webkit-transform: scale(0.345);
+  -webkit-transform: scale(0.358);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-3 {
+    transform: scale(0.467);
+    -ms-transform: scale(0.453);
+    /* IE 9 */
+    -webkit-transform: scale(0.41);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-3 {
   top: 32px;
   left: 12%;
 }
 .presents-container .present-4 {
-  transform: scale(0.324);
-  -ms-transform: scale(0.38);
+  transform: scale(0.321);
+  -ms-transform: scale(0.315);
   /* IE 9 */
-  -webkit-transform: scale(0.327);
+  -webkit-transform: scale(0.386);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-4 {
+    transform: scale(0.424);
+    -ms-transform: scale(0.499);
+    /* IE 9 */
+    -webkit-transform: scale(0.46);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-4 {
   top: 7px;
@@ -13821,77 +13882,140 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-5 {
-  transform: scale(0.384);
-  -ms-transform: scale(0.331);
+  transform: scale(0.305);
+  -ms-transform: scale(0.341);
   /* IE 9 */
-  -webkit-transform: scale(0.308);
+  -webkit-transform: scale(0.312);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-5 {
+    transform: scale(0.471);
+    -ms-transform: scale(0.494);
+    /* IE 9 */
+    -webkit-transform: scale(0.408);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-5 {
   top: 60px;
   left: 30%;
 }
 .presents-container .present-6 {
-  transform: scale(0.318);
-  -ms-transform: scale(0.361);
+  transform: scale(0.322);
+  -ms-transform: scale(0.359);
   /* IE 9 */
-  -webkit-transform: scale(0.324);
+  -webkit-transform: scale(0.333);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-6 {
+    transform: scale(0.468);
+    -ms-transform: scale(0.461);
+    /* IE 9 */
+    -webkit-transform: scale(0.489);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-6 {
   top: 0px;
   left: 40%;
 }
 .presents-container .present-7 {
-  transform: scale(0.325);
-  -ms-transform: scale(0.324);
+  transform: scale(0.303);
+  -ms-transform: scale(0.335);
   /* IE 9 */
-  -webkit-transform: scale(0.331);
+  -webkit-transform: scale(0.322);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-7 {
+    transform: scale(0.447);
+    -ms-transform: scale(0.459);
+    /* IE 9 */
+    -webkit-transform: scale(0.419);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-7 {
   top: -20px;
   left: 50%;
 }
 .presents-container .present-8 {
-  transform: scale(0.349);
-  -ms-transform: scale(0.354);
+  transform: scale(0.336);
+  -ms-transform: scale(0.329);
   /* IE 9 */
-  -webkit-transform: scale(0.306);
+  -webkit-transform: scale(0.323);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-8 {
+    transform: scale(0.413);
+    -ms-transform: scale(0.457);
+    /* IE 9 */
+    -webkit-transform: scale(0.467);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-8 {
   top: -30px;
   left: 60%;
 }
 .presents-container .present-9 {
-  transform: scale(0.345);
-  -ms-transform: scale(0.392);
+  transform: scale(0.332);
+  -ms-transform: scale(0.381);
   /* IE 9 */
-  -webkit-transform: scale(0.396);
+  -webkit-transform: scale(0.327);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-9 {
+    transform: scale(0.498);
+    -ms-transform: scale(0.452);
+    /* IE 9 */
+    -webkit-transform: scale(0.41);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-9 {
   top: 25px;
   left: 56%;
 }
 .presents-container .present-10 {
-  transform: scale(0.316);
-  -ms-transform: scale(0.354);
+  transform: scale(0.391);
+  -ms-transform: scale(0.393);
   /* IE 9 */
-  -webkit-transform: scale(0.384);
+  -webkit-transform: scale(0.381);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-10 {
+    transform: scale(0.425);
+    -ms-transform: scale(0.454);
+    /* IE 9 */
+    -webkit-transform: scale(0.43);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-10 {
   top: 40px;
   left: 66%;
 }
 .presents-container .present-11 {
-  transform: scale(0.351);
+  transform: scale(0.354);
   -ms-transform: scale(0.349);
   /* IE 9 */
-  -webkit-transform: scale(0.322);
+  -webkit-transform: scale(0.338);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-11 {
+    transform: scale(0.461);
+    -ms-transform: scale(0.462);
+    /* IE 9 */
+    -webkit-transform: scale(0.452);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-11 {
   top: 60px;
@@ -13903,33 +14027,60 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-12 {
-  transform: scale(0.357);
-  -ms-transform: scale(0.369);
+  transform: scale(0.329);
+  -ms-transform: scale(0.31);
   /* IE 9 */
-  -webkit-transform: scale(0.384);
+  -webkit-transform: scale(0.322);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-12 {
+    transform: scale(0.447);
+    -ms-transform: scale(0.458);
+    /* IE 9 */
+    -webkit-transform: scale(0.475);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-12 {
   top: 21px;
   left: 9%;
 }
 .presents-container .present-13 {
-  transform: scale(0.397);
-  -ms-transform: scale(0.381);
+  transform: scale(0.327);
+  -ms-transform: scale(0.312);
   /* IE 9 */
-  -webkit-transform: scale(0.353);
+  -webkit-transform: scale(0.346);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-13 {
+    transform: scale(0.497);
+    -ms-transform: scale(0.456);
+    /* IE 9 */
+    -webkit-transform: scale(0.454);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-13 {
   top: 92px;
   left: 15%;
 }
 .presents-container .present-14 {
-  transform: scale(0.397);
-  -ms-transform: scale(0.389);
+  transform: scale(0.38);
+  -ms-transform: scale(0.377);
   /* IE 9 */
-  -webkit-transform: scale(0.361);
+  -webkit-transform: scale(0.348);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-14 {
+    transform: scale(0.432);
+    -ms-transform: scale(0.498);
+    /* IE 9 */
+    -webkit-transform: scale(0.442);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-14 {
   top: 113px;
@@ -13941,66 +14092,120 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-15 {
-  transform: scale(0.31);
-  -ms-transform: scale(0.372);
+  transform: scale(0.396);
+  -ms-transform: scale(0.361);
   /* IE 9 */
-  -webkit-transform: scale(0.314);
+  -webkit-transform: scale(0.376);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-15 {
+    transform: scale(0.465);
+    -ms-transform: scale(0.452);
+    /* IE 9 */
+    -webkit-transform: scale(0.402);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-15 {
   top: 105px;
   left: 42%;
 }
 .presents-container .present-16 {
-  transform: scale(0.34);
-  -ms-transform: scale(0.372);
+  transform: scale(0.367);
+  -ms-transform: scale(0.31);
   /* IE 9 */
-  -webkit-transform: scale(0.391);
+  -webkit-transform: scale(0.313);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-16 {
+    transform: scale(0.428);
+    -ms-transform: scale(0.434);
+    /* IE 9 */
+    -webkit-transform: scale(0.417);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-16 {
   top: 150px;
   left: 35%;
 }
 .presents-container .present-17 {
-  transform: scale(0.347);
-  -ms-transform: scale(0.387);
+  transform: scale(0.382);
+  -ms-transform: scale(0.368);
   /* IE 9 */
-  -webkit-transform: scale(0.335);
+  -webkit-transform: scale(0.344);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-17 {
+    transform: scale(0.471);
+    -ms-transform: scale(0.418);
+    /* IE 9 */
+    -webkit-transform: scale(0.454);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-17 {
   top: 40px;
   left: 47%;
 }
 .presents-container .present-18 {
-  transform: scale(0.314);
-  -ms-transform: scale(0.308);
+  transform: scale(0.399);
+  -ms-transform: scale(0.386);
   /* IE 9 */
-  -webkit-transform: scale(0.38);
+  -webkit-transform: scale(0.356);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-18 {
+    transform: scale(0.429);
+    -ms-transform: scale(0.466);
+    /* IE 9 */
+    -webkit-transform: scale(0.428);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-18 {
   top: 52px;
   left: 37%;
 }
 .presents-container .present-19 {
-  transform: scale(0.322);
-  -ms-transform: scale(0.368);
+  transform: scale(0.397);
+  -ms-transform: scale(0.314);
   /* IE 9 */
-  -webkit-transform: scale(0.392);
+  -webkit-transform: scale(0.384);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-19 {
+    transform: scale(0.467);
+    -ms-transform: scale(0.469);
+    /* IE 9 */
+    -webkit-transform: scale(0.403);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-19 {
   top: 115px;
   left: 61%;
 }
 .presents-container .present-20 {
-  transform: scale(0.318);
-  -ms-transform: scale(0.382);
+  transform: scale(0.378);
+  -ms-transform: scale(0.346);
   /* IE 9 */
-  -webkit-transform: scale(0.308);
+  -webkit-transform: scale(0.364);
   /* Chrome and Safari */
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
+  .presents-container .present-20 {
+    transform: scale(0.412);
+    -ms-transform: scale(0.426);
+    /* IE 9 */
+    -webkit-transform: scale(0.456);
+    /* Chrome and Safari */
+  }
 }
 .presents-container .present-20 {
   top: 122px;
@@ -14351,9 +14556,9 @@ p.intro-text {
     display: none;
   }
 }
-@media screen and (min-width: 480px) and (max-width: 1200px) {
+@media screen and (min-width: 751px) and (max-width: 1200px) {
   .background .sky .sun {
-    left: 46.5%;
+    left: 16.5%;
   }
 }
 .background .sky .snow-mound-with-trees {
