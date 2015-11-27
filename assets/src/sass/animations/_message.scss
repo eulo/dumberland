@@ -2,11 +2,7 @@
   width: 400px;
   height: 400px;
   position: relative;
-  margin: 40px auto 0;
-
-  @media screen and (min-width: 280px) and (max-width: 1200px) {
-    margin-top:-90px;
-  } 
+  margin: -90px auto 0;
 
   @media screen and (min-width: 280px) and (max-width: 410px) {
     margin-left: -10%;
