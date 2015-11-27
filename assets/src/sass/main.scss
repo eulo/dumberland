@@ -145,6 +145,18 @@ h1,h2,h3,h4,h5,h6,p,label,select,input,span,textarea,button,a {
     }
   } 
 }
+a.page-title {
+  text-indent: -9999px;
+  background: url(/assets/img/site_title_desktop.png) top center no-repeat;
+  /* min-width: 424px; */
+  height: 144px;
+  max-width: 100%;
+  background-size: contain; 
+
+  @media screen and (min-width: 280px) and (max-width: 1200px) {
+     margin-top: 40px;
+  } 
+}
 
 h1.page-title {
   text-indent: -9999px;
