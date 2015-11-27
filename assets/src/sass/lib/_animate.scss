@@ -1259,7 +1259,7 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeIn;
 }
 
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes fadeInDownPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -1273,7 +1273,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
-@keyframes fadeInDown {
+@keyframes fadeInDownPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -1287,9 +1287,9 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+.fadeInDownPresent {
+  -webkit-animation-name: fadeInDownPresent;
+  animation-name: fadeInDownPresent;
 }
 
 @-webkit-keyframes fadeInDownBig {
@@ -1457,7 +1457,7 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeInRightBig;
 }
 
-@-webkit-keyframes fadeInUp {
+@-webkit-keyframes fadeInUpPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -1471,7 +1471,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInUpPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -1485,7 +1485,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
-.fadeInUp {
+.fadeInUpPresent {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
@@ -1548,33 +1548,35 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeOut;
 }
 
-@-webkit-keyframes fadeOutDown {
+@-webkit-keyframes fadeOutDownPresent {
   from {
     opacity: 1;
+    z-index: 1;
   }
 
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    z-index: -1;
+    margin-top:600px;
   }
 }
 
-@keyframes fadeOutDown {
+@keyframes fadeOutDownPresent {
   from {
     opacity: 1;
+    z-index: 1;
   }
 
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    z-index: -1;
+    top: 70px;
   }
 }
 
-.fadeOutDown {
-  -webkit-animation-name: fadeOutDown;
-  animation-name: fadeOutDown;
+.fadeOutDownPresent {
+  -webkit-animation-name: fadeOutDownPresent;
+  animation-name: fadeOutDownPresent;
 }
 
 @-webkit-keyframes fadeOutDownBig {
@@ -3235,28 +3237,29 @@ Copyright (c) 2015 Daniel Eden
 }
 
 @-webkit-keyframes slideOutDown {
+  
   from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) scale(0.4);
+    transform: translate3d(0, 0, 0) scale(0.4);
   }
 
   to {
     visibility: hidden;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0) scale(0.4);
+    transform: translate3d(0, 100%, 0) scale(0.4);
   }
 }
 
 @keyframes slideOutDown {
   from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) scale(0.4);
+    transform: translate3d(0, 0, 0) scale(0.4);
   }
 
   to {
     visibility: hidden;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0) scale(0.4);
+    transform: translate3d(0, 100%, 0) scale(0.4);
   }
 }
 

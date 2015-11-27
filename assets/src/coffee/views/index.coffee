@@ -45,16 +45,18 @@ Index = Backbone.View.extend
     @flag = true
 
     $this.addClass 'active animated bounceOutUpPresent'
+    
 
     $('.present:not(.active)').each ->
       $pres = $(this)
       setTimeout ->
-        $pres.addClass 'animated bounceOutDownPresent'
+        $pres.addClass 'animated slideOutDown'
       , 1000 * Math.random()
 
     SantaAni = @SantaAni
     setTimeout ->
       SantaAni.stop()
+      SantaAni.fps = 30
       SantaAni.animate 94, SantaAni.frameRef.length - 1, ->
         Backbone.history.navigate 'message', true
     , 400

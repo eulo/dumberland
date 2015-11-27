@@ -73,9 +73,9 @@
         -ms-transform: scale((random(100)/1000)+0.3); /* IE 9 */
         -webkit-transform: scale((random(100)/1000)+0.3); /* Chrome and Safari */
         @media screen and (min-width: 411px) and (max-width: 640px) {
-           transform: scale((random(100)/1000)+0.4);
-          -ms-transform: scale((random(100)/1000)+0.4); /* IE 9 */
-          -webkit-transform: scale((random(100)/1000)+0.4); /* Chrome and Safari */
+           transform: scale((random(100)/1000)+0.3);
+          -ms-transform: scale((random(100)/1000)+0.3); /* IE 9 */
+          -webkit-transform: scale((random(100)/1000)+0.3); /* Chrome and Safari */
         }
       }
 

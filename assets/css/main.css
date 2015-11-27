@@ -11873,7 +11873,7 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeIn;
 }
 
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes fadeInDownPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -11885,7 +11885,7 @@ Copyright (c) 2015 Daniel Eden
     transform: none;
   }
 }
-@keyframes fadeInDown {
+@keyframes fadeInDownPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -11897,9 +11897,9 @@ Copyright (c) 2015 Daniel Eden
     transform: none;
   }
 }
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+.fadeInDownPresent {
+  -webkit-animation-name: fadeInDownPresent;
+  animation-name: fadeInDownPresent;
 }
 
 @-webkit-keyframes fadeInDownBig {
@@ -12047,7 +12047,7 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeInRightBig;
 }
 
-@-webkit-keyframes fadeInUp {
+@-webkit-keyframes fadeInUpPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -12059,7 +12059,7 @@ Copyright (c) 2015 Daniel Eden
     transform: none;
   }
 }
-@keyframes fadeInUp {
+@keyframes fadeInUpPresent {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -12071,7 +12071,7 @@ Copyright (c) 2015 Daniel Eden
     transform: none;
   }
 }
-.fadeInUp {
+.fadeInUpPresent {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
@@ -12126,29 +12126,31 @@ Copyright (c) 2015 Daniel Eden
   animation-name: fadeOut;
 }
 
-@-webkit-keyframes fadeOutDown {
+@-webkit-keyframes fadeOutDownPresent {
   from {
     opacity: 1;
+    z-index: 1;
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    z-index: -1;
+    margin-top: 600px;
   }
 }
-@keyframes fadeOutDown {
+@keyframes fadeOutDownPresent {
   from {
     opacity: 1;
+    z-index: 1;
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    z-index: -1;
+    top: 70px;
   }
 }
-.fadeOutDown {
-  -webkit-animation-name: fadeOutDown;
-  animation-name: fadeOutDown;
+.fadeOutDownPresent {
+  -webkit-animation-name: fadeOutDownPresent;
+  animation-name: fadeOutDownPresent;
 }
 
 @-webkit-keyframes fadeOutDownBig {
@@ -13612,24 +13614,24 @@ Copyright (c) 2015 Daniel Eden
 
 @-webkit-keyframes slideOutDown {
   from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) scale(0.4);
+    transform: translate3d(0, 0, 0) scale(0.4);
   }
   to {
     visibility: hidden;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0) scale(0.4);
+    transform: translate3d(0, 100%, 0) scale(0.4);
   }
 }
 @keyframes slideOutDown {
   from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) scale(0.4);
+    transform: translate3d(0, 0, 0) scale(0.4);
   }
   to {
     visibility: hidden;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0) scale(0.4);
+    transform: translate3d(0, 100%, 0) scale(0.4);
   }
 }
 .slideOutDown {
@@ -13792,18 +13794,18 @@ Copyright (c) 2015 Daniel Eden
   cursor: pointer;
 }
 .presents-container .present-1 {
-  transform: scale(0.347);
-  -ms-transform: scale(0.326);
+  transform: scale(0.319);
+  -ms-transform: scale(0.352);
   /* IE 9 */
-  -webkit-transform: scale(0.306);
+  -webkit-transform: scale(0.325);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-1 {
-    transform: scale(0.469);
-    -ms-transform: scale(0.459);
+    transform: scale(0.352);
+    -ms-transform: scale(0.321);
     /* IE 9 */
-    -webkit-transform: scale(0.406);
+    -webkit-transform: scale(0.382);
     /* Chrome and Safari */
   }
 }
@@ -13817,18 +13819,18 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-2 {
-  transform: scale(0.371);
-  -ms-transform: scale(0.388);
+  transform: scale(0.367);
+  -ms-transform: scale(0.4);
   /* IE 9 */
-  -webkit-transform: scale(0.383);
+  -webkit-transform: scale(0.381);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-2 {
-    transform: scale(0.461);
-    -ms-transform: scale(0.41);
+    transform: scale(0.38);
+    -ms-transform: scale(0.349);
     /* IE 9 */
-    -webkit-transform: scale(0.486);
+    -webkit-transform: scale(0.395);
     /* Chrome and Safari */
   }
 }
@@ -13837,18 +13839,18 @@ Copyright (c) 2015 Daniel Eden
   left: 16%;
 }
 .presents-container .present-3 {
-  transform: scale(0.395);
-  -ms-transform: scale(0.336);
+  transform: scale(0.376);
+  -ms-transform: scale(0.342);
   /* IE 9 */
-  -webkit-transform: scale(0.358);
+  -webkit-transform: scale(0.384);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-3 {
-    transform: scale(0.467);
-    -ms-transform: scale(0.453);
+    transform: scale(0.318);
+    -ms-transform: scale(0.332);
     /* IE 9 */
-    -webkit-transform: scale(0.41);
+    -webkit-transform: scale(0.375);
     /* Chrome and Safari */
   }
 }
@@ -13857,18 +13859,18 @@ Copyright (c) 2015 Daniel Eden
   left: 12%;
 }
 .presents-container .present-4 {
-  transform: scale(0.321);
-  -ms-transform: scale(0.315);
+  transform: scale(0.311);
+  -ms-transform: scale(0.331);
   /* IE 9 */
-  -webkit-transform: scale(0.386);
+  -webkit-transform: scale(0.34);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-4 {
-    transform: scale(0.424);
-    -ms-transform: scale(0.499);
+    transform: scale(0.379);
+    -ms-transform: scale(0.364);
     /* IE 9 */
-    -webkit-transform: scale(0.46);
+    -webkit-transform: scale(0.343);
     /* Chrome and Safari */
   }
 }
@@ -13883,17 +13885,17 @@ Copyright (c) 2015 Daniel Eden
 }
 .presents-container .present-5 {
   transform: scale(0.305);
-  -ms-transform: scale(0.341);
+  -ms-transform: scale(0.327);
   /* IE 9 */
-  -webkit-transform: scale(0.312);
+  -webkit-transform: scale(0.392);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-5 {
-    transform: scale(0.471);
-    -ms-transform: scale(0.494);
+    transform: scale(0.365);
+    -ms-transform: scale(0.324);
     /* IE 9 */
-    -webkit-transform: scale(0.408);
+    -webkit-transform: scale(0.309);
     /* Chrome and Safari */
   }
 }
@@ -13902,18 +13904,18 @@ Copyright (c) 2015 Daniel Eden
   left: 30%;
 }
 .presents-container .present-6 {
-  transform: scale(0.322);
-  -ms-transform: scale(0.359);
+  transform: scale(0.381);
+  -ms-transform: scale(0.376);
   /* IE 9 */
-  -webkit-transform: scale(0.333);
+  -webkit-transform: scale(0.304);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-6 {
-    transform: scale(0.468);
-    -ms-transform: scale(0.461);
+    transform: scale(0.372);
+    -ms-transform: scale(0.341);
     /* IE 9 */
-    -webkit-transform: scale(0.489);
+    -webkit-transform: scale(0.388);
     /* Chrome and Safari */
   }
 }
@@ -13922,18 +13924,18 @@ Copyright (c) 2015 Daniel Eden
   left: 40%;
 }
 .presents-container .present-7 {
-  transform: scale(0.303);
-  -ms-transform: scale(0.335);
+  transform: scale(0.334);
+  -ms-transform: scale(0.353);
   /* IE 9 */
-  -webkit-transform: scale(0.322);
+  -webkit-transform: scale(0.361);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-7 {
-    transform: scale(0.447);
-    -ms-transform: scale(0.459);
+    transform: scale(0.311);
+    -ms-transform: scale(0.366);
     /* IE 9 */
-    -webkit-transform: scale(0.419);
+    -webkit-transform: scale(0.349);
     /* Chrome and Safari */
   }
 }
@@ -13942,18 +13944,18 @@ Copyright (c) 2015 Daniel Eden
   left: 50%;
 }
 .presents-container .present-8 {
-  transform: scale(0.336);
-  -ms-transform: scale(0.329);
+  transform: scale(0.349);
+  -ms-transform: scale(0.376);
   /* IE 9 */
-  -webkit-transform: scale(0.323);
+  -webkit-transform: scale(0.398);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-8 {
-    transform: scale(0.413);
-    -ms-transform: scale(0.457);
+    transform: scale(0.353);
+    -ms-transform: scale(0.323);
     /* IE 9 */
-    -webkit-transform: scale(0.467);
+    -webkit-transform: scale(0.307);
     /* Chrome and Safari */
   }
 }
@@ -13962,18 +13964,18 @@ Copyright (c) 2015 Daniel Eden
   left: 60%;
 }
 .presents-container .present-9 {
-  transform: scale(0.332);
-  -ms-transform: scale(0.381);
+  transform: scale(0.363);
+  -ms-transform: scale(0.376);
   /* IE 9 */
-  -webkit-transform: scale(0.327);
+  -webkit-transform: scale(0.304);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-9 {
-    transform: scale(0.498);
-    -ms-transform: scale(0.452);
+    transform: scale(0.348);
+    -ms-transform: scale(0.363);
     /* IE 9 */
-    -webkit-transform: scale(0.41);
+    -webkit-transform: scale(0.372);
     /* Chrome and Safari */
   }
 }
@@ -13982,18 +13984,18 @@ Copyright (c) 2015 Daniel Eden
   left: 56%;
 }
 .presents-container .present-10 {
-  transform: scale(0.391);
-  -ms-transform: scale(0.393);
+  transform: scale(0.324);
+  -ms-transform: scale(0.381);
   /* IE 9 */
-  -webkit-transform: scale(0.381);
+  -webkit-transform: scale(0.386);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-10 {
-    transform: scale(0.425);
-    -ms-transform: scale(0.454);
+    transform: scale(0.333);
+    -ms-transform: scale(0.357);
     /* IE 9 */
-    -webkit-transform: scale(0.43);
+    -webkit-transform: scale(0.363);
     /* Chrome and Safari */
   }
 }
@@ -14002,18 +14004,18 @@ Copyright (c) 2015 Daniel Eden
   left: 66%;
 }
 .presents-container .present-11 {
-  transform: scale(0.354);
-  -ms-transform: scale(0.349);
+  transform: scale(0.333);
+  -ms-transform: scale(0.303);
   /* IE 9 */
-  -webkit-transform: scale(0.338);
+  -webkit-transform: scale(0.381);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-11 {
-    transform: scale(0.461);
-    -ms-transform: scale(0.462);
+    transform: scale(0.352);
+    -ms-transform: scale(0.341);
     /* IE 9 */
-    -webkit-transform: scale(0.452);
+    -webkit-transform: scale(0.36);
     /* Chrome and Safari */
   }
 }
@@ -14027,18 +14029,18 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-12 {
-  transform: scale(0.329);
-  -ms-transform: scale(0.31);
+  transform: scale(0.313);
+  -ms-transform: scale(0.355);
   /* IE 9 */
-  -webkit-transform: scale(0.322);
+  -webkit-transform: scale(0.376);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-12 {
-    transform: scale(0.447);
-    -ms-transform: scale(0.458);
+    transform: scale(0.379);
+    -ms-transform: scale(0.33);
     /* IE 9 */
-    -webkit-transform: scale(0.475);
+    -webkit-transform: scale(0.4);
     /* Chrome and Safari */
   }
 }
@@ -14047,18 +14049,18 @@ Copyright (c) 2015 Daniel Eden
   left: 9%;
 }
 .presents-container .present-13 {
-  transform: scale(0.327);
-  -ms-transform: scale(0.312);
+  transform: scale(0.377);
+  -ms-transform: scale(0.368);
   /* IE 9 */
-  -webkit-transform: scale(0.346);
+  -webkit-transform: scale(0.318);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-13 {
-    transform: scale(0.497);
-    -ms-transform: scale(0.456);
+    transform: scale(0.38);
+    -ms-transform: scale(0.37);
     /* IE 9 */
-    -webkit-transform: scale(0.454);
+    -webkit-transform: scale(0.33);
     /* Chrome and Safari */
   }
 }
@@ -14067,18 +14069,18 @@ Copyright (c) 2015 Daniel Eden
   left: 15%;
 }
 .presents-container .present-14 {
-  transform: scale(0.38);
-  -ms-transform: scale(0.377);
+  transform: scale(0.387);
+  -ms-transform: scale(0.391);
   /* IE 9 */
-  -webkit-transform: scale(0.348);
+  -webkit-transform: scale(0.378);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-14 {
-    transform: scale(0.432);
-    -ms-transform: scale(0.498);
+    transform: scale(0.394);
+    -ms-transform: scale(0.306);
     /* IE 9 */
-    -webkit-transform: scale(0.442);
+    -webkit-transform: scale(0.359);
     /* Chrome and Safari */
   }
 }
@@ -14092,18 +14094,18 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .presents-container .present-15 {
-  transform: scale(0.396);
-  -ms-transform: scale(0.361);
+  transform: scale(0.353);
+  -ms-transform: scale(0.354);
   /* IE 9 */
-  -webkit-transform: scale(0.376);
+  -webkit-transform: scale(0.361);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-15 {
-    transform: scale(0.465);
-    -ms-transform: scale(0.452);
+    transform: scale(0.309);
+    -ms-transform: scale(0.37);
     /* IE 9 */
-    -webkit-transform: scale(0.402);
+    -webkit-transform: scale(0.316);
     /* Chrome and Safari */
   }
 }
@@ -14112,18 +14114,18 @@ Copyright (c) 2015 Daniel Eden
   left: 42%;
 }
 .presents-container .present-16 {
-  transform: scale(0.367);
-  -ms-transform: scale(0.31);
+  transform: scale(0.344);
+  -ms-transform: scale(0.387);
   /* IE 9 */
-  -webkit-transform: scale(0.313);
+  -webkit-transform: scale(0.352);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-16 {
-    transform: scale(0.428);
-    -ms-transform: scale(0.434);
+    transform: scale(0.392);
+    -ms-transform: scale(0.391);
     /* IE 9 */
-    -webkit-transform: scale(0.417);
+    -webkit-transform: scale(0.364);
     /* Chrome and Safari */
   }
 }
@@ -14132,18 +14134,18 @@ Copyright (c) 2015 Daniel Eden
   left: 35%;
 }
 .presents-container .present-17 {
-  transform: scale(0.382);
-  -ms-transform: scale(0.368);
+  transform: scale(0.375);
+  -ms-transform: scale(0.355);
   /* IE 9 */
-  -webkit-transform: scale(0.344);
+  -webkit-transform: scale(0.39);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-17 {
-    transform: scale(0.471);
-    -ms-transform: scale(0.418);
+    transform: scale(0.328);
+    -ms-transform: scale(0.336);
     /* IE 9 */
-    -webkit-transform: scale(0.454);
+    -webkit-transform: scale(0.315);
     /* Chrome and Safari */
   }
 }
@@ -14152,18 +14154,18 @@ Copyright (c) 2015 Daniel Eden
   left: 47%;
 }
 .presents-container .present-18 {
-  transform: scale(0.399);
-  -ms-transform: scale(0.386);
+  transform: scale(0.393);
+  -ms-transform: scale(0.328);
   /* IE 9 */
-  -webkit-transform: scale(0.356);
+  -webkit-transform: scale(0.368);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-18 {
-    transform: scale(0.429);
-    -ms-transform: scale(0.466);
+    transform: scale(0.369);
+    -ms-transform: scale(0.333);
     /* IE 9 */
-    -webkit-transform: scale(0.428);
+    -webkit-transform: scale(0.363);
     /* Chrome and Safari */
   }
 }
@@ -14172,18 +14174,18 @@ Copyright (c) 2015 Daniel Eden
   left: 37%;
 }
 .presents-container .present-19 {
-  transform: scale(0.397);
-  -ms-transform: scale(0.314);
+  transform: scale(0.317);
+  -ms-transform: scale(0.357);
   /* IE 9 */
-  -webkit-transform: scale(0.384);
+  -webkit-transform: scale(0.4);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-19 {
-    transform: scale(0.467);
-    -ms-transform: scale(0.469);
+    transform: scale(0.322);
+    -ms-transform: scale(0.361);
     /* IE 9 */
-    -webkit-transform: scale(0.403);
+    -webkit-transform: scale(0.325);
     /* Chrome and Safari */
   }
 }
@@ -14192,18 +14194,18 @@ Copyright (c) 2015 Daniel Eden
   left: 61%;
 }
 .presents-container .present-20 {
-  transform: scale(0.378);
-  -ms-transform: scale(0.346);
+  transform: scale(0.356);
+  -ms-transform: scale(0.308);
   /* IE 9 */
-  -webkit-transform: scale(0.364);
+  -webkit-transform: scale(0.397);
   /* Chrome and Safari */
 }
 @media screen and (min-width: 411px) and (max-width: 640px) {
   .presents-container .present-20 {
-    transform: scale(0.412);
-    -ms-transform: scale(0.426);
+    transform: scale(0.335);
+    -ms-transform: scale(0.33);
     /* IE 9 */
-    -webkit-transform: scale(0.456);
+    -webkit-transform: scale(0.329);
     /* Chrome and Safari */
   }
 }
@@ -14223,6 +14225,16 @@ Copyright (c) 2015 Daniel Eden
   height: 400px;
   position: relative;
   margin: 40px auto 0;
+}
+@media screen and (min-width: 280px) and (max-width: 1200px) {
+  .santa-present-dance {
+    margin-top: -90px;
+  }
+}
+@media screen and (min-width: 280px) and (max-width: 410px) {
+  .santa-present-dance {
+    margin-left: -10%;
+  }
 }
 .santa-present-dance > div {
   display: inline-block;
@@ -14441,7 +14453,8 @@ p.intro-text {
 }
 #message form h3 {
   text-align: center;
-  font-size: 19px;
+  font-size: 23px;
+  font-weight: bold;
 }
 #message form .btn-center {
   margin-top: 40px;
