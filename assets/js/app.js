@@ -186,7 +186,7 @@ var PresentURL;
 module.exports = PresentURL = (function() {
   PresentURL.prototype.count = 4;
 
-  PresentURL.prototype.presentURLs = ['http://52.64.226.45/video/10', 'http://52.64.226.45/video/12', 'http://52.64.226.45/video/13', 'http://52.64.226.45/video/14', 'http://52.64.226.45/video/15'];
+  PresentURL.prototype.presentURLs = ['http://localhost/video/10', 'http://localhost/video/12', 'http://localhost/video/13', 'http://localhost/video/14', 'http://localhost/video/15'];
 
   function PresentURL() {
     this.number = Math.floor(Math.random() * (this.count - 0) + 0);
@@ -568,12 +568,6 @@ Share = Backbone.View.extend({
       link: this.presentObj.url,
       picture: 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-    }, function(response) {
-      if (response && response.post_id) {
-        console.log('Post was published.');
-      } else {
-        console.log('Post was not published.');
-      }
     });
     new this.shareModalView;
     return $('#share-modal').modal('show');
