@@ -27,6 +27,8 @@ Index = Backbone.View.extend
       $(this).find('div').bind 'mouseleave', ->
         PresentAni.stop()
     
+    presentObj = new Present  
+
   events:
     'click .present': 'start'
     'click .fb-share-button': 'fbShare'
@@ -57,7 +59,7 @@ Index = Backbone.View.extend
     setTimeout ->
       SantaAni.stop()
       SantaAni.animate 94, SantaAni.frameRef.length - 1, ->
-        Backbone.history.navigate 'message', true
+        Backbone.history.navigate 'share', true
     , 400
 
   render: ->
