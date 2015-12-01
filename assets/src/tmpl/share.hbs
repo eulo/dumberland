@@ -1,3 +1,17 @@
+<script>
+  $('.fb-share-button').click(function(){
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    FB.ui({
+      method: 'share',
+      href: 'http://localhost/video/10',
+      title: 'Dumberland',
+      link: 'http://localhost/video/10',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    }, function(response){
+        console.log(response);
+    });
+  });
+</script>
 <div id='share'>
   <div class='container'>
     <div id='header'></div>
