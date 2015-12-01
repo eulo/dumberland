@@ -2,9 +2,7 @@ AppRouter = Backbone.Router.extend
   
   routes:
     "share"         : "share"
-    "video/:item"    : "video"
-    "message"       : "message"
-    "present"       : "present"
+    "video/:item"   : "video"
     "thank"         : "thank"
     ""              : "index"
 
@@ -19,17 +17,8 @@ Router.on 'route:index', ->
 Router.on 'route:share', ->
   Share = require './views/share' 
 
-Router.on 'route:message',  ->
-  Video = require './views/message'
-  console.log('Video')
-
-
 Router.on 'route:video', (item) ->
   Video = require './views/video'
-  console.log('Video')
-
-Router.on 'route:present', ->
-  Present = require './views/present'
 
 Router.on 'route:thank', ->
 Thank = require './views/thank'
