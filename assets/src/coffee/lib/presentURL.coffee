@@ -1,8 +1,8 @@
 module.exports = class PresentURL
 
   count: 4
-  presentURLs: ['http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/video/10', 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/video/12', 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/video/13',
-				'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/video/14', 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/video/15']
+  presentURLs: ['http://52.64.226.45/video/10', 'http://52.64.226.45/video/12', 'http://52.64.226.45/video/13',
+				'http://52.64.226.45/video/14', 'http://52.64.226.45/video/15']
 
   constructor: () ->
 	
