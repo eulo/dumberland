@@ -10,7 +10,7 @@ module.exports = new Present;
 
 
 
-},{"../models/message":8}],2:[function(require,module,exports){
+},{"../models/message":9}],2:[function(require,module,exports){
 var Background, Router;
 
 window.jQuery = window.$ = require("./../../../bower_components/jquery/dist/jquery.js");
@@ -37,7 +37,7 @@ Router = require('./router');
 
 
 
-},{"./../../../bower_components/backbone/backbone.js":32,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":33,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":35,"./../../../bower_components/jquery/dist/jquery.js":36,"./../../../bower_components/underscore/underscore.js":37,"./lib/jquery.serializeObject":7,"./router":10,"./views/includes/background":11}],3:[function(require,module,exports){
+},{"./../../../bower_components/backbone/backbone.js":39,"./../../../bower_components/bootstrap/dist/js/bootstrap.js":40,"./../../../bower_components/jquery-snowfall/dist/snowfall.jquery.min.js":42,"./../../../bower_components/jquery/dist/jquery.js":43,"./../../../bower_components/underscore/underscore.js":44,"./lib/jquery.serializeObject":7,"./router":13,"./views/includes/background":14}],3:[function(require,module,exports){
 var Animator;
 
 module.exports = Animator = (function() {
@@ -185,21 +185,15 @@ _.extend(Backbone.Validation.callbacks, {
 
 
 },{}],5:[function(require,module,exports){
-module.exports = function() {
-  ga('send', 'event', 'Button Clicks', 'facebook.com');
-  return FB.ui({
-    method: 'share',
-    href: 'http://dumberland.com/',
-    title: 'Dumberland',
-    link: 'http://dumberland.com/',
-    picture: 'http://dumberland.com/assets/img/fb_share_img.png',
-    description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-  });
-};
+var Present;
+
+Present = require('../lib/presentURL');
+
+module.exports = function() {};
 
 
 
-},{}],6:[function(require,module,exports){
+},{"../lib/presentURL":8}],6:[function(require,module,exports){
 module.exports = function() {
   var hash, hashes, i, len, val, vars;
   vars = {};
@@ -238,7 +232,26 @@ $.fn.serializeObject = function() {
 
 
 
-},{"./../../../../bower_components/jquery/dist/jquery.js":36}],8:[function(require,module,exports){
+},{"./../../../../bower_components/jquery/dist/jquery.js":43}],8:[function(require,module,exports){
+var PresentURL;
+
+module.exports = PresentURL = (function() {
+  PresentURL.prototype.count = 4;
+
+  PresentURL.prototype.presentURLs = ['https://www.youtube.com/watch?v=pJnT9F-yR1M', 'https://www.youtube.com/watch?v=qm97F1PtNrY', 'https://www.youtube.com/watch?v=TyUHEahjAdI', 'https://www.youtube.com/watch?v=MQqprTh69V4', 'https://www.youtube.com/watch?v=-ymcULQZHiA'];
+
+  function PresentURL() {
+    this.number = Math.floor(Math.random() * (this.count - 0) + 0);
+    this.url = this.presentURLs[this.number];
+  }
+
+  return PresentURL;
+
+})();
+
+
+
+},{}],9:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
   idAttribute: 'id',
   url: '/api/message',
@@ -282,7 +295,14 @@ module.exports = Backbone.Model.extend({
 
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+module.exports = Backbone.Model.extend({
+  idAttribute: 'id'
+});
+
+
+
+},{}],11:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
   idAttribute: 'id',
   url: '/api/thank'
@@ -290,11 +310,20 @@ module.exports = Backbone.Model.extend({
 
 
 
-},{}],10:[function(require,module,exports){
-var AppRouter, Router;
+},{}],12:[function(require,module,exports){
+module.exports = Backbone.Model.extend({
+  idAttribute: 'id'
+});
+
+
+
+},{}],13:[function(require,module,exports){
+var AppRouter, Router, Thank;
 
 AppRouter = Backbone.Router.extend({
   routes: {
+    "share": "share",
+    "video/:item": "video",
     "message": "message",
     "present": "present",
     "thank": "thank",
@@ -309,9 +338,21 @@ Router.on('route:index', function() {
   return Index = require('./views/index');
 });
 
+Router.on('route:share', function() {
+  var Share;
+  return Share = require('./views/share');
+});
+
 Router.on('route:message', function() {
-  var Message;
-  return Message = require('./views/message');
+  var Video;
+  Video = require('./views/message');
+  return console.log('Video');
+});
+
+Router.on('route:video', function(item) {
+  var Video;
+  Video = require('./views/video');
+  return console.log('Video');
 });
 
 Router.on('route:present', function() {
@@ -319,10 +360,9 @@ Router.on('route:present', function() {
   return Present = require('./views/present');
 });
 
-Router.on('route:thank', function() {
-  var Thank;
-  return Thank = require('./views/thank');
-});
+Router.on('route:thank', function() {});
+
+Thank = require('./views/thank');
 
 Backbone.history.start({
   pushState: true
@@ -332,7 +372,7 @@ module.exports = Router;
 
 
 
-},{"./views/index":16,"./views/message":17,"./views/present":18,"./views/thank":19}],11:[function(require,module,exports){
+},{"./views/index":19,"./views/message":20,"./views/present":21,"./views/share":22,"./views/thank":23,"./views/video":24}],14:[function(require,module,exports){
 var Background, Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -369,7 +409,7 @@ module.exports = new Background;
 
 
 
-},{"../../../tmpl/background.hbs":20,"hbsfy/runtime":57}],12:[function(require,module,exports){
+},{"../../../tmpl/background.hbs":25,"hbsfy/runtime":64}],15:[function(require,module,exports){
 var Footer, Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -399,7 +439,7 @@ module.exports = Footer;
 
 
 
-},{"../../../tmpl/components/footer.hbs":21,"./share-modal":14,"./terms-modal":15,"hbsfy/runtime":57}],13:[function(require,module,exports){
+},{"../../../tmpl/components/footer.hbs":26,"./share-modal":17,"./terms-modal":18,"hbsfy/runtime":64}],16:[function(require,module,exports){
 var Handlebars, Header;
 
 Handlebars = require('hbsfy/runtime');
@@ -435,7 +475,7 @@ module.exports = Header;
 
 
 
-},{"../../../tmpl/components/header.hbs":22,"../../../tmpl/components/share-modal.hbs":24,"hbsfy/runtime":57}],14:[function(require,module,exports){
+},{"../../../tmpl/components/header.hbs":27,"../../../tmpl/components/share-modal.hbs":29,"hbsfy/runtime":64}],17:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -453,7 +493,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/share-modal.hbs":24,"hbsfy/runtime":57}],15:[function(require,module,exports){
+},{"../../../tmpl/components/share-modal.hbs":29,"hbsfy/runtime":64}],18:[function(require,module,exports){
 var Handlebars;
 
 Handlebars = require('hbsfy/runtime');
@@ -471,7 +511,7 @@ module.exports = Backbone.View.extend({
 
 
 
-},{"../../../tmpl/components/terms-modal.hbs":25,"hbsfy/runtime":57}],16:[function(require,module,exports){
+},{"../../../tmpl/components/terms-modal.hbs":30,"hbsfy/runtime":64}],19:[function(require,module,exports){
 var Animator, Handlebars, Index;
 
 Handlebars = require('hbsfy/runtime');
@@ -485,13 +525,13 @@ Index = Backbone.View.extend({
   footerView: require('./includes/footer'),
   flag: false,
   initialize: function() {
-    var $mainAni;
+    var $mainAni, presentObj;
     this.render();
     $mainAni = $('.homepage-animation');
     this.SantaAni = new Animator($mainAni, function() {
       return this.animate(0, 94);
     });
-    return $('.present').each(function() {
+    $('.present').each(function() {
       var PresentAni;
       PresentAni = new Animator($(this));
       $(this).find('div').bind('mouseenter', function() {
@@ -501,6 +541,7 @@ Index = Backbone.View.extend({
         return PresentAni.stop();
       });
     });
+    return presentObj = new Present;
   },
   events: {
     'click .present': 'start',
@@ -531,7 +572,7 @@ Index = Backbone.View.extend({
     return setTimeout(function() {
       SantaAni.stop();
       return SantaAni.animate(94, SantaAni.frameRef.length - 1, function() {
-        return Backbone.history.navigate('message', true);
+        return Backbone.history.navigate('share', true);
       });
     }, 400);
   },
@@ -547,7 +588,7 @@ module.exports = new Index;
 
 
 
-},{"../../tmpl/index.hbs":27,"../lib/animator":3,"../lib/facebook":5,"./includes/footer":12,"./includes/header":13,"hbsfy/runtime":57}],17:[function(require,module,exports){
+},{"../../tmpl/index.hbs":32,"../lib/animator":3,"../lib/facebook":5,"./includes/footer":15,"./includes/header":16,"hbsfy/runtime":64}],20:[function(require,module,exports){
 var Animator, Handlebars, Message;
 
 Handlebars = require('hbsfy/runtime');
@@ -631,7 +672,7 @@ module.exports = new Message;
 
 
 
-},{"../../tmpl/components/message-success.hbs":23,"../../tmpl/message.hbs":28,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../lib/facebook":5,"../models/message":8,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":31,"./includes/footer":12,"./includes/header":13,"./includes/terms-modal":15,"hbsfy/runtime":57}],18:[function(require,module,exports){
+},{"../../tmpl/components/message-success.hbs":28,"../../tmpl/message.hbs":33,"../lib/animator":3,"../lib/backbone.validation.callbacks.bootstrap":4,"../lib/facebook":5,"../models/message":9,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":38,"./includes/footer":15,"./includes/header":16,"./includes/terms-modal":18,"hbsfy/runtime":64}],21:[function(require,module,exports){
 var Animator, Handlebars, Present, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -694,7 +735,83 @@ module.exports = new Present;
 
 
 
-},{"../../tmpl/present.hbs":29,"../collections/present":1,"../lib/animator":3,"../lib/facebook":5,"../lib/getUrlVars":6,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":34,"./includes/footer":12,"./includes/header":13,"hbsfy/runtime":57}],19:[function(require,module,exports){
+},{"../../tmpl/present.hbs":34,"../collections/present":1,"../lib/animator":3,"../lib/facebook":5,"../lib/getUrlVars":6,"./../../../../bower_components/gfycat.js/js/gfyConcat.js":41,"./includes/footer":15,"./includes/header":16,"hbsfy/runtime":64}],22:[function(require,module,exports){
+var Animator, Handlebars, Present, Share;
+
+Handlebars = require('hbsfy/runtime');
+
+Animator = require('../lib/animator');
+
+Present = require('../lib/presentURL');
+
+require("./../../../../bower_components/backbone.validation/dist/backbone-validation.js");
+
+Share = Backbone.View.extend({
+  el: '#main',
+  shareModel: require('../models/share'),
+  template: require('../../tmpl/share.hbs'),
+  headerView: require('./includes/header'),
+  footerView: require('./includes/footer'),
+  shareModalView: require('./includes/share-modal'),
+  termsModalView: require('./includes/terms-modal'),
+  initialize: function(item) {
+    var $mainAni, self;
+    self = this;
+    this.model = new this.shareModel();
+    this.render();
+    this.presentObj = new Present;
+    console.log(this.presentObj);
+    $mainAni = $('.santa-present-dance');
+    return this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
+  },
+  events: {
+    'click [data-event=terms-button]': 'termsModal',
+    'click .message-complete-cont button[data-url]': 'shareLink',
+    'click [data-event=reset]': 'initialize',
+    'click .fb-share-button': 'fbShare',
+    'click .btn-twitter': 'twShare'
+  },
+  fbShare: function(event) {
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    FB.ui({
+      method: 'share',
+      href: this.presentObj.url,
+      title: 'Dumberland',
+      link: this.presentObj.url,
+      picture: 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
+    new this.shareModalView;
+    return $('#share-modal').modal('show');
+  },
+  twShare: function() {
+    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
+  },
+  termsModal: function(event) {
+    event.preventDefault();
+    new this.termsModalView();
+    return $('#terms-modal').modal('show');
+  },
+  shareLink: function(event) {
+    event.preventDefault();
+    return window.open($(event.currentTarget).data('url'), 'share-dialog', 'width=626,height=436');
+  },
+  render: function() {
+    var Footer, Header;
+    this.$el.html(this.template);
+    Backbone.Validation.bind(this);
+    Header = new this.headerView();
+    return Footer = new this.footerView();
+  }
+});
+
+module.exports = new Share;
+
+
+
+},{"../../tmpl/share.hbs":35,"../lib/animator":3,"../lib/presentURL":8,"../models/share":10,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":38,"./includes/footer":15,"./includes/header":16,"./includes/share-modal":17,"./includes/terms-modal":18,"hbsfy/runtime":64}],23:[function(require,module,exports){
 var Animator, Handlebars, Thank, getUrlVars;
 
 Handlebars = require('hbsfy/runtime');
@@ -762,28 +879,104 @@ module.exports = new Thank;
 
 
 
-},{"../../tmpl/components/thank-success.hbs":26,"../../tmpl/thank.hbs":30,"../collections/present":1,"../lib/animator":3,"../lib/facebook":5,"../lib/getUrlVars":6,"../models/thank":9,"./includes/footer":12,"./includes/header":13,"hbsfy/runtime":57}],20:[function(require,module,exports){
+},{"../../tmpl/components/thank-success.hbs":31,"../../tmpl/thank.hbs":36,"../collections/present":1,"../lib/animator":3,"../lib/facebook":5,"../lib/getUrlVars":6,"../models/thank":11,"./includes/footer":15,"./includes/header":16,"hbsfy/runtime":64}],24:[function(require,module,exports){
+var Animator, Handlebars, Present, Video;
+
+Handlebars = require('hbsfy/runtime');
+
+Animator = require('../lib/animator');
+
+Present = require('../lib/presentURL');
+
+require("./../../../../bower_components/backbone.validation/dist/backbone-validation.js");
+
+Video = Backbone.View.extend({
+  el: '#main',
+  videoModel: require('../models/video'),
+  template: require('../../tmpl/video.hbs'),
+  headerView: require('./includes/header'),
+  footerView: require('./includes/footer'),
+  shareModalView: require('./includes/share-modal'),
+  termsModalView: require('./includes/terms-modal'),
+  initialize: function() {
+    var $mainAni, self;
+    self = this;
+    this.model = new this.videoModel();
+    this.render();
+    this.presentObj = new Present;
+    console.log(this.presentObj);
+    $mainAni = $('.santa-present-dance');
+    return this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
+  },
+  events: {
+    'click [data-event=terms-button]': 'termsModal',
+    'click .message-complete-cont button[data-url]': 'shareLink',
+    'click [data-event=reset]': 'initialize',
+    'click .fb-share-button': 'fbShare',
+    'click .btn-twitter': 'twShare'
+  },
+  fbShare: function(event) {
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    FB.ui({
+      method: 'share',
+      href: this.presentObj.url,
+      title: 'Dumberland',
+      link: this.presentObj.url,
+      picture: 'http://ec2-52-64-211-113.ap-southeast-2.compute.amazonaws.com/assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
+    new this.shareModalView;
+    return $('#share-modal').modal('show');
+  },
+  twShare: function() {
+    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
+  },
+  termsModal: function(event) {
+    event.preventDefault();
+    new this.termsModalView();
+    return $('#terms-modal').modal('show');
+  },
+  shareLink: function(event) {
+    event.preventDefault();
+    return window.open($(event.currentTarget).data('url'), 'share-dialog', 'width=626,height=436');
+  },
+  render: function() {
+    var Footer, Header;
+    this.$el.html(this.template);
+    Backbone.Validation.bind(this);
+    Header = new this.headerView();
+    return Footer = new this.footerView();
+  }
+});
+
+module.exports = new Video;
+
+
+
+},{"../../tmpl/video.hbs":37,"../lib/animator":3,"../lib/presentURL":8,"../models/video":12,"./../../../../bower_components/backbone.validation/dist/backbone-validation.js":38,"./includes/footer":15,"./includes/header":16,"./includes/share-modal":17,"./includes/terms-modal":18,"hbsfy/runtime":64}],25:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='background animated fadeIn'>\n  <div class='sky'>\n    <div class='sun'></div>\n    <div class='snow-mound-with-trees'></div>\n  </div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],21:[function(require,module,exports){
+},{"hbsfy/runtime":64}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class='container'>\n  <div class='row'>\n    <div class='col-xs-12'>\n      <img class='footer-logo' src='/assets/img/footer-logo.png' alt='Dumb ways to die'>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='share-links'>\n        <a href='https://www.facebook.com/dumbwaystodie/' target='_blank'><i class='fa fa-facebook'></i></a>\n        <a href='https://twitter.com/dumbways2die' target='_blank'><i class='fa fa-twitter'></i></a>\n        <a href='http://dumbwaystodie.tumblr.com/' target='_blank'><i class='fa fa-tumblr'></i></a>\n      </div>\n    </div>\n    <div class='col-xs-12 col-sm-6'>\n      <div class='footer-links'>\n        <a href='#' data-event='terms-button-footer'>Terms &amp; conditions</a>\n        <a href='https://shop.dumbwaystodie.com' target='_blank'>Visit the shop</a>\n      </div>\n    </div>\n  </div>\n</div>\n<div id='modal'></div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],22:[function(require,module,exports){
+},{"hbsfy/runtime":64}],27:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<a data-event='share-modal' href='#'>\n  <i class='fa fa-share-alt'></i> Share\n</a>\n\n\n";
+    return "\n\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],23:[function(require,module,exports){
+},{"hbsfy/runtime":64}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -794,21 +987,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + " with haste,<br>\nYour Dumb Present is on its way.\n</p>\n\n<div class='santa-nopres-dance' data-json='santa_nopres_dance.json'>\n  <div></div>\n</div>\n\n<div class='row message-complete-cont'>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <a href='/' type='button' class='btn btn-block'>Go again!</a>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button class='btn btn-facebook fb-share-button'>\n      <i class='fa fa-facebook'></i>\n      Facebook\n    </button>\n    <button class='btn btn-twitter' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>  \n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],24:[function(require,module,exports){
+},{"hbsfy/runtime":64}],29:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n            <button class='btn btn-facebook btn-block fb-share-button'>\n              <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n              Facebook\n            </button>\n          </div>\n          <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n            <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n              <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n              Twitter\n            </button>\n          </div>\n          <div class=\"col-lg-6 btn-center\" style=\"margin: 3em 0 0 1em;\">\n              <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
+    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content share-modal-bg\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          \n          <div class=\"share-modal-title\">\n            Thanks for sharing. \n          </div>\n\n          <div class=\"present-image\">\n            <img class=\"share-modal-img\" src=\"assets/img/present.png\"></img>\n          </div>  \n\n          <div class=\"col-lg-6 btn-center\" style=\"margin: 3em 0 0 1em;\">\n              <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Share Another</button>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],25:[function(require,module,exports){
+},{"hbsfy/runtime":64}],30:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='terms-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\">Terms &amp; Conditions</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut arcu et nibh sollicitudin porttitor. Duis at sem sit amet felis lacinia tristique sollicitudin sit amet elit. Cras rutrum velit nec tristique facilisis. Sed non nunc sodales eros mollis finibus. Phasellus arcu dui, pellentesque non pretium ac, imperdiet vitae velit. Praesent ut tincidunt nisi, ut faucibus leo. Mauris eu lobortis nisi. Nunc ultrices porta euismod. Aenean et tristique leo, laoreet efficitur eros. Nulla felis massa, tempus eget urna non, convallis posuere orci. Morbi vitae ligula eu magna mollis sollicitudin sit amet eget ipsum.</p>\n        <p>Curabitur nisi massa, tincidunt eu quam nec, consectetur tempor nisl. Quisque orci nunc, lobortis sit amet justo a, pretium feugiat turpis. Curabitur non mattis nisl. Sed malesuada, lectus et bibendum varius, nibh massa elementum ex, vitae vehicula nunc nisl luctus erat. Donec sit amet est leo. Quisque odio arcu, efficitur in ante nec, dignissim vehicula magna. Fusce sed metus quis lectus imperdiet luctus.</p>\n        <p>Curabitur porta justo et nisl tempor aliquam. Vivamus imperdiet felis ac leo porttitor aliquam. Quisque scelerisque magna in hendrerit mattis. Sed posuere urna sit amet metus commodo, quis dictum lorem efficitur. In libero metus, malesuada fringilla porta id, euismod commodo tortor. Nam sagittis dui id odio tincidunt dictum. Praesent consequat magna vitae condimentum ornare. Aenean porta at nisl at efficitur. Quisque vitae eros tellus. Suspendisse ligula erat, fermentum a facilisis vitae, facilisis et ex. Proin gravida laoreet orci et porttitor. In ultricies, nisl a fringilla lacinia, eros ante congue nisl, id volutpat dolor turpis a felis.</p>\n        <p>Suspendisse luctus lorem purus, sed facilisis arcu sollicitudin quis. Nulla faucibus bibendum porta. Donec non justo id ipsum cursus vestibulum. Nulla a auctor mi. Etiam maximus eget felis et molestie. Nunc vel libero bibendum, venenatis lorem id, laoreet risus. Praesent quis eros molestie, volutpat nunc sed, faucibus justo.</p>\n        <p>Donec egestas augue posuere ligula suscipit, et laoreet sem eleifend. Mauris egestas semper ipsum, non pharetra nulla congue sit amet. Nullam molestie dignissim justo, sed rhoncus ipsum tempus vitae. Aenean mollis cursus lorem at dapibus. Praesent id felis nec sapien cursus ullamcorper. Vivamus nec pharetra tellus, eu pellentesque massa. Vestibulum eget ullamcorper odio, nec maximus sapien. Maecenas lacus enim, ullamcorper sed sem eu, iaculis egestas nisl. Duis quis luctus massa. Integer auctor ullamcorper nunc ut eleifend. Donec a metus ac nunc bibendum pharetra. Nullam pellentesque, massa id accumsan tincidunt, sapien eros luctus urna, nec imperdiet ex augue ac erat. Aliquam placerat posuere est. Nam a venenatis mi. Integer in nisl aliquet mauris tincidunt accumsan sit amet sed eros.</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],26:[function(require,module,exports){
+},{"hbsfy/runtime":64}],31:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -821,21 +1014,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "</p>\n\n\n<div class='row message-complete-cont'>\n\n  <img src='/assets/img/deadSanta.png' alt='Santa is ded' class='santa-on-pole'>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4'>\n    <button data-event='reset' type='button' class='btn btn-block'>Go again!</button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-xs-12'>\n    <h2>Tell your friends<br> about Dumberland </h2>\n  </div>\n\n  <div class='col-md-4'>&nbsp;</div>\n  <div class='col-md-4 btn-duo-center'>\n    <button type='button' class='btn btn-facebook' data-url='https://www.facebook.com/sharer/sharer.php?u=example.com'>\n      <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n      Facebook\n    </button>\n    <button type='button' class='btn btn-twitter' style=\"margin-left: -7px;\" data-url='https://twitter.com/intent/tweet?text=Something'>\n      <i class='fa fa-twitter'></i>\n      Twitter\n    </button>\n  </div>\n  <div class='col-md-4'>&nbsp;</div>\n  \n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],27:[function(require,module,exports){
+},{"hbsfy/runtime":64}],32:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='intro-text animated fadeIn'>\n      Send a friend a Dumb Christmas gift.<br>\n      Select one below to send a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-14' data-json='present_shake.json'><div></div></div>\n      <div class='present present-15 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-16' data-json='present_shake.json'><div></div></div>\n      <div class='present present-17 hidden-sm hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-18 hidden' data-json='present_shake.json'><div></div></div>\n      <div class='present present-19 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-20 hidden-xs' data-json='present_shake.json'><div></div></div>\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],28:[function(require,module,exports){
+},{"hbsfy/runtime":64}],33:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id='message'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Send a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <form>\n\n        <div class='row animated fadeIn'>\n\n          <div class='col-md-6'>\n            <h3>Send gift to</h3>\n            <div class=\"form-group\">\n              <label for=\"to_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"to_name\" id=\"to_name\" placeholder=\"Friends name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"to_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"to_email\" id=\"to_email\" placeholder=\"Friends email\">\n            </div>\n\n            <h3>Your message</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n          </div>\n\n          <div class='col-md-6'>\n            <h3>Your details</h3>\n            <div class=\"form-group\">\n              <label for=\"from_name\">First name*</label>\n              <input type=\"text\" class=\"form-control\" name=\"from_name\" id=\"from_name\" placeholder=\"Your name\">\n            </div>\n            <div class=\"form-group\">\n              <label for=\"from_email\">Email*</label>\n              <input type=\"email\" class=\"form-control\" name=\"from_email\" id=\"from_email\" placeholder=\"Your email\">\n            </div>\n            \n            <h3>&nbsp;</h3>\n            <div class=\"form-group\">\n              <div class=\"checkbox\">\n                <input type=\"checkbox\" name='terms' id='terms-checkbox'> \n                \n                <label for='terms-checkbox' class='form-control'>\n                  <span></span>I agree to the <a data-event='terms-button' href='#'>terms &amp; conditions</a>\n                </label>\n              </div>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n        </div>\n        \n      </form>\n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],29:[function(require,module,exports){
+},{"hbsfy/runtime":64}],34:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -850,7 +1043,14 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + "\" ></div> \n          </div>\n        </div>\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],30:[function(require,module,exports){
+},{"hbsfy/runtime":64}],35:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var HandlebarsCompiler = require('hbsfy/runtime');
+module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Share a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Facebook\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Twitter\n          </button>\n        </div>\n        \n        <br>\n\n        <div style=\"text-align: center;\">\n          <span>View the </span><a data-event='terms-button' href='#'>terms &amp; conditions</a>\n        </div>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+},"useData":true});
+
+},{"hbsfy/runtime":64}],36:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -863,7 +1063,14 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
     + " for.\n      </p>\n\n      <img src='/assets/img/deadSanta.png' alt='Santa is ded' class='santa-on-pole'>\n\n      <form>\n        <div class='row'>\n          <div class='col-md-4'>&nbsp;</div>\n          <div class='col-md-4 col-xs-12'>\n            <h3>What's your thank you message?</h3>\n            <div class=\"form-group\">\n              <textarea name=\"message\" class=\"form-control\" rows=\"3\" placeholder=\"Message to your friend\"></textarea>\n            </div>\n\n            <div class='btn-center'>\n              <button type=\"submit\" class=\"btn\">Send</button>\n            </div>\n          </div>\n          <div class='col-md-4'>&nbsp;</div>\n        </div>\n      </form>\n\n    </div>\n\n  </div>\n\n  <div id='footer'></div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":57}],31:[function(require,module,exports){
+},{"hbsfy/runtime":64}],37:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var HandlebarsCompiler = require('hbsfy/runtime');
+module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div id='video'>\n  <div class='container'>\n    <a href=\"/another\"> Close </a>\n      <div class=\"video-container\">\n        <iframe src=\"https://www.youtube.com/embed/WBbNJG1kIIw?rel=0\" frameborder=\"0\" allowfullscreen></iframe>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+},"useData":true});
+
+},{"hbsfy/runtime":64}],38:[function(require,module,exports){
 // Backbone.Validation v0.11.4
 //
 // Copyright (c) 2011-2015 Thomas Pedersen
@@ -1573,7 +1780,7 @@ Backbone.Validation = (function(_){
 
   return Validation;
 }(_));
-},{}],32:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -3471,7 +3678,7 @@ Backbone.Validation = (function(_){
 }));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./../jquery/dist/jquery.js":36,"./../underscore/underscore.js":37}],33:[function(require,module,exports){
+},{"./../jquery/dist/jquery.js":43,"./../underscore/underscore.js":44}],40:[function(require,module,exports){
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5836,7 +6043,7 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-},{}],34:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 /*
  * A new gfyObject is created for each
  * gfycat embed on the page.  This object
@@ -6431,9 +6638,9 @@ window.gfyCollection = function () {
 
 }();
 
-},{}],35:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 Date.now||(Date.now=function(){return(new Date).getTime()}),function(){"use strict";for(var t=["webkit","moz"],e=0;e<t.length&&!window.requestAnimationFrame;++e){var i=t[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var s=0;window.requestAnimationFrame=function(t){var e=Date.now(),i=Math.max(s+16,e);return setTimeout(function(){t(s=i)},i-e)},window.cancelAnimationFrame=clearTimeout}}(),function(t){t.snowfall=function(e,i){function s(s,n,a,o){this.x=s,this.y=n,this.size=a,this.speed=o,this.step=0,this.stepSize=h(1,10)/100,i.collection&&(this.target=m[h(0,m.length-1)]);var r=null;i.image?(r=document.createElement("img"),r.src=i.image):(r=document.createElement("div"),t(r).css({background:i.flakeColor})),t(r).attr({"class":"snowfall-flakes"}).css({width:this.size,height:this.size,position:i.flakePosition,top:this.y,left:this.x,fontSize:0,zIndex:i.flakeIndex}),t(e).get(0).tagName===t(document).get(0).tagName?(t("body").append(t(r)),e=t("body")):t(e).append(t(r)),this.element=r,this.update=function(){if(this.y+=this.speed,this.y>l-(this.size+6)&&this.reset(),this.element.style.top=this.y+"px",this.element.style.left=this.x+"px",this.step+=this.stepSize,this.x+=y===!1?Math.cos(this.step):y+Math.cos(this.step),i.collection&&this.x>this.target.x&&this.x<this.target.width+this.target.x&&this.y>this.target.y&&this.y<this.target.height+this.target.y){var t=this.target.element.getContext("2d"),e=this.x-this.target.x,s=this.y-this.target.y,n=this.target.colData;if(void 0!==n[parseInt(e)][parseInt(s+this.speed+this.size)]||s+this.speed+this.size>this.target.height)if(s+this.speed+this.size>this.target.height){for(;s+this.speed+this.size>this.target.height&&this.speed>0;)this.speed*=.5;t.fillStyle="#fff",void 0==n[parseInt(e)][parseInt(s+this.speed+this.size)]?(n[parseInt(e)][parseInt(s+this.speed+this.size)]=1,t.fillRect(e,s+this.speed+this.size,this.size,this.size)):(n[parseInt(e)][parseInt(s+this.speed)]=1,t.fillRect(e,s+this.speed,this.size,this.size)),this.reset()}else this.speed=1,this.stepSize=0,parseInt(e)+1<this.target.width&&void 0==n[parseInt(e)+1][parseInt(s)+1]?this.x++:parseInt(e)-1>0&&void 0==n[parseInt(e)-1][parseInt(s)+1]?this.x--:(t.fillStyle="#fff",t.fillRect(e,s,this.size,this.size),n[parseInt(e)][parseInt(s)]=1,this.reset())}(this.x+this.size>d-c||this.x<c)&&this.reset()},this.reset=function(){this.y=0,this.x=h(c,d-c),this.stepSize=h(1,10)/100,this.size=h(100*i.minSize,100*i.maxSize)/100,this.element.style.width=this.size+"px",this.element.style.height=this.size+"px",this.speed=h(i.minSpeed,i.maxSpeed)}}function n(){for(r=0;r<a.length;r+=1)a[r].update();f=requestAnimationFrame(function(){n()})}var a=[],o={flakeCount:35,flakeColor:"#ffffff",flakePosition:"absolute",flakeIndex:999999,minSize:1,maxSize:2,minSpeed:1,maxSpeed:5,round:!1,shadow:!1,collection:!1,collectionHeight:40,deviceorientation:!1},i=t.extend(o,i),h=function(t,e){return Math.round(t+Math.random()*(e-t))};t(e).data("snowfall",this);var r=0,l=t(e).height(),d=t(e).width(),c=0,f=0;if(i.collection!==!1){var p=document.createElement("canvas");if(p.getContext&&p.getContext("2d"))for(var m=[],w=t(i.collection),g=i.collectionHeight,r=0;r<w.length;r++){var u=w[r].getBoundingClientRect(),x=t("<canvas/>",{"class":"snowfall-canvas"}),z=[];if(u.top-g>0){t("body").append(x),x.css({position:i.flakePosition,left:u.left+"px",top:u.top-g+"px"}).prop({width:u.width,height:g});for(var v=0;v<u.width;v++)z[v]=[];m.push({element:x.get(0),x:u.left,y:u.top-g,width:u.width,height:g,colData:z})}}else i.collection=!1}for(t(e).get(0).tagName===t(document).get(0).tagName&&(c=25),t(window).bind("resize",function(){l=t(e)[0].clientHeight,d=t(e)[0].offsetWidth}),r=0;r<i.flakeCount;r+=1)a.push(new s(h(c,d-c),h(0,l),h(100*i.minSize,100*i.maxSize)/100,h(i.minSpeed,i.maxSpeed)));i.round&&t(".snowfall-flakes").css({"-moz-border-radius":i.maxSize,"-webkit-border-radius":i.maxSize,"border-radius":i.maxSize}),i.shadow&&t(".snowfall-flakes").css({"-moz-box-shadow":"1px 1px 1px #555","-webkit-box-shadow":"1px 1px 1px #555","box-shadow":"1px 1px 1px #555"});var y=!1;i.deviceorientation&&t(window).bind("deviceorientation",function(t){y=.1*t.originalEvent.gamma}),n(),this.clear=function(){t(".snowfall-canvas").remove(),t(e).children(".snowfall-flakes").remove(),cancelAnimationFrame(f)}},t.fn.snowfall=function(e){return"object"==typeof e||void 0==e?this.each(function(){new t.snowfall(this,e)}):"string"==typeof e?this.each(function(){var e=t(this).data("snowfall");e&&e.clear()}):void 0}}(jQuery);
-},{}],36:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -15645,7 +15852,7 @@ return jQuery;
 
 }));
 
-},{}],37:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -17195,7 +17402,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],38:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17263,7 +17470,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":39,"./handlebars/exception":42,"./handlebars/no-conflict":52,"./handlebars/runtime":53,"./handlebars/safe-string":54,"./handlebars/utils":55}],39:[function(require,module,exports){
+},{"./handlebars/base":46,"./handlebars/exception":49,"./handlebars/no-conflict":59,"./handlebars/runtime":60,"./handlebars/safe-string":61,"./handlebars/utils":62}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17369,7 +17576,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":40,"./exception":42,"./helpers":43,"./logger":51,"./utils":55}],40:[function(require,module,exports){
+},{"./decorators":47,"./exception":49,"./helpers":50,"./logger":58,"./utils":62}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17387,7 +17594,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":41}],41:[function(require,module,exports){
+},{"./decorators/inline":48}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17418,7 +17625,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":55}],42:[function(require,module,exports){
+},{"../utils":62}],49:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17460,7 +17667,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],43:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17508,7 +17715,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":44,"./helpers/each":45,"./helpers/helper-missing":46,"./helpers/if":47,"./helpers/log":48,"./helpers/lookup":49,"./helpers/with":50}],44:[function(require,module,exports){
+},{"./helpers/block-helper-missing":51,"./helpers/each":52,"./helpers/helper-missing":53,"./helpers/if":54,"./helpers/log":55,"./helpers/lookup":56,"./helpers/with":57}],51:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17549,7 +17756,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":55}],45:[function(require,module,exports){
+},{"../utils":62}],52:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17645,7 +17852,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":42,"../utils":55}],46:[function(require,module,exports){
+},{"../exception":49,"../utils":62}],53:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17672,7 +17879,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":42}],47:[function(require,module,exports){
+},{"../exception":49}],54:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17703,7 +17910,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":55}],48:[function(require,module,exports){
+},{"../utils":62}],55:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17731,7 +17938,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],49:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17745,7 +17952,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],50:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17780,7 +17987,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":55}],51:[function(require,module,exports){
+},{"../utils":62}],58:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -17829,7 +18036,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":55}],52:[function(require,module,exports){
+},{"./utils":62}],59:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -17853,7 +18060,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],53:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18147,7 +18354,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":39,"./exception":42,"./utils":55}],54:[function(require,module,exports){
+},{"./base":46,"./exception":49,"./utils":62}],61:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -18164,7 +18371,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],55:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18290,12 +18497,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],56:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":38}],57:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":45}],64:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":56}]},{},[2])
+},{"handlebars/runtime":63}]},{},[2])
