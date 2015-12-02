@@ -571,7 +571,11 @@ Share = Backbone.View.extend({
     return $('#share-modal').modal('show');
   },
   twShare: function() {
-    return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
+    var loc, title;
+    ga('send', 'tweet', 'Button Clicks', 'twitter.com');
+    loc = 'https://twitter.com/intent/tweet?';
+    title = 'Send a DumbPresent from the DWTD Dumberland. Go to ' + this.presentObj.url + '&hashtags=dumberland';
+    return window.open(loc + "text=" + title + "&", "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
   },
   termsModal: function(event) {
     event.preventDefault();
@@ -721,7 +725,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Share a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Facebook\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Twitter\n          </button>\n        </div>\n        \n        <br>\n\n        <div style=\"text-align: center;\">\n          <span>View the </span><a data-event='terms-button' href='#'>terms &amp; conditions</a>\n        </div>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Share a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Facebook\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-twitter btn-block' >\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Twitter\n          </button>\n        </div>\n        \n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],30:[function(require,module,exports){

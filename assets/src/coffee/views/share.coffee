@@ -59,16 +59,15 @@ Share = Backbone.View.extend
       link: @presentObj.url,
       picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
-   
-  	
+      
   	new @.shareModalView
   	$('#share-modal').modal('show')
-  	
-
   
   twShare: ->
     ga 'send','tweet','Button Clicks','twitter.com'
-
+    loc = 'https://twitter.com/intent/tweet?'
+    title  = 'Send a DumbPresent from the DWTD Dumberland. Go to ' + @presentObj.url + '&hashtags=dumberland'
+    window.open loc + "text=" + title + "&", "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
 
   termsModal: (event) ->
     event.preventDefault()
