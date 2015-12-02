@@ -65,21 +65,23 @@ h1,h2,h3,h4,h5,h6,p,label,select,input,span,textarea,button,a {
 }
 
 .share-modal-title {
-  font-size: 25px;
+  font-size: 16px;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   font-weight: 500;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #9A9189;
+  color: white;
+  padding: 0 2em;
 }
 
 .share-modal-bg {
-  background-color: #faf9f2;
+  background-color: #66998c;
 }
 
 .share-modal-img {
   margin: 0 auto;
   display: block;
+  width: 195px;
 }
 
 .btn, .btn.btn-default {

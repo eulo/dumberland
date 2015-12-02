@@ -31,10 +31,20 @@ Video = Backbone.View.extend
     
     @.render()
     
+    
+    $('.video-overlay').show()
+    $('.thanks-base').hide()
+    
     @presentObj = new Present  
-    console.log(@presentObj)
-
-
+    console.log('you suuck')
+  
+  events:
+    'click .close-dumb-video': 'closeVideo' 
+  
+  closeVideo: ->
+    $('.video-overlay').hide()
+    $('.thanks-base').show()
+  
   render: ->
     @.$el.html @.template
 

@@ -39,9 +39,8 @@ Share = Backbone.View.extend
     @presentObj = new Present  
     console.log(@presentObj)
     
-    loc = 'https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland. Go to' + @presentObj.url
-    $('.btn-twitter').attr('href', loc)
-  
+    new @.shareModalView
+    
     $mainAni = $('.santa-present-dance')
     @SantaAni = new Animator $mainAni, ->
       @animate()
@@ -63,16 +62,18 @@ Share = Backbone.View.extend
       picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
       
-  	new @.shareModalView
   	$('#share-modal').modal('show')
   
   twShare: ->
     ga 'send','tweet','Button Clicks','twitter.com'
     
-    new @.shareModalView
-  	$('#share-modal').modal('show')
-
-
+    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://52.64.226.45/video/10'
+    
+    window.open loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+    
+    $('#share-modal').modal('show')
+    
+    
   termsModal: (event) ->
     event.preventDefault()
     new @.termsModalView()

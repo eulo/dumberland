@@ -545,6 +545,7 @@ Share = Backbone.View.extend({
     this.render();
     this.presentObj = new Present;
     console.log(this.presentObj);
+    new this.shareModalView;
     $mainAni = $('.santa-present-dance');
     return this.SantaAni = new Animator($mainAni, function() {
       return this.animate();
@@ -567,15 +568,14 @@ Share = Backbone.View.extend({
       picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
     });
-    new this.shareModalView;
     return $('#share-modal').modal('show');
   },
   twShare: function() {
-    var loc, title;
+    var loc;
     ga('send', 'tweet', 'Button Clicks', 'twitter.com');
-    loc = 'https://twitter.com/intent/tweet?';
-    title = 'Send a DumbPresent from the DWTD Dumberland. Go to ' + this.presentObj.url + '&hashtags=dumberland';
-    return window.open(loc + "text=" + title + "&", "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
+    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://52.64.226.45/video/10';
+    window.open(loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
+    return $('#share-modal').modal('show');
   },
   termsModal: function(event) {
     event.preventDefault();
@@ -651,8 +651,17 @@ Video = Backbone.View.extend({
     self = this;
     this.model = new this.videoModel();
     this.render();
+    $('.video-overlay').show();
+    $('.thanks-base').hide();
     this.presentObj = new Present;
-    return console.log(this.presentObj);
+    return console.log('you suuck');
+  },
+  events: {
+    'click .close-dumb-video': 'closeVideo'
+  },
+  closeVideo: function() {
+    $('.video-overlay').hide();
+    return $('.thanks-base').show();
   },
   render: function() {
     var Footer, Header;
@@ -691,7 +700,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content share-modal-bg\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          \n          <div class=\"share-modal-title\">\n            Thanks for sharing. \n          </div>\n\n          <div class=\"present-image\">\n            <img class=\"share-modal-img\" src=\"assets/img/present.png\"></img>\n          </div>  \n\n          <div class=\"col-lg-12 btn-center\" style=\"margin: 3em 0 0 0;\">\n              <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Share Another</button>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
+    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content share-modal-bg\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          \n          <div class=\"share-modal-title\">\n            Could it be short? Could it be sweet? \nWill it have teeth as long as your feet?\n              <br>\n              Your present has been shared, \nbut what could it be?\n          </div>\n\n          <div class=\"present-image\">\n            <img class=\"share-modal-img\" src=\"http://clients.mccann.com.au/clients/Metro/dumberland/present-shake2.gif\"></img>\n          </div>  \n\n          <div class=\"col-lg-12 btn-center\" style=\"margin: 3em 0 0 0;\">\n              <a href=\"/\" class=\"btn btn-default\" style=\"margin-bottom: 20px\">Give Another</a>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],26:[function(require,module,exports){
@@ -745,7 +754,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='video'>\n  <div class='container'>\n    <a href=\"/another\"> Close </a>\n      <div class=\"video-container\">\n        <iframe src=\"https://www.youtube.com/embed/WBbNJG1kIIw?rel=0\" frameborder=\"0\" allowfullscreen></iframe>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+    return "<div id='video'>\n  <div class='container'>\n    <div class=\"video-overlay\">\n      <button class=\"btn btn-default close-dumb-video\"> Close </button>\n          <div class=\"video-container\">\n            <iframe src=\"https://www.youtube.com/embed/WBbNJG1kIIw?rel=0\" frameborder=\"0\" allowfullscreen></iframe>\n          </div>\n      </div> \n      <div class=\"thanks-base col-lg-12\">\n          <div class=\"share-modal-title\">\n            Christmas cheer, blood, bones and gore,\n              We hope this was all you wished for and more.\n          </div>\n          <div class=\"share-modal-title\">\n              Wishing you the Dumbest Christmas of all!\n          </div>\n          <div class=\"btn-center\" style=\"margin: 3em 0 1.5em 0;\">\n              <a href=\"/\" class=\"btn btn-default\">Send a Dumb Present</a>\n      </div>          \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],32:[function(require,module,exports){
