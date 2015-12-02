@@ -10,7 +10,6 @@ Background = Backbone.View.extend
     # TODO: Animate mountain on page load, to scroll up to 50%
     @.render()
 
-    ### 
     @.$el.find('.background').snowfall
       round : true
       minSize: 5
@@ -25,7 +24,7 @@ Background = Backbone.View.extend
       collection : false,
       collectionHeight : 40,
       deviceorientation : false
-    ###
+    
 
   render : ->
     @.$el.prepend @.template
