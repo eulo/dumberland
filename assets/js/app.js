@@ -556,7 +556,21 @@ Share = Backbone.View.extend({
     'click [data-event=terms-button]': 'termsModal',
     'click .message-complete-cont button[data-url]': 'shareLink',
     'click [data-event=reset]': 'initialize',
+    'click .fb-share-button': 'fbShare',
     'click .btn-twitter': 'twShare'
+  },
+  fbShare: function(event) {
+    ga('send', 'event', 'Button Clicks', 'facebook.com');
+    FB.ui({
+      method: 'share',
+      href: this.presentObj.url,
+      title: 'Dumberland',
+      link: this.presentObj.url,
+      picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
+      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+    });
+    new this.shareModalView;
+    return $('#share-modal').modal('show');
   },
   twShare: function() {
     return ga('send', 'tweet', 'Button Clicks', 'twitter.com');
@@ -709,7 +723,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"fb-root\"></div>\n  <script>\n    window.fbAsyncInit = function() {\n      FB.init({\n        appId      : '894257343963270',\n        xfbml      : true,\n        version    : 'v2.5'\n      });\n    };\n    (function() {\n      var e = document.createElement('script'); e.async = true;\n      e.src = document.location.protocol +\n      '//connect.facebook.net/en_US/all.js';\n      document.getElementById('fb-root').appendChild(e);\n    }());\n\n  $('.fb-share-button').click(function(){\n    ga('send', 'event', 'Button Clicks', 'facebook.com');\n    FB.ui({\n      method: 'share',\n      href: 'http://localhost/video/10',\n      title: 'Dumberland',\n      link: 'http://localhost/video/10',\n      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'\n    }, function(response){\n        console.log(response);\n    });\n  });\n</script>\n<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Share a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Facebook\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Twitter\n          </button>\n        </div>\n        \n        <br>\n\n        <div style=\"text-align: center;\">\n          <span>View the </span><a data-event='terms-button' href='#'>terms &amp; conditions</a>\n        </div>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n      <p class='intro-text animated fadeIn'>Share a Dumb present.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Facebook\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button class='btn btn-twitter btn-block' data-url='https://twitter.com/intent/tweet?text=Send a DumbPresent from the DWTD Dumberland.' data-hashtags='DumbPresent'>\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Twitter\n          </button>\n        </div>\n        \n        <br>\n\n        <div style=\"text-align: center;\">\n          <span>View the </span><a data-event='terms-button' href='#'>terms &amp; conditions</a>\n        </div>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],30:[function(require,module,exports){
