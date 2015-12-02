@@ -59,6 +59,7 @@ Share = Backbone.View.extend
       link: @presentObj.url,
       picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
       description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+   
   	
   	new @.shareModalView
   	$('#share-modal').modal('show')
