@@ -565,7 +565,7 @@ Share = Backbone.View.extend({
       href: this.presentObj.url,
       title: 'Dumb Presents to Give',
       link: this.presentObj.url,
-      picture: 'http://52.64.226.45/assets/img/FBshare_acid.png',
+      picture: 'http://52.64.226.45/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     });
     return $('#share-modal').modal('show');
