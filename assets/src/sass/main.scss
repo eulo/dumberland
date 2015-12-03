@@ -270,9 +270,11 @@ p.subtitle-text {
 p.subtitle-text-absolute {
   color: $snow-color;
   font-family: $sans-serif;
-  font-size: 19px;
+  font-size: 30px;
   text-align: center;
-  padding: 0 10%;         
+  padding: 0 10%;
+    line-height: 25px;
+     text-shadow: 1px 1px rgba(0,0,0,0.2);        
 }
 
 p.title-text-absolute {
@@ -280,7 +282,9 @@ p.title-text-absolute {
   font-family: $sans-serif;
   font-size: 30px;
   text-align: center;
-  padding: 0 10%;         
+  padding: 0 10%;
+    line-height: 25px;
+     text-shadow: 1px 1px rgba(0,0,0,0.2);         
 }
 
 
