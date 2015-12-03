@@ -1,8 +1,8 @@
 module.exports = class PresentURL
 
   count: 4
-  presentURLs: ['http://localhost/video/10', 'http://localhost/video/12', 'http://localhost/video/13',
-				'http://localhost/video/14', 'http://localhost/video/15']
+  presentURLs: ['http://52.64.226.45/video/10', 'http://52.64.226.45/video/12', 'http:/52.64.226.45//video/13',
+				'http://52.64.226.45/video/14', 'http://52.64.226.45/video/15']
 
   constructor: () ->
 	

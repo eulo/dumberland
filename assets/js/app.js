@@ -186,7 +186,7 @@ var PresentURL;
 module.exports = PresentURL = (function() {
   PresentURL.prototype.count = 4;
 
-  PresentURL.prototype.presentURLs = ['http://localhost/video/10', 'http://localhost/video/12', 'http://localhost/video/13', 'http://localhost/video/14', 'http://localhost/video/15'];
+  PresentURL.prototype.presentURLs = ['http://52.64.226.45/video/10', 'http://52.64.226.45/video/12', 'http:/52.64.226.45//video/13', 'http://52.64.226.45/video/14', 'http://52.64.226.45/video/15'];
 
   function PresentURL() {
     this.number = Math.floor(Math.random() * (this.count - 0) + 0);
