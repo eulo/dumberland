@@ -314,7 +314,22 @@ Background = Backbone.View.extend({
   el: 'body',
   template: require('../../../tmpl/background.hbs'),
   initialize: function() {
-    return this.render();
+    this.render();
+    return this.$el.find('.background').snowfall({
+      round: true,
+      minSize: 5,
+      maxSize: 8,
+      flakeCount: 100,
+      flakeColor: '#FAF9F2',
+      flakePosition: 'absolute',
+      flakeIndex: 999999,
+      minSpeed: 1,
+      maxSpeed: 5,
+      shadow: false,
+      collection: false,
+      collectionHeight: 40,
+      deviceorientation: false
+    });
   },
   render: function() {
     return this.$el.prepend(this.template);
