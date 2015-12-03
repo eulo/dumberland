@@ -314,22 +314,7 @@ Background = Backbone.View.extend({
   el: 'body',
   template: require('../../../tmpl/background.hbs'),
   initialize: function() {
-    this.render();
-    return this.$el.find('.background').snowfall({
-      round: true,
-      minSize: 5,
-      maxSize: 8,
-      flakeCount: 100,
-      flakeColor: '#FAF9F2',
-      flakePosition: 'absolute',
-      flakeIndex: 999999,
-      minSpeed: 1,
-      maxSpeed: 5,
-      shadow: false,
-      collection: false,
-      collectionHeight: 40,
-      deviceorientation: false
-    });
+    return this.render();
   },
   render: function() {
     return this.$el.prepend(this.template);
@@ -647,14 +632,18 @@ Video = Backbone.View.extend({
   shareModalView: require('./includes/share-modal'),
   termsModalView: require('./includes/terms-modal'),
   initialize: function() {
-    var self;
+    var $mainAni, self;
     self = this;
     this.model = new this.videoModel();
     this.render();
+    $('.snow-mound-with-trees').css('background', 'url(/assets/img/background_without_pole.svg) top center no-repeat');
     $('.video-overlay').show();
     $('.thanks-base').hide();
     this.presentObj = new Present;
-    return console.log('you suuck');
+    $mainAni = $('.santa-nopres-dance');
+    return this.SantaAni = new Animator($mainAni, function() {
+      return this.animate();
+    });
   },
   events: {
     'click .close-dumb-video': 'closeVideo'
@@ -734,7 +723,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n        <p class='intro-text animated fadeIn'>Give a random Christmas surprise,</p>\n                <p class='intro-text animated fadeIn'>\nShare your gift to see what’s inside.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn'>\n        <h3>&nbsp;</h3>\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button style=\"min-width: 260px\"class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Share to a friend’s wall\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button style=\"min-width: 260px\" class='btn btn-twitter btn-block' >\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Tweet a friend\n          </button>\n        </div>\n        \n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
+    return "<div id='share'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n    <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <div class='message-content'>\n        <p class='subtitle-text animated fadeIn'>Give a random Christmas surprise,<br>\nShare your gift to see what’s inside.</p>\n\n      <div class='santa-present-dance animated fadeIn' data-json='santa_present_dance.json'>\n        <div></div>\n      </div>\n\n      <div class='row animated fadeIn' style=\"margin-top: -35px;\">\n          <div class=\"container\">\n            \n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button style=\"min-width: 260px\"class='btn btn-facebook btn-block fb-share-button'>\n            <i class='fa fa-facebook' style=\"margin-left: -15px;\"></i>\n            Share to a friend’s wall\n          </button>\n        </div>\n        <div class='col-sm-6' style=\"margin-bottom: 15px;\">\n          <button style=\"min-width: 260px\" class='btn btn-twitter btn-block' >\n            <i class='fa fa-twitter' style=\"margin-left: -7px;\"></i>\n            Tweet a friend\n          </button>\n        </div>\n        \n          </div>\n      </div>\n        \n    </div>\n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],30:[function(require,module,exports){
@@ -754,7 +743,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='video'>\n    <div class=\"video-overlay\" >\n    <div class=\"col-xs-12\" style=\"background-color: #faf9f2; padding-top: 20px;\n    padding-bottom: 20px;\">  \n        <button class=\"btn btn-default close-dumb-video animated fadeIn pull-right\"> Close </button>\n    </div>\n    <div class=\"col-xs-12\" style=\"background-color: #faf9f2;\">  \n        <div class=\"video-container animated fadeIn\">\n            <iframe src=\"https://www.youtube.com/embed/WBbNJG1kIIw?rel=0\" frameborder=\"0\" allowfullscreen></iframe>\n          </div>\n      </div> \n   </div>    \n  <div class='container thanks-base'>       \n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='intro-text animated fadeIn'>\n      Christmas cheer, blood, bones and gore,\n              We hope this was all you wished for and more.\n    </p>\n      <p class='intro-text animated fadeIn'>\n      Wishing you the Dumbest Christmas of all!\n    </p>\n      <div class=\"btn-center animated fadeIn\" style=\"margin: 3em 0 1.5em 0;\">\n              <a href=\"/\" class=\"btn btn-default\">Send a Dumb Present</a>\n      </div>          \n  </div>\n\n  <div id='footer'></div>\n</div>";
+    return "<div id='video'>\n    <div class=\"video-overlay\" >\n    <div class=\"col-xs-12\" style=\"padding-top: 20px;\n    padding-bottom: 20px;\">  \n        <button class=\"btn btn-default close-dumb-video animated fadeIn pull-right\"> Close </button>\n    </div>\n    <div class=\"col-xs-12\">  \n        <div class=\"video-container animated fadeIn\">\n            <iframe src=\"https://www.youtube.com/embed/WBbNJG1kIIw?rel=0\" frameborder=\"0\" allowfullscreen></iframe>\n          </div>\n      </div> \n   </div>    \n  <div class='container thanks-base'>       \n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='subtitle-text animated fadeIn'>\n      Christmas cheer, blood, bones and gore,\n              We hope this was all you wished for and more.\n      \n        <br>\n        Wishing you the Dumbest Christmas of all!\n    </p>\n    \n      <div class=''>\n        <img src='/assets/img/deadSanta.png' class='dead-santa animated fadeIn'/>\n      </div>  \n      <div class=\"btn-center animated fadeIn\" style=\"margin: 3em 0 1.5em 0;\">\n              <a href=\"/\" class=\"btn btn-default\">Send a Dumb Present</a>\n      </div>          \n  </div>\n\n  <div id='footer'></div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],32:[function(require,module,exports){

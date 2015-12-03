@@ -10,20 +10,20 @@ Background = Backbone.View.extend
     # TODO: Animate mountain on page load, to scroll up to 50%
     @.render()
 
-    @.$el.find('.background').snowfall
-      round : true
-      minSize: 5
-      maxSize:8
-      flakeCount: 100
-      flakeColor : '#FAF9F2',
-      flakePosition: 'absolute',
-      flakeIndex: 999999,
-      minSpeed : 1,
-      maxSpeed : 5,
-      shadow : false,
-      collection : false,
-      collectionHeight : 40,
-      deviceorientation : false
+#    @.$el.find('.background').snowfall
+#      round : true
+#      minSize: 5
+#      maxSize:8
+#      flakeCount: 100
+#      flakeColor : '#FAF9F2',
+#      flakePosition: 'absolute',
+#      flakeIndex: 999999,
+#      minSpeed : 1,
+#      maxSpeed : 5,
+#      shadow : false,
+#      collection : false,
+#      collectionHeight : 40,
+#      deviceorientation : false
     
 
   render : ->

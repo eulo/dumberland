@@ -31,12 +31,16 @@ Video = Backbone.View.extend
     
     @.render()
     
+    $('.snow-mound-with-trees').css('background', 'url(/assets/img/background_without_pole.svg) top center no-repeat')
     
     $('.video-overlay').show()
     $('.thanks-base').hide()
     
-    @presentObj = new Present  
-    console.log('you suuck')
+    @presentObj = new Present
+    
+    $mainAni = $('.santa-nopres-dance')
+    @SantaAni = new Animator $mainAni, ->
+      @animate()
   
   events:
     'click .close-dumb-video': 'closeVideo' 
