@@ -43,11 +43,16 @@ Video = Backbone.View.extend
       @animate()
   
   events:
-    'click .close-dumb-video': 'closeVideo' 
+    'click .close-dumb-video': 'closeVideo'
+    'click .watch-button' : 'watchVideo'
   
   closeVideo: ->
     $('.video-overlay').hide()
     $('.thanks-base').show()
+  
+  watchVideo: ->
+    $('.video-overlay').show()
+    $('.thanks-base').hide()
   
   render: ->
     @.$el.html @.template
