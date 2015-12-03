@@ -20,6 +20,8 @@ Router.on 'route:share', ->
 Router.on 'route:video', (item) ->
   Video = require './views/video'
 
+
+
 Router.on 'route:thank', ->
 Thank = require './views/thank'
 

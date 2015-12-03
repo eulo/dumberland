@@ -49,9 +49,9 @@ h1,h2,h3,h4,h5,h6,p,label,select,input,span,textarea,button,a {
 }
 
 .video-overlay {
-    background-color: #faf9f2;
-    opacity: 0.80;
     min-height: 150vh;
+    background-color: rgba(250,249,242, 0.65);
+    zoom: 1;
     
     @media screen and (min-width: 280px) and (max-width: 380px) and     (orientation: portrait) {
       min-height: 75vh;
