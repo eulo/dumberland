@@ -261,6 +261,12 @@ p.subtitle-text {
        
 }
 
+.container-xs {
+    margin-top: -35px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 p.subtitle-text-absolute {
   color: $snow-color;
   font-family: $sans-serif;
