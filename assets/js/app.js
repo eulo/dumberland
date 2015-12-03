@@ -496,7 +496,7 @@ Index = Backbone.View.extend({
       var $pres;
       $pres = $(this);
       return setTimeout(function() {
-        return $pres.addClass('animated slideOutDown');
+        return $pres.addClass('animated bounceOutDownPresent');
       }, 1000 * Math.random());
     });
     SantaAni = this.SantaAni;

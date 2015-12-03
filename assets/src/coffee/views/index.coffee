@@ -52,7 +52,7 @@ Index = Backbone.View.extend
     $('.present:not(.active)').each ->
       $pres = $(this)
       setTimeout ->
-        $pres.addClass 'animated slideOutDown'
+        $pres.addClass 'animated bounceOutDownPresent'
       , 1000 * Math.random()
 
     SantaAni = @SantaAni
