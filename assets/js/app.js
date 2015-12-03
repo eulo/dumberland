@@ -568,14 +568,18 @@ Share = Backbone.View.extend({
       picture: 'http://52.64.226.45/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     });
-    return $('#share-modal').modal('show');
+    return setTimeout((function() {
+      return $('#share-modal').modal('show');
+    }), 8000);
   },
   twShare: function() {
     var loc;
     ga('send', 'tweet', 'Button Clicks', 'twitter.com');
     loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://52.64.226.45/video/10';
     window.open(loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
-    return $('#share-modal').modal('show');
+    return setTimeout((function() {
+      return $('#share-modal').modal('show');
+    }), 8000);
   },
   termsModal: function(event) {
     event.preventDefault();

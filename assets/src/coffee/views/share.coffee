@@ -61,8 +61,10 @@ Share = Backbone.View.extend
       link: @presentObj.url,
       picture: 'http://52.64.226.45/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
-      
-  	$('#share-modal').modal('show')
+    setTimeout (->
+      $('#share-modal').modal('show')    
+    ), 8000
+  	
   
   twShare: ->
     ga 'send','tweet','Button Clicks','twitter.com'
@@ -71,7 +73,9 @@ Share = Backbone.View.extend
     
     window.open loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
     
-    $('#share-modal').modal('show')
+    setTimeout (->
+      $('#share-modal').modal('show')    
+    ), 8000
     
     
   termsModal: (event) ->
