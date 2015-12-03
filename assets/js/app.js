@@ -472,7 +472,7 @@ Index = Backbone.View.extend({
         return PresentAni.stop();
       });
     });
-    return presentObj = new Present;
+    return presentObj = new Present();
   },
   events: {
     'click .present': 'start',
@@ -704,7 +704,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content share-modal-bg\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          \n          <div class=\"share-modal-title\">\n            Could it be short? Could it be sweet? \nWill it have teeth as long as your feet?\n              <br>\n              Your present has been shared, \nbut what could it be?\n          </div>\n\n          <div class=\"present-image\">\n            <img class=\"share-modal-img\" src=\"http://clients.mccann.com.au/clients/Metro/dumberland/present-shake2.gif\"></img>\n          </div>  \n\n          <div class=\"col-lg-12 btn-center\" style=\"margin: 3em 0 0 0;\">\n              <a href=\"/\" class=\"btn btn-default\" style=\"margin-bottom: 20px\">Give Another</a>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
+    return "<div id='share-modal' class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content share-modal-bg\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n      </div>\n      <div class=\"modal-body\">\n        <div class='row'>\n          \n          <p class=\"title-text-absolute animated fadeIn\">Your present has been shared</h1>    \n            \n          <p class=\"subtitle-text-absolute animated fadeIn\">\n            Could it be short? Could it be sweet? \nWill it have teeth as long as your feet?\n          </p>\n\n          <div class=\"present-image\">\n            <img class=\"share-modal-img\" src=\"http://clients.mccann.com.au/clients/Metro/dumberland/present-shake2.gif\"></img>\n          </div>  \n\n          <div class=\"col-lg-12 btn-center\" style=\"margin: 3em 0 0 0;\">\n              <a href=\"/\" class=\"btn btn-default\" style=\"margin-bottom: 20px\">Give Another</a>\n          </div>\n        </div>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->\n";
 },"useData":true});
 
 },{"hbsfy/runtime":57}],26:[function(require,module,exports){

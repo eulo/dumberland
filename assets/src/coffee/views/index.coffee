@@ -27,7 +27,7 @@ Index = Backbone.View.extend
       $(this).find('div').bind 'mouseleave', ->
         PresentAni.stop()
     
-    presentObj = new Present  
+    presentObj = new Present()  
 
   events:
     'click .present': 'start'
