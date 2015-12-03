@@ -563,10 +563,10 @@ Share = Backbone.View.extend({
     FB.ui({
       method: 'share',
       href: this.presentObj.url,
-      title: 'Dumberland',
+      title: 'Dumb Presents to Give',
       link: this.presentObj.url,
-      picture: 'http://52.64.226.45/assets/img/fb_share_img.png',
-      description: 'Give the gift of surprise this Christmas. Send a Dumb Present from the Christmas Dumberland.'
+      picture: 'http://52.64.226.45/assets/img/FBshare_acid.png',
+      description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     });
     return $('#share-modal').modal('show');
   },
