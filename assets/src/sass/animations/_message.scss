@@ -4,10 +4,25 @@
   position: relative;
   margin: -90px auto 0;
 
-  @media screen and (min-width: 280px) and (max-width: 410px) {
-    margin-left: -10%;
-    margin-top: -35%  
+  @media screen and (min-width: 280px) and (max-width: 349px) {
+    margin-left: -16%;
+    margin-top: -33%;  
   } 
+  @media screen and (min-width: 350px) and (max-width: 370px) {
+    margin-left: -10%;
+    margin-top: -20%;  
+  }
+  @media screen and (min-width: 371px) and (max-width: 410px) {
+    margin-left: -10%;
+    margin-top: -35%;  
+  }    
+    
+  @media screen and (min-width: 280px) and (max-width: 920px) {
+    margin-bottom: -30px;  
+  }     
+    
+    
+    
 
   > div {
     display: inline-block;

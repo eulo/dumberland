@@ -265,7 +265,9 @@ module.exports = Backbone.Model.extend({
 
 
 },{}],12:[function(require,module,exports){
-var AppRouter, Router, Thank;
+var AppRouter, Router, Thank, app;
+
+app = app || {};
 
 AppRouter = Backbone.Router.extend({
   routes: {
@@ -290,6 +292,8 @@ Router.on('route:share', function() {
 
 Router.on('route:video', function(item) {
   var Video;
+  app.varID = item;
+  console.log(app);
   return Video = require('./views/video');
 });
 
@@ -636,11 +640,13 @@ module.exports = new Thank;
 
 
 },{"../../tmpl/components/thank-success.hbs":27,"../../tmpl/thank.hbs":30,"../collections/present":1,"../lib/animator":3,"../lib/getUrlVars":5,"../models/thank":10,"./includes/footer":14,"./includes/header":15,"hbsfy/runtime":57}],21:[function(require,module,exports){
-var Handlebars, Present, Video;
+var Handlebars, Present, Video, app;
 
 Handlebars = require('hbsfy/runtime');
 
 Present = require('../lib/presentURL');
+
+app = app || {};
 
 Video = Backbone.View.extend({
   el: '#main',
@@ -676,9 +682,13 @@ Video = Backbone.View.extend({
     $('.video-overlay').show();
     return $('.thanks-base').hide();
   },
+  itemTrigger: function(item) {
+    return console.log(item + ' you suck');
+  },
   render: function() {
     var Footer, Header;
     this.$el.html(this.template);
+    console.log(app);
     Header = new this.headerView();
     return Footer = new this.footerView();
   }

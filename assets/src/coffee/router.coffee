@@ -1,3 +1,5 @@
+app = app or {}
+
 AppRouter = Backbone.Router.extend
   
   routes:
@@ -18,10 +20,10 @@ Router.on 'route:share', ->
   Share = require './views/share' 
 
 Router.on 'route:video', (item) ->
+  app.varID = item
+  console.log(app)
   Video = require './views/video'
-
-
-
+  
 Router.on 'route:thank', ->
 Thank = require './views/thank'
 

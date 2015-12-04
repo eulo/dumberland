@@ -222,9 +222,8 @@ a.page-title {
 h1.page-title {
   text-indent: -9999px;
   background: url(/assets/img/site_title_desktop.png) top center no-repeat;
-  /* min-width: 424px; */
-  height: 144px;
-  max-width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
   background-size: contain; 
 
   @media screen and (min-width: 280px) and (max-width: 1200px) {
@@ -254,19 +253,37 @@ p.subtitle-text {
      text-shadow: 1px 1px rgba(0,0,0,0.2);
     
     
-  @media screen and (min-width: 280px) and (max-width: 920px) {
-     font-size: 20px;
+  @media screen and (min-width: 280px) and (max-width: 369px) {
+     font-size: 16px;
     padding: 0 5%;
     margin-top: -20px;
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 370px) and (max-width: 410px) {
+     font-size: 18px;
+    padding: 0 5%;
     margin-bottom: 35px;
-  } 
+  }
+   @media screen and (min-width: 411px) and (max-width: 920px) {
+     font-size: 20px;
+    padding: 0 5%;
+    margin-top: -10px;
+    margin-bottom: 25px;
+  }              
        
 }
 
 .container-xs {
     margin-top: -35px;
     max-width: 600px;
-    margin: 0 auto;
+    @media screen and (min-width: 369px) and (max-width: 749px) {
+         margin: 0 auto;
+    }
+    
+    @media screen and (min-width: 750px) {
+         margin: 10% auto 0;
+    } 
+    
 }
 
 p.subtitle-text-absolute {
