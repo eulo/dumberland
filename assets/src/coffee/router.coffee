@@ -1,11 +1,8 @@
-app = app or {}
-
 AppRouter = Backbone.Router.extend
   
   routes:
     "share"         : "share"
     "video/:item"   : "video"
-    "thank"         : "thank"
     ""              : "index"
 
 
@@ -20,12 +17,11 @@ Router.on 'route:share', ->
   Share = require './views/share' 
 
 Router.on 'route:video', (item) ->
-  app.varID = item
-  console.log(app)
+  console.log(item)
   Video = require './views/video'
-  
-Router.on 'route:thank', ->
-Thank = require './views/thank'
+  console.log('beat it')
+  console.log(Video)
+  Video.test(item)
 
 Backbone.history.start
   pushState: true

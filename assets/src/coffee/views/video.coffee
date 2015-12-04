@@ -2,8 +2,6 @@ Handlebars = require 'hbsfy/runtime'
 Present = require '../lib/presentURL'
 # require '../lib/backbone.validation.callbacks.bootstrap'
 
-app = app or {}
-
 Video = Backbone.View.extend
   
   el: '#main'
@@ -40,9 +38,6 @@ Video = Backbone.View.extend
     
     @presentObj = new Present
     
-    $mainAni = $('.santa-nopres-dance')
-    @SantaAni = new Animator $mainAni, ->
-      @animate()
   
   events:
     'click .close-dumb-video': 'closeVideo'
@@ -56,13 +51,12 @@ Video = Backbone.View.extend
     $('.video-overlay').show()
     $('.thanks-base').hide()
   
-  itemTrigger: (item) ->
+  test: (item) ->
     console.log(item + ' you suck')
   
   
   render: ->
     @.$el.html @.template
-    console.log(app)
 
     Header = new @.headerView()
     Footer = new @.footerView()
