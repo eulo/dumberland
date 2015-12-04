@@ -44,7 +44,7 @@
   }
 
   @media screen and (min-width: 351px) and (max-width: 640px) and (orientation: portrait) {
-     left: -40px;
+     left: -55px;
   }  
 
 
@@ -60,24 +60,17 @@
     
     @for $i from 1 through 20 {
 
-      &-#{$i} {
-        transform: scale((random(100)/1000)+0.3);
-        -ms-transform: scale((random(100)/1000)+0.3);
-        -webkit-transform: scale((random(100)/1000)+0.3);
-        @media screen and (min-width: 411px) and (max-width: 640px) {
-           transform: scale((random(100)/1000)+0.3);
-          -ms-transform: scale((random(100)/1000)+0.3); /* IE 9 */
-          -webkit-transform: scale((random(100)/1000)+0.3); /* Chrome and Safari */
-        }
-      }
-
       @if $i == 1 {
           &-#{$i} {
           top: -10px;
           left: 22%;
           transform: scale(0.28);
           -ms-transform: scale(0.28);
-          -webkit-transform: scale(0.28);      
+          -webkit-transform: scale(0.28); 
+            @media screen and (min-width: 280px) and (max-width: 410px) {
+            left: 0%;
+            top: -17px;  
+          }   
         }
       } 
       @else if $i == 2  {
@@ -86,7 +79,10 @@
           left: 28%;
           transform: scale(0.25);
           -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25);    
+          -webkit-transform: scale(0.25); 
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            left: 10%;  
+          }     
         }
       }
       @else if $i == 3 {
@@ -95,7 +91,11 @@
           left: 12%;
           transform: scale(0.28);
           -ms-transform: scale(0.28);
-          -webkit-transform: scale(0.28);    
+          -webkit-transform: scale(0.28);
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 60px;
+            left: -5%;  
+          }         
         }
       }
       @else if $i == 4 {
@@ -104,7 +104,12 @@
            left: 20%;
            transform: scale(0.25);
           -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25);     
+          -webkit-transform: scale(0.25); 
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 17px;
+            left: 12%; 
+            z-index: 1;     
+          }      
         }
       }
       @else if $i == 5 {
@@ -114,7 +119,11 @@
            transform: scale(0.35);
           -ms-transform: scale(0.35);
           -webkit-transform: scale(0.35);  
-          z-index: 95;    
+          z-index: 95;
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 30px;
+            left: 33%; 
+          }        
         }
       }
       @else if $i == 6 {
@@ -123,7 +132,11 @@
           left: 36%;
           transform: scale(0.25);
           -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25);     
+          -webkit-transform: scale(0.25);
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 30px;
+            left: 33%; 
+          }     
         }
       }
       @else if $i == 7 {
@@ -132,7 +145,12 @@
           left: 55%;
           transform: scale(0.30);
           -ms-transform: scale(0.30);
-          -webkit-transform: scale(0.30); 
+          -webkit-transform: scale(0.30);
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+                top: 16px;
+                left: 54%;
+                z-index: -1; 
+          }     
         }
       }
       @else if $i == 8 {
@@ -141,7 +159,12 @@
           left: 45%;
           transform: scale(0.29);
           -ms-transform: scale(0.29);
-          -webkit-transform: scale(0.29);     
+          -webkit-transform: scale(0.29); 
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+                top: -15px;
+                left: 70%;
+                z-index: -2; 
+          }     
         }
       }
       @else if $i == 9 {
@@ -150,7 +173,11 @@
           left: 40%;
            transform: scale(0.40);
           -ms-transform: scale(0.40);
-          -webkit-transform: scale(0.40);     
+          -webkit-transform: scale(0.40); 
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+                top: 63px;
+                left: 69%;
+          }  
         }
       }
       @else if $i == 10 {
@@ -159,7 +186,14 @@
           left: 45%;
            transform: scale(0.35);
           -ms-transform: scale(0.35);
-          -webkit-transform: scale(0.35);     
+          -webkit-transform: scale(0.35);
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 86px;
+            left: 47%;
+            transform: scale(0.35);
+            -ms-transform: scale(0.35);
+            -webkit-transform: scale(0.35);
+          }
         }
       } 
 
@@ -171,7 +205,11 @@
           transform: scale(0.40);
           -ms-transform: scale(0.40);
           -webkit-transform: scale(0.40); 
-          z-index: 96;           
+          z-index: 96;
+          @media screen and (min-width: 280px) and (max-width: 410px) {
+            top: 86px;
+            left: 17%;
+          }      
         }
       } 
       @else if $i == 12  {
@@ -191,9 +229,9 @@
           transform: scale(0.40);
           -ms-transform: scale(0.40);
           -webkit-transform: scale(0.40); 
-          @media screen and (min-width: 280px) and (max-width: 640px) {
+          @media screen and (min-width: 280px) and (max-width: 410px) {
             left: 32%;
-           }    
+          }  
         }
       }
       @else if $i == 14 {
