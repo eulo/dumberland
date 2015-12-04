@@ -311,7 +311,10 @@ p.title-text-absolute {
 .dead-santa {
     margin: 0 auto;
     display: block;
-     @media screen and (min-width: 411px) {
+    @media screen and (min-width: 280px) and (max-width:410px) {
+         margin-top: 40px;
+    }
+    @media screen and (min-width: 411px) {
          margin-top: 70px;
     }
 }
