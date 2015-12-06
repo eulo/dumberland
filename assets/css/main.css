@@ -14500,7 +14500,7 @@ p.title-text-absolute {
   z-index: -1;
 }
 .background .sky {
-  background: url(/assets/img/texture-overlay.jpg);
+  background-color: #A6D2BD;
   width: 100%;
   position: absolute;
   height: 880px;
