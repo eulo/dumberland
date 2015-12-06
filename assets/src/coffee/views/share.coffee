@@ -59,7 +59,7 @@ Share = Backbone.View.extend
       href: @presentObj.url,
       title: 'Here’s a Dumb Present',
       link: @presentObj.url,
-      picture: 'http://52.64.226.45/assets/img/FBshare_acid.jpg',
+      picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     setTimeout (->
       $('#share-modal').modal('show')    
@@ -69,7 +69,7 @@ Share = Backbone.View.extend
   twShare: ->
     ga 'send','tweet','Button Clicks','twitter.com'
     
-    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://52.64.226.45/video/10'
+    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://dumberland.com/video/10'
     
     window.open loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
     

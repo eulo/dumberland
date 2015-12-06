@@ -159,12 +159,52 @@ var PresentURL;
 module.exports = PresentURL = (function() {
   PresentURL.prototype.count = 4;
 
-  PresentURL.prototype.presentURLs = ['http://52.64.226.45/video/10', 'http://52.64.226.45/video/12', 'http:/52.64.226.45//video/13', 'http://52.64.226.45/video/14', 'http://52.64.226.45/video/15'];
+  PresentURL.prototype.presentURLs = ['http://dumberland.com/video/10', 'http://dumberland.com/video/12', 'http:/dumberland.com/video/13', 'http://dumberland.com/video/14', 'http://dumberland.com/video/15'];
 
   function PresentURL() {
     this.number = Math.floor(Math.random() * (this.count - 0) + 0);
     this.url = this.presentURLs[this.number];
   }
+
+  PresentURL.prototype.getVid = function(videoNumber) {
+    this.videoURL;
+    if (videoNumber === '10') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '11') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+    if (videoNumber === '12') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '13') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+    if (videoNumber === '14') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '15') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+    if (videoNumber === '16') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '17') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+    if (videoNumber === '18') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '19') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+    if (videoNumber === '20') {
+      return this.videoURL = 'VaAAnjt9orc';
+    }
+    if (videoNumber === '21') {
+      return this.videoURL = 'VaAAnjt9orz';
+    }
+  };
 
   return PresentURL;
 
@@ -211,10 +251,7 @@ Router.on('route:share', function() {
 
 Router.on('route:video', function(item) {
   var Video;
-  console.log(item);
   Video = require('./views/video');
-  console.log('beat it');
-  console.log(Video);
   return Video.test(item);
 });
 
@@ -486,7 +523,7 @@ Share = Backbone.View.extend({
       href: this.presentObj.url,
       title: 'Here’s a Dumb Present',
       link: this.presentObj.url,
-      picture: 'http://52.64.226.45/assets/img/FBshare_acid.jpg',
+      picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     });
     return setTimeout((function() {
@@ -496,7 +533,7 @@ Share = Backbone.View.extend({
   twShare: function() {
     var loc;
     ga('send', 'tweet', 'Button Clicks', 'twitter.com');
-    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://52.64.226.45/video/10';
+    loc = 'https://twitter.com/intent/tweet?text=Open a Dumb Present from the Dumb Ways to Die Christmas Dumberland. http://dumberland.com/video/10';
     window.open(loc, "twitterwindow", "height=450, width=550, top=" + ($(window).height() / 2 - 225) + ", left=" + $(window).width() / 2 + ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
     return setTimeout((function() {
       return $('#share-modal').modal('show');
@@ -561,8 +598,8 @@ Video = Backbone.View.extend({
     $('.video-overlay').show();
     return $('.thanks-base').hide();
   },
-  test: function(item) {
-    return console.log(item + ' you suck');
+  test: function(videoNum) {
+    return console.log(this.presentObj.getVid(videoNum));
   },
   render: function() {
     var Footer, Header;

@@ -51,8 +51,12 @@ Video = Backbone.View.extend
     $('.video-overlay').show()
     $('.thanks-base').hide()
   
-  test: (item) ->
-    console.log(item + ' you suck')
+  test: (videoNum) ->
+#    console.log(@presentObj)
+    console.log( @presentObj.getVid(videoNum) )
+    
+#    console.log(@videoURL)
+    
   
   
   render: ->
