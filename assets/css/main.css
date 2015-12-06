@@ -14276,7 +14276,7 @@ p.subtitle-text {
 }
 @media screen and (min-width: 750px) {
   .container-xs {
-    margin: 10% auto 50px;
+    margin: 0px auto 50px;
   }
 }
 
