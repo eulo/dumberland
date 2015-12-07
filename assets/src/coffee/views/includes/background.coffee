@@ -14,7 +14,7 @@ Background = Backbone.View.extend
       round : true, 
       minSize: 5,
       maxSize: 8,
-      flakeCount: 50,
+      flakeCount: 10,
       flakeColor : '#FAF9F2',
       flakePosition: 'absolute',
       flakeIndex: 999999,
