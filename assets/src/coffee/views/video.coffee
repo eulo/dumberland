@@ -56,7 +56,7 @@ Video = Backbone.View.extend
     $('.video-overlay').show()
     $('.thanks-base').hide()
     
-    iframe = $('#vimplayer')[0]
+    iframe = $('#vimplayer')
     player = $f(iframe)
     
     player.api('seekTo', 0)
@@ -65,10 +65,18 @@ Video = Backbone.View.extend
     
   
   test: (videoNum) ->
-#    console.log(@presentObj)
-    console.log( @presentObj.getVid(videoNum) )
+    console.log(videoNum + ' and something')
     
-#    console.log(@videoURL)
+    baseURL = 'https://player.vimeo.com/video/'
+    options = '?autoplay=1;color=#a6d2bd;api=1'
+    
+    iframe = $('#vimplayer') 
+    
+    iframe.attr('src', baseURL + @presentObj.getVid(videoNum) + options)
+    
+    
+    
+    console.log(@videoURL)
     
   
   

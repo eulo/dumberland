@@ -1,8 +1,8 @@
 module.exports = class PresentURL
 
   count: 4
-  presentURLs: ['http://dumberland.com/video/10', 'http://dumberland.com/video/12', 'http:/dumberland.com/video/13',
-				'http://dumberland.com/video/14', 'http://dumberland.com/video/15']
+  presentURLs: ['http://dumberland.com/video/xdqtanxr', 'http://dumberland.com/video/onolhvkc', 'http:/dumberland.com/video/sizvhcic',
+				'http://dumberland.com/video/chgkxoxc', 'http://dumberland.com/video/kqydmrlu']
 
   constructor: () ->
 	
@@ -14,21 +14,21 @@ module.exports = class PresentURL
   	@url = @presentURLs[@number]
 
   # Return URL for the video to append to our view. 
-  getVid: (videoNumber) ->
-    @videoURL
+  getVid: (videoCode) ->
+    @videoNum
     
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '10'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '11'
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '12'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '13'
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '14'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '15'
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '16'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '17'
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '18'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '19'
-    return @videoURL = 'VaAAnjt9orc' if videoNumber == '20'
-    return @videoURL = 'VaAAnjt9orz' if videoNumber == '21'
+    return @videoNum = '148047051' if videoCode == 'xdqtanxr'
+    return @videoNum = '148047049' if videoCode == 'onolhvkc'
+    return @videoNum = '148047050' if videoCode == 'sizvhcic'
+    return @videoNum = '148047048' if videoCode == 'chgkxoxc'
+    return @videoNum = '148047052' if videoCode == 'kqydmrlu'
+    return @videoNum = 'VaAAnjt9orz' if videoCode == '15'
+    return @videoNum = 'VaAAnjt9orc' if videoCode == '16'
+    return @videoNum = 'VaAAnjt9orz' if videoCode == '17'
+    return @videoNum = 'VaAAnjt9orc' if videoCode == '18'
+    return @videoNum = 'VaAAnjt9orz' if videoCode == '19'
+    return @videoNum = 'VaAAnjt9orc' if videoCode == '20'
+    return @videoNum = 'VaAAnjt9orz' if videoCode == '21'
     
 #    if videoNumber == '10'
 #        @videoURL = 'VaAAnjt9orc'

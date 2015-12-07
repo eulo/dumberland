@@ -159,50 +159,50 @@ var PresentURL;
 module.exports = PresentURL = (function() {
   PresentURL.prototype.count = 4;
 
-  PresentURL.prototype.presentURLs = ['http://dumberland.com/video/10', 'http://dumberland.com/video/12', 'http:/dumberland.com/video/13', 'http://dumberland.com/video/14', 'http://dumberland.com/video/15'];
+  PresentURL.prototype.presentURLs = ['http://dumberland.com/video/xdqtanxr', 'http://dumberland.com/video/onolhvkc', 'http:/dumberland.com/video/sizvhcic', 'http://dumberland.com/video/chgkxoxc', 'http://dumberland.com/video/kqydmrlu'];
 
   function PresentURL() {
     this.number = Math.floor(Math.random() * (this.count - 0) + 0);
     this.url = this.presentURLs[this.number];
   }
 
-  PresentURL.prototype.getVid = function(videoNumber) {
-    this.videoURL;
-    if (videoNumber === '10') {
-      return this.videoURL = 'VaAAnjt9orc';
+  PresentURL.prototype.getVid = function(videoCode) {
+    this.videoNum;
+    if (videoCode === 'xdqtanxr') {
+      return this.videoNum = '148047051';
     }
-    if (videoNumber === '11') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === 'onolhvkc') {
+      return this.videoNum = '148047049';
     }
-    if (videoNumber === '12') {
-      return this.videoURL = 'VaAAnjt9orc';
+    if (videoCode === 'sizvhcic') {
+      return this.videoNum = '148047050';
     }
-    if (videoNumber === '13') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === 'chgkxoxc') {
+      return this.videoNum = '148047048';
     }
-    if (videoNumber === '14') {
-      return this.videoURL = 'VaAAnjt9orc';
+    if (videoCode === 'kqydmrlu') {
+      return this.videoNum = '148047052';
     }
-    if (videoNumber === '15') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === '15') {
+      return this.videoNum = 'VaAAnjt9orz';
     }
-    if (videoNumber === '16') {
-      return this.videoURL = 'VaAAnjt9orc';
+    if (videoCode === '16') {
+      return this.videoNum = 'VaAAnjt9orc';
     }
-    if (videoNumber === '17') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === '17') {
+      return this.videoNum = 'VaAAnjt9orz';
     }
-    if (videoNumber === '18') {
-      return this.videoURL = 'VaAAnjt9orc';
+    if (videoCode === '18') {
+      return this.videoNum = 'VaAAnjt9orc';
     }
-    if (videoNumber === '19') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === '19') {
+      return this.videoNum = 'VaAAnjt9orz';
     }
-    if (videoNumber === '20') {
-      return this.videoURL = 'VaAAnjt9orc';
+    if (videoCode === '20') {
+      return this.videoNum = 'VaAAnjt9orc';
     }
-    if (videoNumber === '21') {
-      return this.videoURL = 'VaAAnjt9orz';
+    if (videoCode === '21') {
+      return this.videoNum = 'VaAAnjt9orz';
     }
   };
 
@@ -605,13 +605,19 @@ Video = Backbone.View.extend({
     var iframe, player;
     $('.video-overlay').show();
     $('.thanks-base').hide();
-    iframe = $('#vimplayer')[0];
+    iframe = $('#vimplayer');
     player = $f(iframe);
     player.api('seekTo', 0);
     return player.api('play');
   },
   test: function(videoNum) {
-    return console.log(this.presentObj.getVid(videoNum));
+    var baseURL, iframe, options;
+    console.log(videoNum + ' and something');
+    baseURL = 'https://player.vimeo.com/video/';
+    options = '?autoplay=1;color=#a6d2bd;api=1';
+    iframe = $('#vimplayer');
+    iframe.attr('src', baseURL + this.presentObj.getVid(videoNum) + options);
+    return console.log(this.videoURL);
   },
   render: function() {
     var Footer, Header;
