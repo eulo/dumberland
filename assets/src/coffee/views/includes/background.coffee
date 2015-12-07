@@ -12,14 +12,14 @@ Background = Backbone.View.extend
 
     @.$el.find('.background').snowfall
       round : true, 
-      minSize: 2,
-      maxSize: 10,
-      flakeCount: 40,
+      minSize: 5,
+      maxSize: 8,
+      flakeCount: 50,
       flakeColor : '#FAF9F2',
       flakePosition: 'absolute',
       flakeIndex: 999999,
       minSpeed : 1,
-      maxSpeed : 20,
+      maxSpeed : 5,
       shadow : false,
       collection : false,
       collectionHeight : 40,

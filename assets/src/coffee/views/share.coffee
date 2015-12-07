@@ -61,9 +61,13 @@ Share = Backbone.View.extend
       link: @presentObj.url,
       picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
-    setTimeout (->
-      $('#share-modal').modal('show')    
-    ), 8000
+   (response) ->
+      if response and !response.error_message
+        alert 'Posting completed.'
+      else
+        alert 'Error while posting.'
+      return
+
   	
   
   twShare: ->

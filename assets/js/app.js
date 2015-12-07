@@ -275,14 +275,14 @@ Background = Backbone.View.extend({
     this.render();
     return this.$el.find('.background').snowfall({
       round: true,
-      minSize: 2,
-      maxSize: 10,
-      flakeCount: 40,
+      minSize: 5,
+      maxSize: 8,
+      flakeCount: 50,
       flakeColor: '#FAF9F2',
       flakePosition: 'absolute',
       flakeIndex: 999999,
       minSpeed: 1,
-      maxSpeed: 20,
+      maxSpeed: 5,
       shadow: false,
       collection: false,
       collectionHeight: 40,
@@ -525,9 +525,13 @@ Share = Backbone.View.extend({
       picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
     });
-    return setTimeout((function() {
-      return $('#share-modal').modal('show');
-    }), 8000);
+    return function(response) {
+      if (response && !response.error_message) {
+        alert('Posting completed.');
+      } else {
+        alert('Error while posting.');
+      }
+    };
   },
   twShare: function() {
     var loc;
