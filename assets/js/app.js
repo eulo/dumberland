@@ -33,11 +33,11 @@ module.exports = Animator = (function() {
 
   Animator.prototype.frameRef = [];
 
-  Animator.prototype.fps = 50;
+  Animator.prototype.fps = 75;
 
-  Animator.prototype.interval = null;
+  Animator.prototype.interval = 2;
 
-  Animator.prototype.onLoad = null;
+  Animator.prototype.onLoad = 2;
 
   function Animator($cont, onLoad) {
     var img, self;
@@ -275,8 +275,8 @@ Background = Backbone.View.extend({
     this.render();
     return this.$el.find('.background').snowfall({
       round: true,
-      minSize: 5,
-      maxSize: 8,
+      minSize: 2,
+      maxSize: 10,
       flakeCount: 40,
       flakeColor: '#FAF9F2',
       flakePosition: 'absolute',

@@ -14278,7 +14278,7 @@ p.subtitle-text {
   margin-top: -35px;
   max-width: 600px;
 }
-@media screen and (min-width: 369px) and (max-width: 749px) {
+@media screen and (min-width: 280px) and (max-width: 749px) {
   .container-xs {
     margin: 0 auto 50px;
   }

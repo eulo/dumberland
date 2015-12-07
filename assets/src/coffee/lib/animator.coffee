@@ -2,9 +2,9 @@ module.exports = class Animator
 
   step: 0
   frameRef: []
-  fps: 50
-  interval: null
-  onLoad: null
+  fps: 75
+  interval: 2
+  onLoad: 2
 
   constructor: ($cont, onLoad) ->
     self = @
