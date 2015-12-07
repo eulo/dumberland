@@ -14057,14 +14057,9 @@ h1, h2, h3, h4, h5, h6, p, label, select, input, span, textarea, button, a {
   background-color: rgba(250, 249, 242, 0.65);
   zoom: 1;
 }
-@media screen and (min-width: 280px) and (max-width: 380px) and (orientation: portrait) {
+@media screen and (min-width: 280px) and (max-width: 992px) and (orientation: portrait) {
   .video-overlay {
     min-height: 75vh;
-  }
-}
-@media screen and (min-width: 381px) and (max-width: 920px) and (orientation: portrait) {
-  .video-overlay {
-    min-height: 65vh;
   }
 }
 

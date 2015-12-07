@@ -46,10 +46,23 @@ Video = Backbone.View.extend
   closeVideo: ->
     $('.video-overlay').hide()
     $('.thanks-base').show()
+    
+    iframe = $('#vimplayer')[0]
+    player = $f(iframe)
+    
+    player.api('pause')
   
   watchVideo: ->
     $('.video-overlay').show()
     $('.thanks-base').hide()
+    
+    iframe = $('#vimplayer')[0]
+    player = $f(iframe)
+    
+    player.api('seekTo', 0)
+    player.api('play')
+    
+    
   
   test: (videoNum) ->
 #    console.log(@presentObj)
