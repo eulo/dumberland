@@ -612,12 +612,10 @@ Video = Backbone.View.extend({
   },
   test: function(videoNum) {
     var baseURL, iframe, options;
-    console.log(videoNum + ' and something');
     baseURL = 'https://player.vimeo.com/video/';
     options = '?autoplay=1;color=#a6d2bd;api=1';
     iframe = $('#vimplayer');
-    iframe.attr('src', baseURL + this.presentObj.getVid(videoNum) + options);
-    return console.log(this.videoURL);
+    return iframe.attr('src', baseURL + this.presentObj.getVid(videoNum) + options);
   },
   render: function() {
     var Footer, Header;
@@ -670,7 +668,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='subtitle-text animated fadeIn'>\n      Send a friend a Dumb Christmas gift.<br>\n      Pick a present to share a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13' data-json='present_shake.json'><div></div></div>\n\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
+    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='subtitle-text animated fadeIn'>\n      Send a friend a Dumb Christmas gift.<br>\n      Pick a present to share a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-xs' data-json='present_shake.json'><div></div></div>\n\n    </div>\n </div>\n\n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":50}],23:[function(require,module,exports){

@@ -65,7 +65,6 @@ Video = Backbone.View.extend
     
   
   test: (videoNum) ->
-    console.log(videoNum + ' and something')
     
     baseURL = 'https://player.vimeo.com/video/'
     options = '?autoplay=1;color=#a6d2bd;api=1'
@@ -73,12 +72,6 @@ Video = Backbone.View.extend
     iframe = $('#vimplayer') 
     
     iframe.attr('src', baseURL + @presentObj.getVid(videoNum) + options)
-    
-    
-    
-    console.log(@videoURL)
-    
-  
   
   render: ->
     @.$el.html @.template

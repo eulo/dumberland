@@ -30,6 +30,9 @@
     margin-left: 15%;  
   }
 
+  @media screen and (max-width: 766px) {
+    max-width: 500px;
+  }    
 
   @media screen and (min-width: 411px) and (max-width: 640px) and (orientation: landscape) {
      left: 10%;
@@ -62,49 +65,59 @@
 
       @if $i == 1 {
           &-#{$i} {
-          top: -10px;
-          left: 22%;
+          top: -19px;
+          left:19%;
           transform: scale(0.28);
           -ms-transform: scale(0.28);
           -webkit-transform: scale(0.28); 
-            @media screen and (min-width: 280px) and (max-width: 410px) {
-            left: 0%;
-            top: -17px;  
-          }   
+          @media screen and (min-width: 280px) and (max-width: 766px) {
+            left: 5%;
+            top: -10px;
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);  
+          }           
         }
       } 
       @else if $i == 2  {
         &-#{$i} {
-          top: 14px;
-          left: 28%;
-          transform: scale(0.25);
-          -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25); 
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-            left: 10%;  
-          }     
+          top: 17px;
+            left: 27%;
+            transform: scale(0.28);
+            -ms-transform: scale(0.28);
+            -webkit-transform: scale(0.28); 
+          @media screen and (min-width: 280px) and (max-width: 766px) {
+            left: 23%;
+            top: 40px;
+              transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+          }                  
         }
       }
       @else if $i == 3 {
         &-#{$i} {
-          top: 32px;
-          left: 12%;
-          transform: scale(0.28);
-          -ms-transform: scale(0.28);
-          -webkit-transform: scale(0.28);
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-            top: 60px;
-            left: -5%;  
-          }         
+          top: 6px;
+            left: 9.5%;
+            transform: scale(0.28);
+            -ms-transform: scale(0.28);
+            -webkit-transform: scale(0.28);
+          @media screen and (min-width: 280px) and (max-width: 766px) {
+            top: 81px;
+            left: 21%;  
+               transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+          }    
         }
       }
       @else if $i == 4 {
         &-#{$i} {
-           top: 30px;
-           left: 20%;
-           transform: scale(0.25);
-          -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25); 
+           top: 63px;
+           left: 14.5%;
+           transform: scale(0.29);
+          -ms-transform: scale(0.29);
+          -webkit-transform: scale(0.29); 
           @media screen and (min-width: 280px) and (max-width: 410px) {
             top: 17px;
             left: 12%; 
@@ -116,10 +129,10 @@
         &-#{$i} {
           top: 55px;
           left: 34%;
-           transform: scale(0.35);
-          -ms-transform: scale(0.35);
-          -webkit-transform: scale(0.35);  
-          z-index: 95;
+           transform: scale(0.33);
+          -ms-transform: scale(0.33);
+          -webkit-transform: scale(0.33);  
+          z-index: 4;
           @media screen and (min-width: 280px) and (max-width: 410px) {
             top: 30px;
             left: 33%; 
@@ -128,11 +141,12 @@
       }
       @else if $i == 6 {
         &-#{$i} {
-          top: 0px;
-          left: 36%;
-          transform: scale(0.25);
-          -ms-transform: scale(0.25);
-          -webkit-transform: scale(0.25);
+          top: 9px;
+            left: 49%;
+            transform: scale(0.28);
+            -ms-transform: scale(0.28);
+            -webkit-transform: scale(0.28);
+            z-index: 3;
           @media screen and (min-width: 280px) and (max-width: 410px) {
             top: 30px;
             left: 33%; 
@@ -141,71 +155,82 @@
       }
       @else if $i == 7 {
         &-#{$i} {
-          top: 15px;
-          left: 55%;
-          transform: scale(0.30);
-          -ms-transform: scale(0.30);
-          -webkit-transform: scale(0.30);
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-                top: 16px;
-                left: 54%;
-                z-index: -1; 
-          }     
+              top: 44px;
+            left: 54%;
+            transform: scale(0.3);
+            -ms-transform: scale(0.3);
+            -webkit-transform: scale(0.3);
+            z-index: 4;
+        @media screen and (min-width: 280px) and (max-width: 766px) {
+            top: 14px;
+            left: 48%;    
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+          }  
+    
         }
       }
       @else if $i == 8 {
         &-#{$i} {
-          top: -15px;
-          left: 45%;
-          transform: scale(0.29);
-          -ms-transform: scale(0.29);
-          -webkit-transform: scale(0.29); 
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-                top: -15px;
-                left: 70%;
-                z-index: -2; 
-          }     
+              top: -20px;
+            left: 58%;
+            transform: scale(0.29);
+            -ms-transform: scale(0.29);
+            -webkit-transform: scale(0.29);
+        @media screen and (min-width: 280px) and (max-width: 766px) {
+            top: -25px;
+            left: 64%; 
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+          }      
         }
       }
       @else if $i == 9 {
         &-#{$i} {
-          top: 25px;
-          left: 40%;
-           transform: scale(0.40);
-          -ms-transform: scale(0.40);
-          -webkit-transform: scale(0.40); 
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-                top: 63px;
-                left: 69%;
-          }  
+          top: 19px;
+            left: 40%;
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+        @media screen and (min-width: 280px) and (max-width: 766px) {
+            top: 69px;
+            left: 52%;  
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+            z-index:10;
+          }    
         }
       }
       @else if $i == 10 {
         &-#{$i} {
-          top: 70px;
-          left: 45%;
-           transform: scale(0.35);
-          -ms-transform: scale(0.35);
-          -webkit-transform: scale(0.35);
-          @media screen and (min-width: 280px) and (max-width: 410px) {
-            top: 86px;
-            left: 47%;
+            top: 112px;
+            left: 45%;
             transform: scale(0.35);
             -ms-transform: scale(0.35);
             -webkit-transform: scale(0.35);
-          }
+            z-index: 5;
+          @media screen and (min-width: 280px) and (max-width: 766px) {
+            top: 90px;
+            left: 36%; 
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);  
+          }      
         }
       } 
 
       /*-- - --*/
       @else if $i == 11 {
           &-#{$i} {
-          top: 74px;
-          left: 24%;
-          transform: scale(0.40);
-          -ms-transform: scale(0.40);
-          -webkit-transform: scale(0.40); 
-          z-index: 96;
+          top: 89px;
+            left: 23%;
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
+            z-index: 4;
           @media screen and (min-width: 280px) and (max-width: 410px) {
             top: 86px;
             left: 17%;
@@ -216,19 +241,19 @@
         &-#{$i} {
           top: 100px;
           left: 55%;
-          transform: scale(0.40);
-          -ms-transform: scale(0.40);
-          -webkit-transform: scale(0.40);     
+          transform: scale(0.29);
+          -ms-transform: scale(0.29);
+          -webkit-transform: scale(0.29);     
         }
       }
       @else if $i == 13 {
         &-#{$i} {
-          top: 130px;
-          left: 35.5%;
-          z-index: 97;
-          transform: scale(0.40);
-          -ms-transform: scale(0.40);
-          -webkit-transform: scale(0.40); 
+              top: 154px;
+            left: 34.5%;
+            z-index: 97;
+            transform: scale(0.36);
+            -ms-transform: scale(0.36);
+            -webkit-transform: scale(0.36);
           @media screen and (min-width: 280px) and (max-width: 410px) {
             left: 32%;
           }  
