@@ -225,10 +225,17 @@ h1.page-title {
   height: 100px;
   margin-bottom: 20px;
   background-size: contain; 
+  margin-left: auto;
+  margin-right: auto;    
 
   @media screen and (min-width: 280px) and (max-width: 1200px) {
      margin-top: 20px;
   } 
+
+  @media screen and (min-width: 280px) and (max-width: 992px) {
+     width:60%; 
+       
+  }     
 }
 
 p.intro-text {
@@ -254,19 +261,21 @@ p.subtitle-text {
     
     
   @media screen and (min-width: 280px) and (max-width: 369px) {
-     font-size: 16px;
+    font-size: 20px;
     padding: 0 5%;
-    margin-top: -20px;
+    margin-top: -15px;
+    line-height: 25px;  
     margin-bottom: 10px;
   }
   @media screen and (min-width: 370px) and (max-width: 410px) {
-     font-size: 18px;
+    font-size: 20px;
     padding: 0 5%;
     margin-bottom: 35px;
   }
    @media screen and (min-width: 411px) and (max-width: 992px) {
-     font-size: 20px;
+    font-size: 20px;
     padding: 0 5%;
+    line-height: 25px;
     margin-top: -10px;
     margin-bottom: 25px;
   }              
@@ -313,13 +322,13 @@ p.title-text-absolute {
     display: block;
     
     @media screen and (min-width: 280px) and (max-width:350px) {
-         margin-top: 10px;
+         margin-top: 30px;
     }
     @media screen and (min-width: 351px) and (max-width:410px) {
          margin-top: -35px;
     }
     @media screen and (min-width: 411px) and (max-width:991px) {
-         margin-top: -15px;
+         margin-top: -10px;
     }
     @media screen and (min-width: 992px) {
          margin-top: 20px;

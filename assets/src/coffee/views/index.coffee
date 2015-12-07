@@ -26,9 +26,7 @@ Index = Backbone.View.extend
         PresentAni.animate()
       $(this).find('div').bind 'mouseleave', ->
         PresentAni.stop()
-    
-    presentObj = new Present()  
-
+        
   events:
     'click .present': 'start'
     'click .fb-share-button': 'fbShare'
