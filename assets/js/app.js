@@ -527,7 +527,7 @@ Share = Backbone.View.extend({
     }, function(response) {
       console.log;
       if (response && !response.error_message) {
-        alert('Posting completed.');
+        $('#share-modal').modal('show');
       } else {
         alert('Error while posting.');
       }

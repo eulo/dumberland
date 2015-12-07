@@ -64,7 +64,7 @@ Share = Backbone.View.extend
     }, (response) ->
       console.log     
       if response and !response.error_message
-        alert 'Posting completed.'
+        $('#share-modal').modal('show') 
       else
         alert 'Error while posting.'
       return
