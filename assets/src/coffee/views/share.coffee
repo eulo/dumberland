@@ -54,14 +54,15 @@ Share = Backbone.View.extend
 
   fbShare: (event) ->
   	ga 'send','event','Button Clicks','facebook.com'
-  	FB.ui
+  	FB.ui {
       method: 'share',
       href: @presentObj.url,
       title: 'Here’s a Dumb Present',
       link: @presentObj.url,
       picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
-   (response) ->
+    }, (response) ->
+      console.log     
       if response and !response.error_message
         alert 'Posting completed.'
       else

@@ -517,21 +517,21 @@ Share = Backbone.View.extend({
   },
   fbShare: function(event) {
     ga('send', 'event', 'Button Clicks', 'facebook.com');
-    FB.ui({
+    return FB.ui({
       method: 'share',
       href: this.presentObj.url,
       title: 'Here’s a Dumb Present',
       link: this.presentObj.url,
       picture: 'http://dumberland.com/assets/img/FBshare_acid.jpg',
       description: 'Will it scratch? Will it bite? Will it be a bloodcurdling sight? Open your Dumb Present and see what’s inside.'
-    });
-    return function(response) {
+    }, function(response) {
+      console.log;
       if (response && !response.error_message) {
         alert('Posting completed.');
       } else {
         alert('Error while posting.');
       }
-    };
+    });
   },
   twShare: function() {
     var loc;
