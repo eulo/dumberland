@@ -584,7 +584,7 @@ Video = Backbone.View.extend({
     self = this;
     this.model = new this.videoModel();
     this.render();
-    $('.snow-mound-with-trees').css('background', 'url(/assets/img/background_without_pole.svg) top center no-repeat');
+    $('.snow-mound-with-trees').css('background', 'url(/assets/img/mound_with_bg_no_pole.svg) top center no-repeat');
     $('.video-overlay').show();
     $('.thanks-base').hide();
     return this.presentObj = new Present;
