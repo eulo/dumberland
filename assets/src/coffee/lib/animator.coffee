@@ -2,7 +2,7 @@ module.exports = class Animator
 
   step: 0
   frameRef: []
-  fps: 1000 / 12
+  fps: 50
   interval: null
   onLoad: null
 

@@ -19,7 +19,7 @@ Background = Backbone.View.extend
       flakePosition: 'absolute',
       flakeIndex: 999999,
       minSpeed : 1,
-      maxSpeed : 5,
+      maxSpeed : 20,
       shadow : false,
       collection : false,
       collectionHeight : 40,
