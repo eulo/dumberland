@@ -14305,14 +14305,24 @@ p.title-text-absolute {
   margin: 0 auto;
   display: block;
 }
-@media screen and (min-width: 280px) and (max-width: 410px) {
+@media screen and (min-width: 280px) and (max-width: 350px) {
   .dead-santa {
-    margin-top: 40px;
+    margin-top: 10px;
   }
 }
-@media screen and (min-width: 411px) {
+@media screen and (min-width: 351px) and (max-width: 410px) {
   .dead-santa {
-    margin-top: 70px;
+    margin-top: -35px;
+  }
+}
+@media screen and (min-width: 411px) and (max-width: 991px) {
+  .dead-santa {
+    margin-top: -15px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .dead-santa {
+    margin-top: 20px;
   }
 }
 
