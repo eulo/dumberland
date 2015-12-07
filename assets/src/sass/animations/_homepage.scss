@@ -24,7 +24,7 @@
 .presents-container {
   height: 320px;
   position: relative;
-  margin: -160px auto 10%;
+  margin: -160px auto 0;
   max-width: 880px;
   @media screen and (min-width: 1200px) {
     margin-left: 15%;  
@@ -67,9 +67,9 @@
           &-#{$i} {
           top: -19px;
           left:19%;
-          transform: scale(0.28);
-          -ms-transform: scale(0.28);
-          -webkit-transform: scale(0.28); 
+          transform: scale(0.33);
+          -ms-transform: scale(0.33);
+          -webkit-transform: scale(0.33); 
           @media screen and (min-width: 280px) and (max-width: 766px) {
             left: 5%;
             top: -10px;
@@ -83,9 +83,9 @@
         &-#{$i} {
           top: 17px;
             left: 27%;
-            transform: scale(0.28);
-            -ms-transform: scale(0.28);
-            -webkit-transform: scale(0.28); 
+            transform: scale(0.31);
+            -ms-transform: scale(0.31);
+            -webkit-transform: scale(0.31); 
           @media screen and (min-width: 280px) and (max-width: 766px) {
             left: 23%;
             top: 40px;
@@ -105,9 +105,9 @@
           @media screen and (min-width: 280px) and (max-width: 766px) {
             top: 81px;
             left: 21%;  
-               transform: scale(0.36);
-            -ms-transform: scale(0.36);
-            -webkit-transform: scale(0.36);
+               transform: scale(0.33);
+            -ms-transform: scale(0.33);
+            -webkit-transform: scale(0.33);
           }    
         }
       }
@@ -143,9 +143,9 @@
         &-#{$i} {
           top: 9px;
             left: 49%;
-            transform: scale(0.28);
-            -ms-transform: scale(0.28);
-            -webkit-transform: scale(0.28);
+            transform: scale(0.29);
+            -ms-transform: scale(0.29);
+            -webkit-transform: scale(0.2(8));
             z-index: 3;
           @media screen and (min-width: 280px) and (max-width: 410px) {
             top: 30px;
@@ -157,9 +157,9 @@
         &-#{$i} {
               top: 44px;
             left: 54%;
-            transform: scale(0.3);
-            -ms-transform: scale(0.3);
-            -webkit-transform: scale(0.3);
+            transform: scale(0.32);
+            -ms-transform: scale(0.32);
+            -webkit-transform: scale(0.32);
             z-index: 4;
         @media screen and (min-width: 280px) and (max-width: 766px) {
             top: 14px;
@@ -191,9 +191,9 @@
         &-#{$i} {
           top: 19px;
             left: 40%;
-            transform: scale(0.36);
-            -ms-transform: scale(0.36);
-            -webkit-transform: scale(0.36);
+            transform: scale(0.33);
+            -ms-transform: scale(0.33);
+            -webkit-transform: scale(0.33);
         @media screen and (min-width: 280px) and (max-width: 766px) {
             top: 69px;
             left: 52%;  

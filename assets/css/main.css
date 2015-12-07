@@ -13746,7 +13746,7 @@ Copyright (c) 2015 Daniel Eden
 .presents-container {
   height: 320px;
   position: relative;
-  margin: -160px auto 10%;
+  margin: -160px auto 0;
   max-width: 880px;
 }
 @media screen and (min-width: 1200px) {
@@ -13786,9 +13786,9 @@ Copyright (c) 2015 Daniel Eden
 .presents-container .present-1 {
   top: -19px;
   left: 19%;
-  transform: scale(0.28);
-  -ms-transform: scale(0.28);
-  -webkit-transform: scale(0.28);
+  transform: scale(0.33);
+  -ms-transform: scale(0.33);
+  -webkit-transform: scale(0.33);
 }
 @media screen and (min-width: 280px) and (max-width: 766px) {
   .presents-container .present-1 {
@@ -13802,9 +13802,9 @@ Copyright (c) 2015 Daniel Eden
 .presents-container .present-2 {
   top: 17px;
   left: 27%;
-  transform: scale(0.28);
-  -ms-transform: scale(0.28);
-  -webkit-transform: scale(0.28);
+  transform: scale(0.31);
+  -ms-transform: scale(0.31);
+  -webkit-transform: scale(0.31);
 }
 @media screen and (min-width: 280px) and (max-width: 766px) {
   .presents-container .present-2 {
@@ -13826,9 +13826,9 @@ Copyright (c) 2015 Daniel Eden
   .presents-container .present-3 {
     top: 81px;
     left: 21%;
-    transform: scale(0.36);
-    -ms-transform: scale(0.36);
-    -webkit-transform: scale(0.36);
+    transform: scale(0.33);
+    -ms-transform: scale(0.33);
+    -webkit-transform: scale(0.33);
   }
 }
 .presents-container .present-4 {
@@ -13862,9 +13862,9 @@ Copyright (c) 2015 Daniel Eden
 .presents-container .present-6 {
   top: 9px;
   left: 49%;
-  transform: scale(0.28);
-  -ms-transform: scale(0.28);
-  -webkit-transform: scale(0.28);
+  transform: scale(0.29);
+  -ms-transform: scale(0.29);
+  -webkit-transform: scale(0.2 8);
   z-index: 3;
 }
 @media screen and (min-width: 280px) and (max-width: 410px) {
@@ -13876,9 +13876,9 @@ Copyright (c) 2015 Daniel Eden
 .presents-container .present-7 {
   top: 44px;
   left: 54%;
-  transform: scale(0.3);
-  -ms-transform: scale(0.3);
-  -webkit-transform: scale(0.3);
+  transform: scale(0.32);
+  -ms-transform: scale(0.32);
+  -webkit-transform: scale(0.32);
   z-index: 4;
 }
 @media screen and (min-width: 280px) and (max-width: 766px) {
@@ -13909,9 +13909,9 @@ Copyright (c) 2015 Daniel Eden
 .presents-container .present-9 {
   top: 19px;
   left: 40%;
-  transform: scale(0.36);
-  -ms-transform: scale(0.36);
-  -webkit-transform: scale(0.36);
+  transform: scale(0.33);
+  -ms-transform: scale(0.33);
+  -webkit-transform: scale(0.33);
 }
 @media screen and (min-width: 280px) and (max-width: 766px) {
   .presents-container .present-9 {
@@ -14256,6 +14256,31 @@ p.intro-text {
   p.intro-text {
     font-size: 16px;
     margin-top: -20px;
+  }
+}
+
+.information-wrapper {
+  padding: 40px 5% 70px;
+}
+@media screen and (min-width: 280px) and (max-width: 410px) {
+  .information-wrapper {
+    padding: 0px 5% 70px;
+    margin-top: -20px;
+  }
+}
+
+p.informational {
+  color: #9a9189;
+  font-family: "CooperBT", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  line-height: 25px;
+  margin-bottom: 0px;
+}
+@media screen and (min-width: 280px) and (max-width: 410px) {
+  p.informational {
+    font-size: 16px;
+    line-height: 21px;
   }
 }
 

@@ -245,6 +245,28 @@ p.intro-text {
   } 
 }
 
+.information-wrapper {
+    padding: 40px 5% 70px;
+    @media screen and (min-width: 280px) and (max-width: 410px) {
+        padding: 0px 5% 70px; 
+        margin-top: -20px;
+    }
+}
+
+p.informational {
+  color: #9a9189;
+  font-family: $sans-serif;
+  font-size: 20px;
+  text-align: center;
+  line-height: 25px;
+  margin-bottom: 0px;
+  @media screen and (min-width: 280px) and (max-width: 410px) {
+    font-size: 16px;
+    line-height: 21px;  
+  }
+    
+}
+
 p.subtitle-text {
   color: $snow-color;
   font-family: $sans-serif;
