@@ -18,7 +18,7 @@ Index = Backbone.View.extend
     $mainAni = $('.homepage-animation')
 
     @SantaAni = new Animator $mainAni, ->
-      @animate 0, 94
+      @animate 0, 19
 
     $('.present').each ->
       PresentAni = new Animator $(this)
@@ -56,7 +56,7 @@ Index = Backbone.View.extend
     SantaAni = @SantaAni
     setTimeout ->
       SantaAni.stop()
-      SantaAni.animate 94, SantaAni.frameRef.length - 1, ->
+      SantaAni.animate 19, SantaAni.frameRef.length - 1, ->
         Backbone.history.navigate 'share', true
     , 400
 

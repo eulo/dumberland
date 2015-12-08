@@ -418,7 +418,7 @@ Index = Backbone.View.extend({
     this.render();
     $mainAni = $('.homepage-animation');
     this.SantaAni = new Animator($mainAni, function() {
-      return this.animate(0, 94);
+      return this.animate(0, 19);
     });
     return $('.present').each(function() {
       var PresentAni;
@@ -459,7 +459,7 @@ Index = Backbone.View.extend({
     SantaAni = this.SantaAni;
     return setTimeout(function() {
       SantaAni.stop();
-      return SantaAni.animate(94, SantaAni.frameRef.length - 1, function() {
+      return SantaAni.animate(19, SantaAni.frameRef.length - 1, function() {
         return Backbone.history.navigate('share', true);
       });
     }, 400);
