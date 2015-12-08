@@ -418,7 +418,7 @@ Index = Backbone.View.extend({
     this.render();
     $mainAni = $('.homepage-animation');
     this.SantaAni = new Animator($mainAni, function() {
-      return this.animate(0, 19);
+      return this.animate(0, 92);
     });
     return $('.present').each(function() {
       var PresentAni;
@@ -459,7 +459,7 @@ Index = Backbone.View.extend({
     SantaAni = this.SantaAni;
     return setTimeout(function() {
       SantaAni.stop();
-      return SantaAni.animate(19, SantaAni.frameRef.length - 1, function() {
+      return SantaAni.animate(92, SantaAni.frameRef.length - 1, function() {
         return Backbone.history.navigate('share', true);
       });
     }, 400);
@@ -668,7 +668,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='subtitle-text animated fadeIn'>\n      Send a friend a Dumb Christmas gift.<br>\n      Pick a present to share a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full2.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-xs' data-json='present_shake.json'><div></div></div>\n\n    </div>\n </div>\n    \n    <div class=\"information-wrapper\">\n        <p class=\"informational\">Step 1: Select a christmas <br class=\"visible-xs\" /> present to send</p>\n    <p class=\"informational\">Step 2: Share to your friends <br class=\"visible-xs\" /> on social media</p>\n    <p class=\"informational\">Step 3: Check out what you sent on Facebook or Twitter</p></div>\n    \n    \n  <div id='footer'></div>\n</div>\n\n";
+    return "<div id='homepage'>\n  <div class='container'>\n    <div id='header'></div>\n    <a href=\"/\">\n      <h1 class='page-title animated fadeIn'>Christmas Dumberland</h1>\n    </a>\n    <p class='subtitle-text animated fadeIn'>\n      Send a friend a Dumb Christmas gift.<br>\n      Pick a present to share a surprise with a twist.\n    </p>\n\n    <div class='homepage-animation animated fadeIn' data-json='homepage_santa_full2.json'>\n      <div></div>\n    </div>\n\n    <div class='presents-container animated fadeIn'>\n      <div class='present present-1' data-json='present_shake.json'><div></div></div>\n      <div class='present present-2' data-json='present_shake.json'><div></div></div>\n      <div class='present present-3' data-json='present_shake.json'><div></div></div>\n      <div class='present present-4 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-5 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-6 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-7' data-json='present_shake.json'><div></div></div>\n      <div class='present present-8' data-json='present_shake.json'><div></div></div>\n      <div class='present present-9' data-json='present_shake.json'><div></div></div>\n      <div class='present present-10 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-11 hidden-xs' data-json='present_shake.json'><div></div></div>\n      <div class='present present-13 hidden-xs' data-json='present_shake.json'><div></div></div>\n\n    </div>\n \n    \n    <div class=\"information-wrapper\">\n        <p class=\"informational\">Step 1: Select a christmas <br class=\"visible-xs\" /> present to send</p>\n    <p class=\"informational\">Step 2: Share to your friends <br class=\"visible-xs\" /> on social media</p>\n    <p class=\"informational\">Step 3: Check out what you sent on Facebook or Twitter</p></div>\n      </div>\n    \n    \n  <div id='footer'></div>\n</div>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":50}],23:[function(require,module,exports){

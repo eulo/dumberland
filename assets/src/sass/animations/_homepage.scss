@@ -2,15 +2,22 @@
   width: 400px;
   height: 400px;
   position: relative;
-  margin: -110px auto 0;
+  margin: -90px auto 0;
 
   
-  @media screen and (min-width: 280px) and (max-width: 351px) {
+  @media screen and (min-width: 280px) and (max-width: 365px) {
      left: -52px;
+       margin: -110px auto 0;
   } 
 
-  @media screen and (min-width: 352px) and (max-width: 640px) {
+  @media screen and (min-width: 366px) and (max-width: 410px) {
+     left: -52px;
+     margin: -160px auto 0;
+  }     
+
+  @media screen and (min-width: 411px) and (max-width: 640px) {
      left: -15px;
+     margin: -120px auto 0;  
   } 
 
   > div {

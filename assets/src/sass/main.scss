@@ -243,12 +243,12 @@ p.intro-text {
      font-size: 16px;
      margin-top: -20px;
   } 
-}
+} 
 
 .information-wrapper {
-    padding: 40px 5% 70px;
-    @media screen and (min-width: 280px) and (max-width: 410px) {
-        padding: 0px 5% 70px; 
+    padding: 40px 0% 70px;
+    @media screen and (min-width: 280px) and (max-width: 640px)     {
+        padding: 0px 0% 70px; 
         margin-top: -20px;
     }
 }
@@ -266,6 +266,7 @@ p.informational {
   }
     
 }
+
 
 p.subtitle-text {
   color: $snow-color;

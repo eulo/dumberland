@@ -13724,16 +13724,24 @@ Copyright (c) 2015 Daniel Eden
   width: 400px;
   height: 400px;
   position: relative;
-  margin: -110px auto 0;
+  margin: -90px auto 0;
 }
-@media screen and (min-width: 280px) and (max-width: 351px) {
+@media screen and (min-width: 280px) and (max-width: 365px) {
   .homepage-animation {
     left: -52px;
+    margin: -110px auto 0;
   }
 }
-@media screen and (min-width: 352px) and (max-width: 640px) {
+@media screen and (min-width: 366px) and (max-width: 410px) {
+  .homepage-animation {
+    left: -52px;
+    margin: -160px auto 0;
+  }
+}
+@media screen and (min-width: 411px) and (max-width: 640px) {
   .homepage-animation {
     left: -15px;
+    margin: -120px auto 0;
   }
 }
 .homepage-animation > div {
@@ -14260,11 +14268,11 @@ p.intro-text {
 }
 
 .information-wrapper {
-  padding: 40px 5% 70px;
+  padding: 40px 0% 70px;
 }
-@media screen and (min-width: 280px) and (max-width: 410px) {
+@media screen and (min-width: 280px) and (max-width: 640px) {
   .information-wrapper {
-    padding: 0px 5% 70px;
+    padding: 0px 0% 70px;
     margin-top: -20px;
   }
 }
